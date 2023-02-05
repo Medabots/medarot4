@@ -1,4 +1,4 @@
-(README WIP)
+[![Build All](https://github.com/Medabots/medarot4/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Medabots/medarot4/actions/workflows/build.yml?query=branch%3Amaster)
 
 # Building
 
