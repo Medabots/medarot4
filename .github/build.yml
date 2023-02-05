@@ -1,0 +1,57 @@
+# Simply execute 'make' to verify things still build
+
+name: Build All
+
+on:
+  push:
+    branches:
+      - master
+      - 'tr_*'
+
+  # Allows running manually
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    container: docker://variantxyz/rgbds-20230123:e27da737c6aca9659458d95c32d606ebbea7380c
+
+    steps:
+      - name: List versions
+        run: |
+          git --version
+          python3 --version
+          rgbasm --version
+          rgblink --version
+          rgbgfx --version
+
+      - name: Checkout main repository
+        uses: actions/checkout@v2
+        with:
+          path: 'code'
+
+      - name: Checkout baserom repository
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ secrets.BASEROM_REPOSITORY }}
+          ssh-key: ${{ secrets.BASEROM_KEY }}
+          path: 'baserom'
+
+      - name: Copy baserom into main repository
+        run: |
+          cp $GITHUB_WORKSPACE/baserom/*.gbc $GITHUB_WORKSPACE/code
+
+      - name: Make dump
+        working-directory: 'code'
+        run: |
+          make -j dump
+
+      - name: Make all
+        working-directory: 'code'
+        run: |
+          make -j all
+
+      - name: Verify there are no uncommitted changes
+        working-directory: 'code'
+        run: |
+          [ -z "$(git status --porcelain)" ] && exit 0 || exit 1

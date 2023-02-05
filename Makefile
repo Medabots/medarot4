@@ -81,11 +81,14 @@ OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 core_ADDITIONAL :=
 
-.PHONY: $(VERSIONS) all clean default
+.PHONY: $(VERSIONS) all clean default dump
 default: kabuto
 all: $(VERSIONS)
 clean:
 	rm -r $(BUILD) $(TARGETS) $(SYM_OUT) $(MAP_OUT) || exit 0
+
+dump:
+	echo "No-op"
 
 # Support building specific versions
 # Unfortunately make has no real good way to do this dynamically from VERSIONS so we just manually set CURVERSION here to propagate to the rgbasm call
