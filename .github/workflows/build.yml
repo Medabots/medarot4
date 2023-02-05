@@ -26,12 +26,12 @@ jobs:
           rgbgfx --version
 
       - name: Checkout main repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: 'code'
 
       - name: Checkout baserom repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: ${{ secrets.BASEROM_REPOSITORY }}
           ssh-key: ${{ secrets.BASEROM_KEY }}
