@@ -53,7 +53,8 @@ DIALOG_OUT := $(BUILD)/dialog
 # Source Modules (directories in SRC), version directories (kuwagata/kabuto) are implied
 # We explicitly separate this with newlines to avoid silly conflicts with tr_EN
 MODULES := \
-core
+core \
+text
 
 # Toolchain
 CC := rgbasm
