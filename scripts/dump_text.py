@@ -86,6 +86,8 @@ for info in rom_info:
         n = 0
         for i, t in enumerate(text_ptrs):
             k = t
+            if k[0] == 0xFF and k[1] == 0x2324:
+                continue
             if k in dup_map:
                 text_ptrs[i] = dup_map[k]
             else:
@@ -360,9 +362,9 @@ with open(os.path.join(version_src_path, "text_tables.asm"), "w") as f:
     i = 0
     for entry in text_ptrs:
         if isinstance(entry, tuple) and (entry[0] == 0xFF and entry[1] == 0x2324):
-            f.write('  db $FF')
+            f.write('  db $FF ; Empty entry')
         elif not isinstance(entry, tuple):
-            f.write(f'  db BANK(TextSection{entry:02}) ; duplicate')    
+            f.write(f'  db BANK(TextSection{entry:02}) ; Duplicate')    
         else:
             f.write(f'  db BANK(TextSection{i:02})')
             i += 1
@@ -373,9 +375,9 @@ with open(os.path.join(version_src_path, "text_tables.asm"), "w") as f:
     i = 0
     for entry in text_ptrs:
         if isinstance(entry, tuple) and (entry[0] == 0xFF and entry[1] == 0x2324):
-            f.write('  dw $2324')
+            f.write('  dw $2324 ; Empty entry')
         elif not isinstance(entry, tuple):
-            f.write(f'  dw TextSection{entry:02} ; duplicate')
+            f.write(f'  dw TextSection{entry:02} ; Duplicate')
         else:
             f.write(f'  dw TextSection{i:02}')
             i += 1

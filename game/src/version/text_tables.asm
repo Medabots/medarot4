@@ -234,42 +234,42 @@ TextTableBanks:: ; 0x21ef
   db BANK(TextSection09)
   db BANK(TextSection10)
   db BANK(TextSection11)
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
   db BANK(TextSection12)
-  db BANK(TextSection11) ; duplicate
+  db BANK(TextSection11) ; Duplicate
   db BANK(TextSection13)
   db BANK(TextSection14)
   db BANK(TextSection15)
   db BANK(TextSection16)
   db BANK(TextSection17)
   db BANK(TextSection18)
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
-  db BANK(TextSection11) ; duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
+  db BANK(TextSection11) ; Duplicate
   db BANK(TextSection19)
   db BANK(TextSection20)
   db BANK(TextSection21)
@@ -280,18 +280,18 @@ TextTableBanks:: ; 0x21ef
   db BANK(TextSection26)
   db BANK(TextSection27)
   db BANK(TextSection28)
-  db $FF
+  db $FF ; Empty entry
   db BANK(TextSection29)
   db BANK(TextSection30)
   db BANK(TextSection31)
   db BANK(TextSection32)
   db BANK(TextSection33)
   db BANK(TextSection34)
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
   db BANK(TextSection35)
   db BANK(TextSection36)
   db BANK(TextSection37)
@@ -299,10 +299,10 @@ TextTableBanks:: ; 0x21ef
   db BANK(TextSection39)
   db BANK(TextSection40)
   db BANK(TextSection41)
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
   db BANK(TextSection42)
   db BANK(TextSection43)
   db BANK(TextSection44)
@@ -310,21 +310,21 @@ TextTableBanks:: ; 0x21ef
   db BANK(TextSection46)
   db BANK(TextSection47)
   db BANK(TextSection48)
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
   db BANK(TextSection49)
   db BANK(TextSection50)
   db BANK(TextSection51)
   db BANK(TextSection52)
   db BANK(TextSection53)
   db BANK(TextSection54)
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
-  db BANK(TextSection29) ; duplicate
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
 
 TextTableOffsets::
   dw TextSection00
@@ -339,42 +339,42 @@ TextTableOffsets::
   dw TextSection09
   dw TextSection10
   dw TextSection11
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
   dw TextSection12
-  dw TextSection11 ; duplicate
+  dw TextSection11 ; Duplicate
   dw TextSection13
   dw TextSection14
   dw TextSection15
   dw TextSection16
   dw TextSection17
   dw TextSection18
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
-  dw TextSection11 ; duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
+  dw TextSection11 ; Duplicate
   dw TextSection19
   dw TextSection20
   dw TextSection21
@@ -385,18 +385,18 @@ TextTableOffsets::
   dw TextSection26
   dw TextSection27
   dw TextSection28
-  dw $2324
+  dw $2324 ; Empty entry
   dw TextSection29
   dw TextSection30
   dw TextSection31
   dw TextSection32
   dw TextSection33
   dw TextSection34
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
   dw TextSection35
   dw TextSection36
   dw TextSection37
@@ -404,10 +404,10 @@ TextTableOffsets::
   dw TextSection39
   dw TextSection40
   dw TextSection41
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
   dw TextSection42
   dw TextSection43
   dw TextSection44
@@ -415,18 +415,18 @@ TextTableOffsets::
   dw TextSection46
   dw TextSection47
   dw TextSection48
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
   dw TextSection49
   dw TextSection50
   dw TextSection51
   dw TextSection52
   dw TextSection53
   dw TextSection54
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
-  dw TextSection29 ; duplicate
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
+  dw $2324 ; Empty entry
