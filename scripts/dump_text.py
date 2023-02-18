@@ -191,11 +191,7 @@ for info in rom_info:
                                         t += ">"
                                     if token.end:
                                         if not t:
-                                            t = f"<{token.symbol}{param:02X}>"
-
-                                        # This is a hack, but step back one because they'll reuse this byte
-                                        if param not in range(0, 4+1):
-                                            rom.seek(-1, 1)
+                                            t = f"<{token.symbol}{param:02X}>"                                        
                                         break
                             else: # Not found, print literal bytes instead
                                 # A hack
