@@ -83,12 +83,14 @@ for info in rom_info:
 
         # Note duplicate entries
         dup_map = {}
+        n = 0
         for i, t in enumerate(text_ptrs):
             k = t
             if k in dup_map:
                 text_ptrs[i] = dup_map[k]
             else:
-                dup_map[k] = i
+                dup_map[k] = n
+                n += 1
 
         terminator_pointers = []
 
@@ -360,7 +362,7 @@ with open(os.path.join(version_src_path, "text_tables.asm"), "w") as f:
         if isinstance(entry, tuple) and (entry[0] == 0xFF and entry[1] == 0x2324):
             f.write('  db $FF')
         elif not isinstance(entry, tuple):
-            f.write(f'  db BANK(TextSection{entry:02})')    
+            f.write(f'  db BANK(TextSection{entry:02}) ; duplicate')    
         else:
             f.write(f'  db BANK(TextSection{i:02})')
             i += 1
@@ -373,7 +375,7 @@ with open(os.path.join(version_src_path, "text_tables.asm"), "w") as f:
         if isinstance(entry, tuple) and (entry[0] == 0xFF and entry[1] == 0x2324):
             f.write('  dw $2324')
         elif not isinstance(entry, tuple):
-            f.write(f'  dw TextSection{entry:02}')
+            f.write(f'  dw TextSection{entry:02} ; duplicate')
         else:
             f.write(f'  dw TextSection{i:02}')
             i += 1
