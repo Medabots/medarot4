@@ -41,6 +41,10 @@ SCRIPT_RES := $(SCRIPT)/res
 # Game Source Directories
 SRC := $(GAME)/src
 COMMON := $(SRC)/common
+VERSION_SRC := $(SRC)/version
+
+# Text Directories
+DIALOG_TEXT := $(TEXT)/dialog
 
 # Source Modules (directories in SRC), version directories (kuwagata/kabuto) are implied
 # We explicitly separate this with newlines to avoid silly conflicts with tr_EN
@@ -87,8 +91,8 @@ all: $(VERSIONS)
 clean:
 	rm -r $(BUILD) $(TARGETS) $(SYM_OUT) $(MAP_OUT) || exit 0
 
-dump:
-	echo "No-op"
+dump: dump_text
+	
 
 # Support building specific versions
 # Unfortunately make has no real good way to do this dynamically from VERSIONS so we just manually set CURVERSION here to propagate to the rgbasm call
@@ -115,6 +119,27 @@ $(BASE)/$(OUTPUT_PREFIX)%.$(ROM_TYPE): $(OBJECTS) $$(addprefix $(VERSION_OUT)/$$
 $(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(subst ., ,$$*)).$(SOURCE_TYPE) $(COMMON_SRC) $$(wildcard $(SRC)/$$(firstword $$(subst ., ,$$*))/include/*.$(SOURCE_TYPE)) $$($$(firstword $$(subst ., ,$$*))_ADDITIONAL) $$($$(firstword $$(subst ., ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL) $$(subst PLACEHOLDER_VERSION,$$(lastword $$(subst /, ,$$(firstword $$(subst ., ,$$*)))),$$($$(firstword $$(subst /, ,$$*))_$$(lastword $$(subst ., ,$$*))_ADDITIONAL)) | $(BUILD)
 	$(CC) $(CC_ARGS) -DGAMEVERSION=$(CURVERSION) -o $@ $<
 
+# Dump scripts
+dump_text: | $(DIALOG_TEXT) $(SCRIPT_RES)
+	rm $(DIALOG_TEXT)/*.$(CSV_TYPE) || echo ""
+	$(PYTHON) $(SCRIPT)/dump_text.py "$(SCRIPT_RES)" "$(VERSION_SRC)" "$(DIALOG_TEXT)" "$(DIALOG_OUT)"
+
 #Make directories if necessary
 $(BUILD):
 	mkdir -p $(BUILD)
+
+$(SCRIPT_RES):
+	mkdir -p $(SCRIPT_RES)
+
+$(VERSION_OUT):
+	mkdir -p $(VERSION_OUT)
+
+$(DIALOG_TEXT):
+	mkdir -p $(DIALOG_TEXT)
+
+$(DIALOG_INT):
+	mkdir -p $(DIALOG_INT)
+
+$(DIALOG_OUT):
+	mkdir -p $(DIALOG_OUT)
+
