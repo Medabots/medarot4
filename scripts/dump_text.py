@@ -17,7 +17,7 @@ text_build_path = sys.argv[4]
 
 rom_info = ([
             ("baserom_kabuto.gbc", "kabuto", 0x21ef, 0x2256, 0x2256-0x21ef), 
-            ("baserom_kuwagata.gbc", "kuwagata", 0x21ef, 0x2256, 0x2256-0x21ef)
+            #("baserom_kuwagata.gbc", "kuwagata", 0x21ef, 0x2256, 0x2256-0x21ef)
            ]) # [ROM File, Version Suffix, Text Table Bank Ptr, Address Ptr, Count]
 ptrs = open(os.path.join(scripts_res_path, "ptrs.tbl"), "a+")
 table = utils.merge_dicts([
@@ -34,6 +34,30 @@ name_table = {}
 for line in ptrs:
     n, p = line.strip().split("=")
     name_table[int(p, 16)] = n
+
+class SpecialCharacter():
+    def __init__(self, symbol, default=0, bts=1, end=False, names=None, always_print=False, print_control_code=True, parser=None):
+        self.symbol = symbol
+        self.default = default
+        self.bts = bts
+        self.end = end
+        self.names = names
+        self.always_print = always_print
+        if not parser:
+            parser = { 0: lambda x: None, 1: utils.read_byte, 2: utils.read_short }[self.bts]
+        self.print_control_code = print_control_code
+        self.parser = parser
+
+table[0xcc] = SpecialCharacter('*', end=True) # End of text
+table[0xcd] = SpecialCharacter("CD", bts=0, always_print=True) # Moves to second line of text box
+table[0xce] = SpecialCharacter('S') # Text Speed
+table[0xcf] = SpecialCharacter("CF", bts=0, always_print=True) # Create new text box
+table[0xd0] = SpecialCharacter("&", bts=2, names=name_table) # Pull text from RAM
+table[0xd1] = SpecialCharacter("D1", bts=0, always_print=True) # New page (keeps portrait)
+# Portrait, [Orientation:{00, 01, 10, 11, FF}][Character:1][Expression:1]
+table[0xd2] = SpecialCharacter('@', bts=3, parser=lambda x: "{},{:02X},{:02X}".format({0x00: 'LL', 0x01: 'LR', 0x10: 'RL', 0x11: 'RR', 0xFF: 'CC' }[utils.read_byte(x)], utils.read_byte(x), utils.read_byte(x)) )
+table[0xd3] = SpecialCharacter('K', print_control_code=False, parser=lambda x: kanji[utils.read_byte(x)]) # Kanji
+table[0xd4] = SpecialCharacter("D4", bts=0, always_print=True)
 
 text_table_ptrs = {}
 texts = {}
@@ -57,34 +81,23 @@ for info in rom_info:
 
         text_table_ptrs[suffix] = (txt_bank_ptr, txt_tbl_ptr, text_ptrs)
 
-        class SpecialCharacter():
-            def __init__(self, symbol, default=0, bts=1, end=False, names=None, always_print=False, print_control_code=True, parser=None):
-                self.symbol = symbol
-                self.default = default
-                self.bts = bts
-                self.end = end
-                self.names = names
-                self.always_print = always_print
-                if not parser:
-                    parser = { 0: lambda x: None, 1: utils.read_byte, 2: utils.read_short }[self.bts]
-                self.print_control_code = print_control_code
-                self.parser = parser
-
-        table[0xcc] = SpecialCharacter('*', end=True) # End of text
-        table[0xcd] = SpecialCharacter("CD", bts=0, always_print=True) # Moves to second line of text box
-        table[0xce] = SpecialCharacter('S') # Text Speed
-        table[0xcf] = SpecialCharacter("CF", bts=0, always_print=True) # Create new text box
-        table[0xd0] = SpecialCharacter("&", bts=2, names=name_table) # Pull text from RAM
-        table[0xd1] = SpecialCharacter("D1", bts=0, always_print=True) # New page (keeps portrait)
-        # Portrait, [Orientation:{00, 01, 10, 11, FF}][Character:1][Expression:1]
-        table[0xd2] = SpecialCharacter('@', bts=3, parser=lambda x: "{},{:02X},{:02X}".format({0x00: 'LL', 0x01: 'LR', 0x10: 'RL', 0x11: 'RR', 0xFF: 'CC' }[utils.read_byte(x)], utils.read_byte(x), utils.read_byte(x)) )
-        table[0xd3] = SpecialCharacter('K', print_control_code=False, parser=lambda x: kanji[utils.read_byte(x)]) # Kanji
-        table[0xd4] = SpecialCharacter("D4", bts=0, always_print=True)
+        # Note duplicate entries
+        dup_map = {}
+        for i, t in enumerate(text_ptrs):
+            k = t
+            if k in dup_map:
+                text_ptrs[i] = dup_map[k]
+            else:
+                dup_map[k] = i
 
         terminator_pointers = []
 
-        for i, entry in enumerate([t for t in text_ptrs if t[0] != 0]):
-            csv_filename = os.path.join(text_src_path, f"TextSection{i:02}.csv")
+        secnum = 0
+        for i, entry in enumerate(text_ptrs):
+            if not isinstance(entry, tuple) or (entry[0] == 0xFF and entry[1] == 0x2324):
+                continue
+
+            csv_filename = os.path.join(text_src_path, f"TextSection{secnum:02}.csv")
             text_version_specific[csv_filename] = {}
             text_shifted_pointers[csv_filename] = {}
             text_unused[csv_filename] = {}
@@ -99,7 +112,7 @@ for info in rom_info:
             pointer_lengths_key = realaddr
             pointer_lengths[pointer_lengths_key] = end
             pointers[realaddr] = end # Treat pointers[0] as the end of the list of addresses
-            reverse_map = {}
+            reverse_map = { end : realaddr }
             realaddr = rom.tell()
             last_ptr = 0
             if realaddr >= end: # An empty bank, so clear pointers to avoid any parsing but still create the csv file
@@ -127,11 +140,13 @@ for info in rom_info:
             text = OrderedDict()
             counter = 0
 
-            print(pointers)
+            secnum += 1
 
             # Instead of reading through the pointer table, parse through all the text in case it's out of order
             while rom.tell() in pointers.values():
-                p = list(pointers.keys())[list(pointers.values()).index(rom.tell())]
+                pkl = list(pointers.keys())
+                pvli = list(pointers.values()).index(rom.tell())
+                p = pkl[pvli]
                 while True:
                     t = ""
                     queued_ptrs_write = "" # Queue, but don't write immediately until we know it's ignored or not
@@ -247,7 +262,7 @@ for info in rom_info:
             text = utils.merge_dicts([text, duplicates])
 
             # If this bank is already parsed from another version, just append to the previous set
-            if csv_filename in texts:                
+            if csv_filename in texts:
                 texts_items = list(texts[csv_filename].items())
                 curr_items = list(text.items())
 
@@ -321,19 +336,27 @@ while i < len(text_ptrs):
 with open(os.path.join(version_src_path, "text_tables.asm"), "w") as f:
     constants_path = os.path.join(text_build_path, f"text_table_constants_{{GAMEVERSION}}.asm")
     f.write(f'INCLUDE "{constants_path}"\n\n')
-    for i, entry in enumerate([t for t in text_ptrs if t[0] != 0]):
+    i = 0
+    for entry in text_ptrs:
+        if not isinstance(entry, tuple) or (entry[0] == 0xFF and entry[1] == 0x2324):
+            continue
+
         if i not in text_ptr_versions:
             f.write(f'SECTION "TextSection{i:02}", ROMX[${entry[1]:04x}], BANK[${entry[0]:02x}]\n')
             f.write(f'TextSection{i:02}:\n')
             f.write(f'  INCBIN cTextSection{i:02}\n\n')
+
+        i += 1
 
     f.write(f'SECTION "Dialog Text Tables", ROM0[${txt_bank_ptr:04x}]\n')
     f.write(f'TextTableBanks:: ; 0x{txt_bank_ptr:04x}\n')
     
     i = 0
     for entry in text_ptrs:
-        if entry[0] == 0:
-            f.write('  db $00')
+        if isinstance(entry, tuple) and (entry[0] == 0xFF and entry[1] == 0x2324):
+            f.write('  db $FF')
+        elif not isinstance(entry, tuple):
+            f.write(f'  db BANK(TextSection{entry:02})')    
         else:
             f.write(f'  db BANK(TextSection{i:02})')
             i += 1
@@ -343,8 +366,10 @@ with open(os.path.join(version_src_path, "text_tables.asm"), "w") as f:
 
     i = 0
     for entry in text_ptrs:
-        if entry[0] == 0:
-            f.write('  dw $4000')
+        if isinstance(entry, tuple) and (entry[0] == 0xFF and entry[1] == 0x2324):
+            f.write('  dw $2324')
+        elif not isinstance(entry, tuple):
+            f.write(f'  dw TextSection{entry:02}')
         else:
             f.write(f'  dw TextSection{i:02}')
             i += 1
