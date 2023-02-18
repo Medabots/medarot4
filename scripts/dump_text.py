@@ -17,7 +17,7 @@ text_build_path = sys.argv[4]
 
 rom_info = ([
             ("baserom_kabuto.gbc", "kabuto", 0x21ef, 0x2256, 0x2256-0x21ef), 
-            #("baserom_kuwagata.gbc", "kuwagata", 0x21ef, 0x2256, 0x2256-0x21ef)
+            ("baserom_kuwagata.gbc", "kuwagata", 0x21ef, 0x2256, 0x2256-0x21ef)
            ]) # [ROM File, Version Suffix, Text Table Bank Ptr, Address Ptr, Count]
 ptrs = open(os.path.join(scripts_res_path, "ptrs.tbl"), "a+")
 table = utils.merge_dicts([
@@ -262,6 +262,7 @@ for info in rom_info:
             text = utils.merge_dicts([text, duplicates])
 
             # If this bank is already parsed from another version, just append to the previous set
+            # This whole script is hacky, but this bit in particular is super hacky...
             if csv_filename in texts:
                 texts_items = list(texts[csv_filename].items())
                 curr_items = list(text.items())
@@ -277,6 +278,13 @@ for info in rom_info:
                             text_unused[csv_filename][idx] = {}
                         text_unused[csv_filename][idx][suffix] = (p_current, text[p_current])
                         del curr_items[idx]
+                        continue
+
+                    if isinstance(p_default, str) and p_default.startswith("UNUSED") and (not isinstance(p_current, str) or not p_current.startswith("UNUSED")):
+                        if not idx in text_unused[csv_filename]:
+                            text_unused[csv_filename][idx] = {}
+                        text_unused[csv_filename][idx][default_suffix] = (p_default, texts[csv_filename][p_default])
+                        del texts_items[idx]
                         continue
 
                     # If the text doesn't match or it's already been marked as different, then make sure to record the version string
