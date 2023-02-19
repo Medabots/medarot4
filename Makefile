@@ -54,6 +54,8 @@ DIALOG_OUT := $(BUILD)/dialog
 # We explicitly separate this with newlines to avoid silly conflicts with tr_EN
 MODULES := \
 core \
+gfx \
+link \
 text
 
 # Toolchain
