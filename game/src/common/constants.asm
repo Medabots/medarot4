@@ -72,3 +72,8 @@ M_JPInputRight      EQU $10
 M_JPInputLeft       EQU $20
 M_JPInputUp         EQU $40
 M_JPInputDown       EQU $80
+
+X_MBC5SRAMEnable    EQU $0000
+X_MBC5ROMBankLow    EQU $2000
+X_MBC5ROMBankHigh   EQU $3000
+X_MBC5SRAMBank      EQU $4000
