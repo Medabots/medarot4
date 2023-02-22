@@ -158,7 +158,7 @@ $(TILESET_OUT)/%.$(COMPRESSED_TSET_TYPE): $(TILESET_OUT)/%.$(COMPRESSED_TSET_SRC
 
 # build/tilesets/*_VERSION.malias
 .SECONDEXPANSION:
-$(TILESET_OUT)/%.stamp: $$(call FILTER,%,$(COMPRESSED_TILESET_FILES_VERSIONED))
+$(TILESET_OUT)/%.stamp: $$(call FILTER,%,$(COMPRESSED_TILESET_FILES_VERSIONED)) | $(TILESET_OUT)
 	touch $@
 
 # Use the intermediate files to generate the final dialog and ptrlist files
