@@ -43,12 +43,16 @@ SRC := $(GAME)/src
 COMMON := $(SRC)/common
 VERSION_SRC := $(SRC)/version
 DIALOG_TEXT := $(TEXT)/dialog
+TILESET_GFX := $(GFX)/tilesets
+TILESET_PREBUILT := $(GFX)/prebuilt/tilesets
 
 # Build Directories
 VERSION_OUT := $(BUILD)/version
 
 DIALOG_INT := $(BUILD)/intermediate/dialog
 DIALOG_OUT := $(BUILD)/dialog
+
+TILESET_OUT := $(BUILD)/tilesets
 
 # Source Modules (directories in SRC), version directories (kuwagata/kabuto) are implied
 # We explicitly separate this with newlines to avoid silly conflicts with tr_EN
@@ -94,13 +98,13 @@ OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
 core_ADDITIONAL :=
 version_text_tables_ADDITIONAL := $(DIALOG_OUT)/text_table_constants_PLACEHOLDER_VERSION.asm
 
-.PHONY: $(VERSIONS) all clean default dump
+.PHONY: $(VERSIONS) all clean default dump dump_text dump_tilesets
 default: kabuto
 all: $(VERSIONS)
 clean:
 	rm -r $(BUILD) $(TARGETS) $(SYM_OUT) $(MAP_OUT) || exit 0
 
-dump: dump_text
+dump: dump_text dump_tilesets
 
 # Support building specific versions
 # Unfortunately make has no real good way to do this dynamically from VERSIONS so we just manually set CURVERSION here to propagate to the rgbasm call
@@ -148,6 +152,11 @@ dump_text: | $(DIALOG_TEXT) $(SCRIPT_RES)
 	rm $(DIALOG_TEXT)/*.$(CSV_TYPE) || echo ""
 	$(PYTHON) $(SCRIPT)/dump_text.py "$(SCRIPT_RES)" "$(VERSION_SRC)" "$(DIALOG_TEXT)" "$(DIALOG_OUT)"
 
+dump_tilesets: | $(TILESET_GFX) $(TILESET_PREBUILT) $(SCRIPT_RES)
+	rm $(TILESET_PREBUILT)/*.$(COMPRESSED_TSET_TYPE) || echo ""
+	rm $(TILESET_GFX)/*.$(RAW_TSET_SRC_TYPE) || echo ""
+	$(PYTHON) $(SCRIPT)/dump_tilesets.py "$(TILESET_GFX)" "$(TILESET_PREBUILT)" "$(TILESET_OUT)" "$(SCRIPT_RES)" "$(VERSION_SRC)"
+
 #Make directories if necessary
 $(BUILD):
 	mkdir -p $(BUILD)
@@ -167,3 +176,11 @@ $(DIALOG_INT):
 $(DIALOG_OUT):
 	mkdir -p $(DIALOG_OUT)
 
+$(TILESET_PREBUILT):
+	mkdir -p $(TILESET_PREBUILT)
+
+$(TILESET_GFX):
+	mkdir -p $(TILESET_GFX)
+
+$(TILESET_OUT):
+	mkdir -p $(TILESET_OUT)
