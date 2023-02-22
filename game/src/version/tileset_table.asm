@@ -932,8 +932,8 @@ TilesetInfoTable::
   dbwb BANK(Tileset9802C), $8000, $0 ; 016
   dbwb BANK(Tileset9802E), $8D00, $0 ; 017
   dbwb BANK(Tileset98030), $9000, $0 ; 018
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 019
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 01A
+  dbwb $00, $0000, $0 ; 019
+  dbwb $00, $0000, $0 ; 01A
   dbwb BANK(Tileset98036), $9000, $0 ; 01B
   dbwb BANK(Tileset98038), $9000, $0 ; 01C
   dbwb BANK(Tileset9803A), $9000, $0 ; 01D
@@ -954,7 +954,7 @@ TilesetInfoTable::
   dbwb BANK(Tileset98058), $8C80, $0 ; 02C
   dbwb BANK(Tileset9805A), $8DB0, $0 ; 02D
   dbwb BANK(Tileset9805C), $8A80, $0 ; 02E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 02F
+  dbwb $00, $0000, $0 ; 02F
   dbwb BANK(Tileset98060), $9000, $0 ; 030
   dbwb BANK(Tileset98062), $8400, $0 ; 031
   dbwb BANK(Tileset98064), $8800, $0 ; 032
@@ -968,9 +968,9 @@ TilesetInfoTable::
   dbwb BANK(Tileset98074), $9000, $0 ; 03A
   dbwb BANK(Tileset98076), $8100, $0 ; 03B
   dbwb BANK(Tileset98078), $9340, $0 ; 03C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 03D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 03E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 03F
+  dbwb $00, $0000, $0 ; 03D
+  dbwb $00, $0000, $0 ; 03E
+  dbwb $00, $0000, $0 ; 03F
   dbwb BANK(Tileset98000), $8000, $0 ; 040
   dbwb BANK(Tileset98082), $8000, $0 ; 041
   dbwb BANK(Tileset98084), $8000, $0 ; 042
@@ -980,21 +980,21 @@ TilesetInfoTable::
   dbwb BANK(Tileset9808C), $8000, $0 ; 046
   dbwb BANK(Tileset9808E), $8000, $0 ; 047
   dbwb BANK(Tileset98090), $8000, $0 ; 048
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 049
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 04A
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 04B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8500, $0 ; 04C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 04D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 04E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 04F
+  dbwb $00, $0000, $0 ; 049
+  dbwb $00, $0000, $0 ; 04A
+  dbwb $00, $0000, $0 ; 04B
+  dbwb $1F, $8500, $0 ; 04C
+  dbwb $00, $0000, $0 ; 04D
+  dbwb $00, $0000, $0 ; 04E
+  dbwb $00, $0000, $0 ; 04F
   dbwb BANK(Tileset980A0), $9000, $0 ; 050
   dbwb BANK(Tileset980A2), $8600, $0 ; 051
   dbwb BANK(Tileset980A4), $9000, $0 ; 052
   dbwb BANK(Tileset980A6), $8100, $0 ; 053
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 054
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 055
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 056
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 057
+  dbwb $00, $0000, $0 ; 054
+  dbwb $00, $0000, $0 ; 055
+  dbwb $00, $0000, $0 ; 056
+  dbwb $00, $0000, $0 ; 057
   dbwb BANK(Tileset980B0), $9000, $0 ; 058
   dbwb BANK(Tileset980B2), $8800, $0 ; 059
   dbwb BANK(Tileset980B4), $9000, $0 ; 05A
@@ -1015,16 +1015,16 @@ TilesetInfoTable::
   dbwb BANK(Tileset980D2), $8800, $0 ; 069
   dbwb BANK(Tileset980D4), $9000, $0 ; 06A
   dbwb BANK(Tileset980D6), $8800, $0 ; 06B
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 06C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 06D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 06E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 06F
+  dbwb $00, $0000, $0 ; 06C
+  dbwb $00, $0000, $0 ; 06D
+  dbwb $00, $0000, $0 ; 06E
+  dbwb $00, $0000, $0 ; 06F
   dbwb BANK(Tileset980E0), $8100, $0 ; 070
   dbwb BANK(Tileset980E2), $8800, $0 ; 071
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 072
+  dbwb $00, $0000, $0 ; 072
   dbwb BANK(Tileset980E6), $8980, $0 ; 073
   dbwb BANK(Tileset980E8), $8F60, $0 ; 074
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 075
+  dbwb $00, $0000, $0 ; 075
   dbwb BANK(Tileset980EC), $8DC0, $0 ; 076
   dbwb BANK(Tileset980EE), $8D00, $0 ; 077
   dbwb BANK(Tileset980F0), $8E00, $0 ; 078
@@ -1032,9 +1032,9 @@ TilesetInfoTable::
   dbwb BANK(Tileset980F4), $9000, $0 ; 07A
   dbwb BANK(Tileset980F6), $9700, $0 ; 07B
   dbwb BANK(Tileset980F8), $8D00, $0 ; 07C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 07D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 07E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 07F
+  dbwb $00, $0000, $0 ; 07D
+  dbwb $00, $0000, $0 ; 07E
+  dbwb $00, $0000, $0 ; 07F
   dbwb BANK(Tileset98100), $9000, $0 ; 080
   dbwb BANK(Tileset98102), $9000, $0 ; 081
   dbwb BANK(Tileset98104), $9000, $0 ; 082
@@ -1053,25 +1053,25 @@ TilesetInfoTable::
   dbwb BANK(Tileset9811E), $9000, $0 ; 08F
   dbwb BANK(Tileset98120), $9000, $0 ; 090
   dbwb BANK(Tileset98122), $9000, $0 ; 091
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 092
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 093
+  dbwb $00, $0000, $0 ; 092
+  dbwb $00, $0000, $0 ; 093
   dbwb BANK(Tileset98128), $9000, $0 ; 094
   dbwb BANK(Tileset9812A), $9000, $0 ; 095
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 096
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 097
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 098
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 099
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 09A
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 09B
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 09C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 09D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 09E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 09F
+  dbwb $00, $0000, $0 ; 096
+  dbwb $00, $0000, $0 ; 097
+  dbwb $00, $0000, $0 ; 098
+  dbwb $00, $0000, $0 ; 099
+  dbwb $00, $0000, $0 ; 09A
+  dbwb $00, $0000, $0 ; 09B
+  dbwb $00, $0000, $0 ; 09C
+  dbwb $00, $0000, $0 ; 09D
+  dbwb $00, $0000, $0 ; 09E
+  dbwb $00, $0000, $0 ; 09F
   dbwb BANK(Tileset98140), $9000, $0 ; 0A0
   dbwb BANK(Tileset98142), $8000, $0 ; 0A1
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 0A2
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 0A3
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 0A4
+  dbwb $00, $0000, $0 ; 0A2
+  dbwb $00, $0000, $0 ; 0A3
+  dbwb $00, $0000, $0 ; 0A4
   dbwb BANK(Tileset9814A), $8000, $0 ; 0A5
   dbwb BANK(Tileset9814C), $9000, $0 ; 0A6
   dbwb BANK(Tileset9814E), $8000, $0 ; 0A7
@@ -1080,9 +1080,9 @@ TilesetInfoTable::
   dbwb BANK(Tileset98154), $9000, $0 ; 0AA
   dbwb BANK(Tileset98156), $8800, $0 ; 0AB
   dbwb BANK(Tileset98158), $8000, $0 ; 0AC
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 0AD
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 0AE
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 0AF
+  dbwb $00, $0000, $0 ; 0AD
+  dbwb $00, $0000, $0 ; 0AE
+  dbwb $00, $0000, $0 ; 0AF
   dbwb BANK(Tileset98160), $8AA0, $0 ; 0B0
   dbwb BANK(Tileset98160), $8AA0, $0 ; 0B1
   dbwb BANK(Tileset98164), $8AA0, $0 ; 0B2
@@ -1191,26 +1191,26 @@ TilesetInfoTable::
   dbwb BANK(Tileset98160), $8AA0, $0 ; 119
   dbwb BANK(Tileset98160), $8AA0, $0 ; 11A
   dbwb BANK(Tileset98160), $8AA0, $0 ; 11B
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 11C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 11D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 11E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 11F
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 120
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 121
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 122
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 123
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 124
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 125
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 126
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 127
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 128
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 129
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 12A
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 12B
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 12C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 12D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 12E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 12F
+  dbwb $00, $0000, $0 ; 11C
+  dbwb $00, $0000, $0 ; 11D
+  dbwb $00, $0000, $0 ; 11E
+  dbwb $00, $0000, $0 ; 11F
+  dbwb $00, $0000, $0 ; 120
+  dbwb $00, $0000, $0 ; 121
+  dbwb $00, $0000, $0 ; 122
+  dbwb $00, $0000, $0 ; 123
+  dbwb $00, $0000, $0 ; 124
+  dbwb $00, $0000, $0 ; 125
+  dbwb $00, $0000, $0 ; 126
+  dbwb $00, $0000, $0 ; 127
+  dbwb $00, $0000, $0 ; 128
+  dbwb $00, $0000, $0 ; 129
+  dbwb $00, $0000, $0 ; 12A
+  dbwb $00, $0000, $0 ; 12B
+  dbwb $00, $0000, $0 ; 12C
+  dbwb $00, $0000, $0 ; 12D
+  dbwb $00, $0000, $0 ; 12E
+  dbwb $00, $0000, $0 ; 12F
   dbwb BANK(Tileset98260), $8000, $1 ; 130
   dbwb BANK(Tileset98262), $8000, $1 ; 131
   dbwb BANK(Tileset98264), $8000, $1 ; 132
@@ -1239,42 +1239,42 @@ TilesetInfoTable::
   dbwb BANK(Tileset98292), $8000, $1 ; 149
   dbwb BANK(Tileset98294), $8000, $1 ; 14A
   dbwb BANK(Tileset98296), $8000, $1 ; 14B
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 14C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 14D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 14E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 14F
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 150
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 151
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 152
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 153
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 154
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 155
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 156
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 157
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 158
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 159
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 15A
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 15B
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 15C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 15D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 15E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 15F
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 160
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 161
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 162
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 163
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 164
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 165
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 166
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 167
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 168
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 169
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 16A
+  dbwb $00, $0000, $0 ; 14C
+  dbwb $00, $0000, $0 ; 14D
+  dbwb $00, $0000, $0 ; 14E
+  dbwb $00, $0000, $0 ; 14F
+  dbwb $00, $0000, $0 ; 150
+  dbwb $00, $0000, $0 ; 151
+  dbwb $00, $0000, $0 ; 152
+  dbwb $00, $0000, $0 ; 153
+  dbwb $00, $0000, $0 ; 154
+  dbwb $00, $0000, $0 ; 155
+  dbwb $00, $0000, $0 ; 156
+  dbwb $00, $0000, $0 ; 157
+  dbwb $00, $0000, $0 ; 158
+  dbwb $00, $0000, $0 ; 159
+  dbwb $00, $0000, $0 ; 15A
+  dbwb $00, $0000, $0 ; 15B
+  dbwb $00, $0000, $0 ; 15C
+  dbwb $00, $0000, $0 ; 15D
+  dbwb $00, $0000, $0 ; 15E
+  dbwb $00, $0000, $0 ; 15F
+  dbwb $00, $0000, $0 ; 160
+  dbwb $00, $0000, $0 ; 161
+  dbwb $00, $0000, $0 ; 162
+  dbwb $00, $0000, $0 ; 163
+  dbwb $00, $0000, $0 ; 164
+  dbwb $00, $0000, $0 ; 165
+  dbwb $00, $0000, $0 ; 166
+  dbwb $00, $0000, $0 ; 167
+  dbwb $00, $0000, $0 ; 168
+  dbwb $00, $0000, $0 ; 169
+  dbwb $00, $0000, $0 ; 16A
   dbwb BANK(Tileset982D6), $9000, $0 ; 16B
   dbwb BANK(Tileset982D8), $8800, $0 ; 16C
   dbwb BANK(Tileset982DA), $9000, $0 ; 16D
   dbwb BANK(Tileset982DC), $9000, $0 ; 16E
-  dbwb BANK(TilesetSourceAddressTableEnd), $9170, $0 ; 16F
+  dbwb $18, $9170, $0 ; 16F
   dbwb BANK(Tileset982E0), $9000, $0 ; 170
   dbwb BANK(Tileset982E2), $8800, $0 ; 171
   dbwb BANK(Tileset982E4), $8000, $0 ; 172
@@ -1285,7 +1285,7 @@ TilesetInfoTable::
   dbwb BANK(Tileset982EE), $9400, $0 ; 177
   dbwb BANK(Tileset982F0), $9000, $0 ; 178
   dbwb BANK(Tileset982F2), $9000, $0 ; 179
-  dbwb BANK(TilesetSourceAddressTableEnd), $9300, $0 ; 17A
+  dbwb $50, $9300, $0 ; 17A
   dbwb BANK(Tileset982F6), $8500, $1 ; 17B
   dbwb BANK(Tileset982F8), $8500, $0 ; 17C
   dbwb BANK(Tileset982FA), $8800, $0 ; 17D
@@ -1303,10 +1303,10 @@ TilesetInfoTable::
   dbwb BANK(Tileset98312), $8800, $0 ; 189
   dbwb BANK(Tileset98314), $9000, $0 ; 18A
   dbwb BANK(Tileset98316), $8510, $0 ; 18B
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 18C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 18D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 18E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 18F
+  dbwb $00, $0000, $0 ; 18C
+  dbwb $00, $0000, $0 ; 18D
+  dbwb $00, $0000, $0 ; 18E
+  dbwb $00, $0000, $0 ; 18F
   dbwb BANK(Tileset98320), $9000, $0 ; 190
   dbwb BANK(Tileset98322), $8B00, $0 ; 191
   dbwb BANK(Tileset98324), $9000, $0 ; 192
@@ -1318,13 +1318,13 @@ TilesetInfoTable::
   dbwb BANK(Tileset98330), $8800, $0 ; 198
   dbwb BANK(Tileset98332), $8500, $0 ; 199
   dbwb BANK(Tileset98334), $8500, $1 ; 19A
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 19B
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 19C
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 19D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 19E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 19F
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1A0
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1A1
+  dbwb $00, $0000, $0 ; 19B
+  dbwb $00, $0000, $0 ; 19C
+  dbwb $00, $0000, $0 ; 19D
+  dbwb $00, $0000, $0 ; 19E
+  dbwb $00, $0000, $0 ; 19F
+  dbwb $00, $0000, $0 ; 1A0
+  dbwb $00, $0000, $0 ; 1A1
   dbwb BANK(Tileset98344), $8480, $0 ; 1A2
   dbwb BANK(Tileset98346), $8480, $1 ; 1A3
   dbwb BANK(Tileset98348), $9000, $0 ; 1A4
@@ -1338,7 +1338,7 @@ TilesetInfoTable::
   dbwb BANK(Tileset98358), $8800, $0 ; 1AC
   dbwb BANK(Tileset9835A), $9000, $0 ; 1AD
   dbwb BANK(Tileset9835C), $8000, $0 ; 1AE
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1AF
+  dbwb $00, $0000, $0 ; 1AF
   dbwb BANK(Tileset98360), $9000, $0 ; 1B0
   dbwb BANK(Tileset98362), $8C80, $0 ; 1B1
   dbwb BANK(Tileset98364), $9000, $0 ; 1B2
@@ -1354,7 +1354,7 @@ TilesetInfoTable::
   dbwb BANK(Tileset98378), $8EA0, $0 ; 1BC
   dbwb BANK(Tileset9837A), $8EA0, $0 ; 1BD
   dbwb BANK(Tileset9837C), $8FA0, $0 ; 1BE
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1BF
+  dbwb $00, $0000, $0 ; 1BF
   dbwb BANK(Tileset98380), $87C0, $0 ; 1C0
   dbwb BANK(Tileset98382), $87C0, $0 ; 1C1
   dbwb BANK(Tileset98384), $87C0, $0 ; 1C2
@@ -1364,13 +1364,13 @@ TilesetInfoTable::
   dbwb BANK(Tileset9838C), $87C0, $0 ; 1C6
   dbwb BANK(Tileset9838E), $9000, $0 ; 1C7
   dbwb BANK(Tileset98390), $8800, $0 ; 1C8
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1C9
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1CA
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1CB
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1CC
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1CD
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1CE
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1CF
+  dbwb $00, $0000, $0 ; 1C9
+  dbwb $00, $0000, $0 ; 1CA
+  dbwb $00, $0000, $0 ; 1CB
+  dbwb $00, $0000, $0 ; 1CC
+  dbwb $00, $0000, $0 ; 1CD
+  dbwb $00, $0000, $0 ; 1CE
+  dbwb $00, $0000, $0 ; 1CF
   dbwb BANK(Tileset983A0), $9000, $0 ; 1D0
   dbwb BANK(Tileset983A2), $8000, $0 ; 1D1
   dbwb BANK(Tileset983A4), $8E70, $0 ; 1D2
@@ -1399,26 +1399,26 @@ TilesetInfoTable::
   dbwb BANK(Tileset983D2), $8C80, $0 ; 1E9
   dbwb BANK(Tileset983D4), $9300, $0 ; 1EA
   dbwb BANK(Tileset983D6), $80D0, $1 ; 1EB
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1EC
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1ED
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1EE
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1EF
+  dbwb $00, $0000, $0 ; 1EC
+  dbwb $00, $0000, $0 ; 1ED
+  dbwb $00, $0000, $0 ; 1EE
+  dbwb $00, $0000, $0 ; 1EF
   dbwb BANK(Tileset983E0), $9000, $0 ; 1F0
   dbwb BANK(Tileset983E2), $8000, $0 ; 1F1
   dbwb BANK(Tileset983E4), $8140, $0 ; 1F2
   dbwb BANK(Tileset983E6), $9000, $0 ; 1F3
   dbwb BANK(Tileset983E8), $8800, $0 ; 1F4
   dbwb BANK(Tileset983EA), $8700, $0 ; 1F5
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1F6
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1F7
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1F8
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1F9
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1FA
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1FB
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1FC
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1FD
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1FE
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 1FF
+  dbwb $00, $0000, $0 ; 1F6
+  dbwb $00, $0000, $0 ; 1F7
+  dbwb $00, $0000, $0 ; 1F8
+  dbwb $00, $0000, $0 ; 1F9
+  dbwb $00, $0000, $0 ; 1FA
+  dbwb $00, $0000, $0 ; 1FB
+  dbwb $00, $0000, $0 ; 1FC
+  dbwb $00, $0000, $0 ; 1FD
+  dbwb $00, $0000, $0 ; 1FE
+  dbwb $00, $0000, $0 ; 1FF
   dbwb BANK(Tileset98400), $8000, $1 ; 200
   dbwb BANK(Tileset98402), $8000, $1 ; 201
   dbwb BANK(Tileset98404), $8000, $1 ; 202
@@ -1447,169 +1447,169 @@ TilesetInfoTable::
   dbwb BANK(Tileset98432), $8000, $1 ; 219
   dbwb BANK(Tileset98434), $8000, $1 ; 21A
   dbwb BANK(Tileset98436), $8000, $1 ; 21B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 21C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 21D
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 21E
+  dbwb $56, $8000, $1 ; 21C
+  dbwb $56, $8000, $1 ; 21D
+  dbwb $56, $8000, $1 ; 21E
   dbwb BANK(Tileset9843E), $8000, $1 ; 21F
   dbwb BANK(Tileset98440), $8000, $1 ; 220
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 221
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 222
+  dbwb $56, $8000, $1 ; 221
+  dbwb $56, $8000, $1 ; 222
   dbwb BANK(Tileset98446), $8000, $1 ; 223
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 224
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 225
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 226
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 227
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 228
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 229
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 22A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 22B
+  dbwb $56, $8000, $1 ; 224
+  dbwb $56, $8000, $1 ; 225
+  dbwb $56, $8000, $1 ; 226
+  dbwb $56, $8000, $1 ; 227
+  dbwb $56, $8000, $1 ; 228
+  dbwb $56, $8000, $1 ; 229
+  dbwb $56, $8000, $1 ; 22A
+  dbwb $56, $8000, $1 ; 22B
   dbwb BANK(Tileset98458), $8000, $1 ; 22C
   dbwb BANK(Tileset9845A), $8000, $1 ; 22D
   dbwb BANK(Tileset9845C), $8000, $1 ; 22E
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 22F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 230
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 231
+  dbwb $56, $8000, $1 ; 22F
+  dbwb $56, $8000, $1 ; 230
+  dbwb $56, $8000, $1 ; 231
   dbwb BANK(Tileset98464), $8000, $1 ; 232
   dbwb BANK(Tileset98466), $8000, $1 ; 233
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 234
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 235
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 236
+  dbwb $56, $8000, $1 ; 234
+  dbwb $56, $8000, $1 ; 235
+  dbwb $56, $8000, $1 ; 236
   dbwb BANK(Tileset9846E), $8000, $1 ; 237
   dbwb BANK(Tileset98470), $8000, $1 ; 238
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 239
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 23A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 23B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 23C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 23D
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 23E
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 23F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 240
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 241
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 242
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 243
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 244
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 245
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 246
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 247
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 248
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 249
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 24A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 24B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 24C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 24D
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 24E
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 24F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 250
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 251
+  dbwb $56, $8000, $1 ; 239
+  dbwb $56, $8000, $1 ; 23A
+  dbwb $56, $8000, $1 ; 23B
+  dbwb $56, $8000, $1 ; 23C
+  dbwb $56, $8000, $1 ; 23D
+  dbwb $56, $8000, $1 ; 23E
+  dbwb $56, $8000, $1 ; 23F
+  dbwb $56, $8000, $1 ; 240
+  dbwb $56, $8000, $1 ; 241
+  dbwb $56, $8000, $1 ; 242
+  dbwb $56, $8000, $1 ; 243
+  dbwb $56, $8000, $1 ; 244
+  dbwb $56, $8000, $1 ; 245
+  dbwb $56, $8000, $1 ; 246
+  dbwb $56, $8000, $1 ; 247
+  dbwb $56, $8000, $1 ; 248
+  dbwb $56, $8000, $1 ; 249
+  dbwb $56, $8000, $1 ; 24A
+  dbwb $56, $8000, $1 ; 24B
+  dbwb $56, $8000, $1 ; 24C
+  dbwb $56, $8000, $1 ; 24D
+  dbwb $56, $8000, $1 ; 24E
+  dbwb $56, $8000, $1 ; 24F
+  dbwb $56, $8000, $1 ; 250
+  dbwb $56, $8000, $1 ; 251
   dbwb BANK(Tileset984A4), $8000, $1 ; 252
   dbwb BANK(Tileset984A6), $8000, $1 ; 253
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 254
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 255
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 256
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 257
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 258
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 259
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 25A
+  dbwb $56, $8000, $1 ; 254
+  dbwb $56, $8000, $1 ; 255
+  dbwb $56, $8000, $1 ; 256
+  dbwb $56, $8000, $1 ; 257
+  dbwb $56, $8000, $1 ; 258
+  dbwb $56, $8000, $1 ; 259
+  dbwb $56, $8000, $1 ; 25A
   dbwb BANK(Tileset984A4), $8000, $1 ; 25B
   dbwb BANK(Tileset984B8), $8000, $1 ; 25C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 25D
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 25E
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 25F
+  dbwb $56, $8000, $1 ; 25D
+  dbwb $56, $8000, $1 ; 25E
+  dbwb $56, $8000, $1 ; 25F
   dbwb BANK(Tileset984C0), $8000, $1 ; 260
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 261
+  dbwb $56, $8000, $1 ; 261
   dbwb BANK(Tileset984C4), $8000, $1 ; 262
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 263
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 264
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 265
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 266
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 267
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 268
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 269
+  dbwb $56, $8000, $1 ; 263
+  dbwb $56, $8000, $1 ; 264
+  dbwb $56, $8000, $1 ; 265
+  dbwb $56, $8000, $1 ; 266
+  dbwb $56, $8000, $1 ; 267
+  dbwb $56, $8000, $1 ; 268
+  dbwb $56, $8000, $1 ; 269
   dbwb BANK(Tileset984D4), $8000, $1 ; 26A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 26B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 26C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 26D
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 26E
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 26F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 270
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 271
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 272
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 273
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 274
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 275
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 276
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 277
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 278
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 279
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 27A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 27B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 27C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 27D
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 27E
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 27F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 280
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 281
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 282
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 283
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 284
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 285
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 286
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 287
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 288
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 289
+  dbwb $56, $8000, $1 ; 26B
+  dbwb $56, $8000, $1 ; 26C
+  dbwb $56, $8000, $1 ; 26D
+  dbwb $56, $8000, $1 ; 26E
+  dbwb $56, $8000, $1 ; 26F
+  dbwb $56, $8000, $1 ; 270
+  dbwb $56, $8000, $1 ; 271
+  dbwb $56, $8000, $1 ; 272
+  dbwb $56, $8000, $1 ; 273
+  dbwb $56, $8000, $1 ; 274
+  dbwb $56, $8000, $1 ; 275
+  dbwb $56, $8000, $1 ; 276
+  dbwb $56, $8000, $1 ; 277
+  dbwb $56, $8000, $1 ; 278
+  dbwb $56, $8000, $1 ; 279
+  dbwb $56, $8000, $1 ; 27A
+  dbwb $56, $8000, $1 ; 27B
+  dbwb $56, $8000, $1 ; 27C
+  dbwb $56, $8000, $1 ; 27D
+  dbwb $56, $8000, $1 ; 27E
+  dbwb $56, $8000, $1 ; 27F
+  dbwb $56, $8000, $1 ; 280
+  dbwb $56, $8000, $1 ; 281
+  dbwb $56, $8000, $1 ; 282
+  dbwb $56, $8000, $1 ; 283
+  dbwb $56, $8000, $1 ; 284
+  dbwb $56, $8000, $1 ; 285
+  dbwb $56, $8000, $1 ; 286
+  dbwb $56, $8000, $1 ; 287
+  dbwb $56, $8000, $1 ; 288
+  dbwb $56, $8000, $1 ; 289
   dbwb BANK(Tileset98514), $8000, $1 ; 28A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 28B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 28C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 28D
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 28E
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 28F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 290
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 291
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 292
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 293
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 294
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 295
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 296
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 297
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 298
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 299
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 29A
+  dbwb $56, $8000, $1 ; 28B
+  dbwb $56, $8000, $1 ; 28C
+  dbwb $56, $8000, $1 ; 28D
+  dbwb $56, $8000, $1 ; 28E
+  dbwb $56, $8000, $1 ; 28F
+  dbwb $56, $8000, $1 ; 290
+  dbwb $56, $8000, $1 ; 291
+  dbwb $56, $8000, $1 ; 292
+  dbwb $56, $8000, $1 ; 293
+  dbwb $56, $8000, $1 ; 294
+  dbwb $56, $8000, $1 ; 295
+  dbwb $56, $8000, $1 ; 296
+  dbwb $56, $8000, $1 ; 297
+  dbwb $56, $8000, $1 ; 298
+  dbwb $56, $8000, $1 ; 299
+  dbwb $56, $8000, $1 ; 29A
   dbwb BANK(Tileset98536), $8000, $1 ; 29B
   dbwb BANK(Tileset98538), $8000, $1 ; 29C
   dbwb BANK(Tileset9853A), $8000, $1 ; 29D
   dbwb BANK(Tileset9853C), $8000, $1 ; 29E
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 29F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A0
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A1
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A2
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A3
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A4
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A5
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A6
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A7
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A8
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2A9
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2AA
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2AB
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2AC
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2AD
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2AE
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2AF
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B0
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B1
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B2
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B3
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B4
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B5
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B6
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B7
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B8
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2B9
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2BA
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2BB
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2BC
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2BD
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2BE
+  dbwb $56, $8000, $1 ; 29F
+  dbwb $56, $8000, $1 ; 2A0
+  dbwb $56, $8000, $1 ; 2A1
+  dbwb $56, $8000, $1 ; 2A2
+  dbwb $56, $8000, $1 ; 2A3
+  dbwb $56, $8000, $1 ; 2A4
+  dbwb $55, $8000, $1 ; 2A5
+  dbwb $55, $8000, $1 ; 2A6
+  dbwb $55, $8000, $1 ; 2A7
+  dbwb $55, $8000, $1 ; 2A8
+  dbwb $55, $8000, $1 ; 2A9
+  dbwb $55, $8000, $1 ; 2AA
+  dbwb $55, $8000, $1 ; 2AB
+  dbwb $55, $8000, $1 ; 2AC
+  dbwb $55, $8000, $1 ; 2AD
+  dbwb $55, $8000, $1 ; 2AE
+  dbwb $55, $8000, $1 ; 2AF
+  dbwb $55, $8000, $1 ; 2B0
+  dbwb $55, $8000, $1 ; 2B1
+  dbwb $55, $8000, $1 ; 2B2
+  dbwb $55, $8000, $1 ; 2B3
+  dbwb $55, $8000, $1 ; 2B4
+  dbwb $55, $8000, $1 ; 2B5
+  dbwb $55, $8000, $1 ; 2B6
+  dbwb $55, $8000, $1 ; 2B7
+  dbwb $55, $8000, $1 ; 2B8
+  dbwb $55, $8000, $1 ; 2B9
+  dbwb $55, $8000, $1 ; 2BA
+  dbwb $55, $8000, $1 ; 2BB
+  dbwb $55, $8000, $1 ; 2BC
+  dbwb $55, $8000, $1 ; 2BD
+  dbwb $55, $8000, $1 ; 2BE
   dbwb BANK(Tileset9857E), $8800, $0 ; 2BF
   dbwb BANK(Tileset98580), $8800, $0 ; 2C0
   dbwb BANK(Tileset98582), $8800, $0 ; 2C1
@@ -1629,20 +1629,20 @@ TilesetInfoTable::
   dbwb BANK(Tileset9859E), $8800, $0 ; 2CF
   dbwb BANK(Tileset985A0), $8800, $0 ; 2D0
   dbwb BANK(Tileset985A2), $8800, $0 ; 2D1
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2D2
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2D3
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2D4
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2D5
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2D6
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2D7
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2D8
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2D9
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2DA
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2DB
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2DC
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2DD
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2DE
-  dbwb BANK(TilesetSourceAddressTableEnd), $8000, $1 ; 2DF
+  dbwb $55, $8000, $1 ; 2D2
+  dbwb $55, $8000, $1 ; 2D3
+  dbwb $55, $8000, $1 ; 2D4
+  dbwb $55, $8000, $1 ; 2D5
+  dbwb $55, $8000, $1 ; 2D6
+  dbwb $55, $8000, $1 ; 2D7
+  dbwb $55, $8000, $1 ; 2D8
+  dbwb $55, $8000, $1 ; 2D9
+  dbwb $55, $8000, $1 ; 2DA
+  dbwb $55, $8000, $1 ; 2DB
+  dbwb $55, $8000, $1 ; 2DC
+  dbwb $55, $8000, $1 ; 2DD
+  dbwb $55, $8000, $1 ; 2DE
+  dbwb $55, $8000, $1 ; 2DF
   dbwb BANK(Tileset985C0), $9000, $0 ; 2E0
   dbwb BANK(Tileset985C2), $9000, $0 ; 2E1
   dbwb BANK(Tileset985C4), $9000, $0 ; 2E2
@@ -1661,20 +1661,20 @@ TilesetInfoTable::
   dbwb BANK(Tileset985DE), $9000, $0 ; 2EF
   dbwb BANK(Tileset985E0), $9000, $0 ; 2F0
   dbwb BANK(Tileset985E2), $9000, $0 ; 2F1
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2F2
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2F3
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2F4
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2F5
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2F6
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2F7
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2F8
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2F9
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2FA
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2FB
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2FC
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2FD
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2FE
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 2FF
+  dbwb $00, $0000, $0 ; 2F2
+  dbwb $00, $0000, $0 ; 2F3
+  dbwb $00, $0000, $0 ; 2F4
+  dbwb $00, $0000, $0 ; 2F5
+  dbwb $00, $0000, $0 ; 2F6
+  dbwb $00, $0000, $0 ; 2F7
+  dbwb $00, $0000, $0 ; 2F8
+  dbwb $00, $0000, $0 ; 2F9
+  dbwb $00, $0000, $0 ; 2FA
+  dbwb $00, $0000, $0 ; 2FB
+  dbwb $00, $0000, $0 ; 2FC
+  dbwb $00, $0000, $0 ; 2FD
+  dbwb $00, $0000, $0 ; 2FE
+  dbwb $00, $0000, $0 ; 2FF
   dbwb BANK(Tileset98600), $8800, $0 ; 300
   dbwb BANK(Tileset98602), $8800, $0 ; 301
   dbwb BANK(Tileset98604), $8800, $0 ; 302
@@ -1721,88 +1721,88 @@ TilesetInfoTable::
   dbwb BANK(Tileset98656), $8800, $0 ; 32B
   dbwb BANK(Tileset98658), $8800, $0 ; 32C
   dbwb BANK(Tileset9865A), $8800, $0 ; 32D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 32E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 32F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 330
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 331
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 332
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 333
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 334
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 335
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 336
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 337
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 338
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 339
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 33A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 33B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 33C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 33D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 33E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 33F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 340
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 341
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 342
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 343
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 344
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 345
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 346
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 347
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 348
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 349
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 34A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 34B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 34C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 34D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 34E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 34F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 350
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 351
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 352
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 353
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 354
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 355
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 356
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 357
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 358
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 359
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 35A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 35B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 35C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 35D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 35E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 35F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 360
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 361
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 362
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 363
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 364
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 365
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 366
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 367
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 368
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 369
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 36A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 36B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 36C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 36D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 36E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 36F
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 370
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 371
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 372
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 373
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 374
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 375
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 376
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 377
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 378
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 379
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 37A
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 37B
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 37C
-  dbwb BANK(TilesetSourceAddressTableEnd), $8800, $0 ; 37D
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 37E
-  dbwb BANK(TilesetSourceAddressTableEnd), $0000, $0 ; 37F
+  dbwb $00, $0000, $0 ; 32E
+  dbwb $00, $0000, $0 ; 32F
+  dbwb $91, $8800, $0 ; 330
+  dbwb $92, $8800, $0 ; 331
+  dbwb $92, $8800, $0 ; 332
+  dbwb $92, $8800, $0 ; 333
+  dbwb $92, $8800, $0 ; 334
+  dbwb $92, $8800, $0 ; 335
+  dbwb $92, $8800, $0 ; 336
+  dbwb $92, $8800, $0 ; 337
+  dbwb $93, $8800, $0 ; 338
+  dbwb $93, $8800, $0 ; 339
+  dbwb $93, $8800, $0 ; 33A
+  dbwb $93, $8800, $0 ; 33B
+  dbwb $93, $8800, $0 ; 33C
+  dbwb $93, $8800, $0 ; 33D
+  dbwb $00, $0000, $0 ; 33E
+  dbwb $00, $0000, $0 ; 33F
+  dbwb $91, $8800, $0 ; 340
+  dbwb $92, $8800, $0 ; 341
+  dbwb $92, $8800, $0 ; 342
+  dbwb $92, $8800, $0 ; 343
+  dbwb $92, $8800, $0 ; 344
+  dbwb $92, $8800, $0 ; 345
+  dbwb $92, $8800, $0 ; 346
+  dbwb $92, $8800, $0 ; 347
+  dbwb $93, $8800, $0 ; 348
+  dbwb $93, $8800, $0 ; 349
+  dbwb $93, $8800, $0 ; 34A
+  dbwb $93, $8800, $0 ; 34B
+  dbwb $93, $8800, $0 ; 34C
+  dbwb $93, $8800, $0 ; 34D
+  dbwb $00, $0000, $0 ; 34E
+  dbwb $00, $0000, $0 ; 34F
+  dbwb $91, $8800, $0 ; 350
+  dbwb $92, $8800, $0 ; 351
+  dbwb $92, $8800, $0 ; 352
+  dbwb $92, $8800, $0 ; 353
+  dbwb $92, $8800, $0 ; 354
+  dbwb $92, $8800, $0 ; 355
+  dbwb $92, $8800, $0 ; 356
+  dbwb $92, $8800, $0 ; 357
+  dbwb $93, $8800, $0 ; 358
+  dbwb $93, $8800, $0 ; 359
+  dbwb $93, $8800, $0 ; 35A
+  dbwb $93, $8800, $0 ; 35B
+  dbwb $93, $8800, $0 ; 35C
+  dbwb $93, $8800, $0 ; 35D
+  dbwb $00, $0000, $0 ; 35E
+  dbwb $00, $0000, $0 ; 35F
+  dbwb $91, $8800, $0 ; 360
+  dbwb $92, $8800, $0 ; 361
+  dbwb $92, $8800, $0 ; 362
+  dbwb $92, $8800, $0 ; 363
+  dbwb $92, $8800, $0 ; 364
+  dbwb $92, $8800, $0 ; 365
+  dbwb $92, $8800, $0 ; 366
+  dbwb $92, $8800, $0 ; 367
+  dbwb $93, $8800, $0 ; 368
+  dbwb $93, $8800, $0 ; 369
+  dbwb $93, $8800, $0 ; 36A
+  dbwb $93, $8800, $0 ; 36B
+  dbwb $93, $8800, $0 ; 36C
+  dbwb $93, $8800, $0 ; 36D
+  dbwb $00, $0000, $0 ; 36E
+  dbwb $00, $0000, $0 ; 36F
+  dbwb $91, $8800, $0 ; 370
+  dbwb $92, $8800, $0 ; 371
+  dbwb $92, $8800, $0 ; 372
+  dbwb $92, $8800, $0 ; 373
+  dbwb $92, $8800, $0 ; 374
+  dbwb $92, $8800, $0 ; 375
+  dbwb $92, $8800, $0 ; 376
+  dbwb $92, $8800, $0 ; 377
+  dbwb $93, $8800, $0 ; 378
+  dbwb $93, $8800, $0 ; 379
+  dbwb $93, $8800, $0 ; 37A
+  dbwb $93, $8800, $0 ; 37B
+  dbwb $93, $8800, $0 ; 37C
+  dbwb $93, $8800, $0 ; 37D
+  dbwb $00, $0000, $0 ; 37E
+  dbwb $00, $0000, $0 ; 37F
 TilesetInfoTableEnd::
 
 ; TilesetDataCommon

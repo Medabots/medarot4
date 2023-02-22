@@ -89,14 +89,26 @@ MAP_OUT := $(foreach VERSION,$(VERSIONS),$(BASE)/$(OUTPUT_PREFIX)$(VERSION).$(MA
 OBJNAMES := $(foreach MODULE,$(MODULES),$(addprefix $(MODULE)., $(addsuffix .$(INT_TYPE), $(notdir $(basename $(wildcard $(SRC)/$(MODULE)/*.$(SOURCE_TYPE)))))))
 COMMON_SRC := $(wildcard $(COMMON)/*.$(SOURCE_TYPE))
 DIALOG := $(notdir $(basename $(wildcard $(DIALOG_TEXT)/*.$(CSV_TYPE))))
+TILESETS = $(notdir $(basename $(wildcard $(TILESET_GFX)/*.$(RAW_TSET_SRC_TYPE))))
+COMPRESSED_TILESETS := $(call FILTER,.$(COMPRESSED_TSET_TYPE),$(TILESETS))
+COMPRESSED_TILESETS_COMMON := $(call FILTER_OUT,_,$(COMPRESSED_TILESETS))
+COMPRESSED_TILESETS_VERSIONED := $(call FILTER,_,$(COMPRESSED_TILESETS))
+UNCOMPRESSED_TILESETS := $(call FILTER_OUT,.$(COMPRESSED_TSET_TYPE),$(TILESETS))
+COMPRESSED_TILESETS_GAMEVERSION := $(call FILTER,GAMEVERSION,$(COMPRESSED_TILESETS)) # A bit of a hack for the tilesets with shifted pointers
 
 # Intermediates for common sources (not in version folder)
 ## We explicitly rely on second expansion to handle version-specific files in the version specific objects
 OBJECTS := $(foreach OBJECT,$(OBJNAMES), $(addprefix $(BUILD)/,$(OBJECT)))
 
+COMPRESSED_TILESET_FILES_COMMON := $(foreach FILE,$(COMPRESSED_TILESETS_COMMON),$(TILESET_OUT)/$(basename $(FILE)).$(COMPRESSED_TSET_TYPE))
+COMPRESSED_TILESET_FILES_VERSIONED := $(foreach FILE,$(COMPRESSED_TILESETS_VERSIONED),$(TILESET_OUT)/$(basename $(FILE)).$(COMPRESSED_TSET_TYPE))
+COMPRESSED_TILESET_FILES_GAMEVERSION := $(foreach FILE,$(COMPRESSED_TILESETS_GAMEVERSION),$(TILESET_OUT)/$(basename $(FILE)).$(COMPRESSED_TSET_TYPE))
+UNCOMPRESSED_TILESET_FILES := $(foreach FILE,$(UNCOMPRESSED_TILESETS),$(TILESET_OUT)/$(basename $(FILE)).$(TSET_SRC_TYPE)) # Uncompressed just need to be converted to 2bpp
+
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 core_ADDITIONAL :=
 version_text_tables_ADDITIONAL := $(DIALOG_OUT)/text_table_constants_PLACEHOLDER_VERSION.asm
+version_tileset_table_ADDITIONAL := $(COMPRESSED_TILESET_FILES_COMMON) $(VERSION_SRC)/tileset_table.asm $(COMPRESSED_TILESET_FILES_GAMEVERSION) $(TILESET_OUT)/PLACEHOLDER_VERSION.stamp
 
 .PHONY: $(VERSIONS) all clean default dump dump_text dump_tilesets
 default: kabuto
@@ -135,6 +147,19 @@ $(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(su
 .SECONDEXPANSION:
 $(DIALOG_INT)/%.$(DIALOG_TYPE): $(DIALOG_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(CSV_TYPE) $(SCRIPT_RES)/ptrs.tbl | $(DIALOG_INT)
 	$(PYTHON) $(SCRIPT)/dialog2bin.py $@ $^ "Original" $(subst $(subst .$(CSV_TYPE),,$(<F))_,,$*)
+
+# build/tilesets/*.2bpp from source png
+$(TILESET_OUT)/%.$(TSET_SRC_TYPE): $(TILESET_GFX)/%.$(RAW_TSET_SRC_TYPE) | $(TILESET_OUT)
+	$(CCGFX) $(CCGFX_ARGS) -d 2 -o $@ $<
+
+# build/tilesets/*.malias from built malias.2bpp
+$(TILESET_OUT)/%.$(COMPRESSED_TSET_TYPE): $(TILESET_OUT)/%.$(COMPRESSED_TSET_SRC_TYPE) | $(TILESET_OUT)
+	$(PYTHON) $(SCRIPT)/tileset2malias.py $@ $< $(TILESET_PREBUILT)
+
+# build/tilesets/*_VERSION.malias
+.SECONDEXPANSION:
+$(TILESET_OUT)/%.stamp: $$(call FILTER,%,$(COMPRESSED_TILESET_FILES_VERSIONED))
+	touch $@
 
 # Use the intermediate files to generate the final dialog and ptrlist files
 # Make has trouble with multiple files in a single rule, so we use the asm file to indicate these files were generated

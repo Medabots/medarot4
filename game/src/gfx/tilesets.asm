@@ -17,11 +17,11 @@ LoadMaliasGraphics::
   ld [$C4DC], a
   ld a, 1
   ld [$C4DA], a
-  ld a, $26 ; BANK(TilesetInfoTable) ; Bank of table with banks and destination addresses for tile data.
+  ld a, BANK(TilesetInfoTable) ; Bank of table with banks and destination addresses for tile data.
   rst $10
   push bc
   pop de
-  ld hl, $4800 ; TilesetInfoTable ; Address of table with banks and destination addresses for tile data.
+  ld hl, TilesetInfoTable ; Address of table with banks and destination addresses for tile data.
   sla e
   rl d
   sla e
@@ -37,7 +37,7 @@ LoadMaliasGraphics::
   ld a, a ; The fuck?!
   ld [W_CurrentVRAMBank], a
   ldh [H_RegVBK], a
-  ld hl, $4000 ; TilesetSourceAddressTable ; Address of table with source addresses for tile data.
+  ld hl, TilesetSourceAddressTable ; Address of table with source addresses for tile data.
   sla c
   rl b
   add hl, bc

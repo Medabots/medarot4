@@ -184,7 +184,10 @@ MACRO TilesetTableEntry
         vbank = tileset_metadata[default_version][key][3]
         realptr = utils.rom2realaddr((bank, ptr))
         name = nametable[key] if key in nametable else nametable[realptr_key_map[default_version][realptr]]
-        output.write(f'  dbwb BANK({name}), ${vram:04X}, ${vbank:X} ; {i:03X}\n')
+        if name == nametable[terminator]:
+            output.write(f'  dbwb ${bank:02X}, ${vram:04X}, ${vbank:X} ; {i:03X}\n')
+        else: 
+            output.write(f'  dbwb BANK({name}), ${vram:04X}, ${vbank:X} ; {i:03X}\n')
     output.write('TilesetInfoTableEnd::\n\n')
 
     # Common tilesets to both versions
