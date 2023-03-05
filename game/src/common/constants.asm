@@ -11,4 +11,3 @@ INCLUDE "game/src/common/joypad.inc"
 
 H_PushOAM           EQU $ff80
 H_VBlankCompleted   EQU $ff92
-H_SoundEffect       EQU $ffa1
