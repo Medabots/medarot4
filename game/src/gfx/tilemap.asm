@@ -251,24 +251,24 @@ DecompressTilemapCommon::
   jp .decompressMode
 
 TilemapBankTable::
-  db $33 ; BANK(TilemapTable00)
-  db $34 ; BANK(TilemapTable01)
-  db $35 ; BANK(TilemapTable02)
-  db $36 ; BANK(TilemapTable03)
-  db $35 ; BANK(TilemapTable04)
-  db $33 ; BANK(TilemapTable05)
-  db $33 ; BANK(TilemapTable05)
-  db $24 ; BANK(TilemapTable06)
+  db BANK(TilemapTable00)
+  db BANK(TilemapTable01)
+  db BANK(TilemapTable02)
+  db BANK(TilemapTable03)
+  db BANK(TilemapTable04)
+  db BANK(TilemapTable05) 
+  db BANK(TilemapTable05) ; Note, duplicate
+  db BANK(TilemapTable06)
 
 TilemapAddressTable::
-  dw $4000 ; TilemapTable00
-  dw $4000 ; TilemapTable01
-  dw $4000 ; TilemapTable02
-  dw $4000 ; TilemapTable03
-  dw $4A02 ; TilemapTable04
-  dw $5C45 ; TilemapTable05
-  dw $5C45 ; TilemapTable05
-  ; dw $4B01 (kabuto) or $4AC8 (kuwagata) ; TilemapTable06
+  dw TilemapTable00
+  dw TilemapTable01
+  dw TilemapTable02
+  dw TilemapTable03
+  dw TilemapTable04
+  dw TilemapTable05
+  dw TilemapTable05
+  dw TilemapTable06
 
 SECTION "Calculate Tilemap Address 1", ROM0[$0A25]
 Tilemap0WrapToLine::
