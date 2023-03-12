@@ -270,26 +270,26 @@ DecompressAttribmapCommon::
   ret
 
 AttribmapBankTable::
-  db $37 ; BANK(AttribmapTable00)
-  db $38 ; BANK(AttribmapTable01)
-  db $39 ; BANK(AttribmapTable02)
-  db $3A ; BANK(AttribmapTable03)
-  db $3A ; BANK(AttribmapTable04)
-  db $37 ; BANK(AttribmapTable05)
-  db $38 ; BANK(AttribmapTable06)
-  db $24 ; BANK(AttribmapTable07)
-  db $39 ; BANK(AttribmapTable08)
+  db BANK(AttribmapTable00)
+  db BANK(AttribmapTable01)
+  db BANK(AttribmapTable02)
+  db BANK(AttribmapTable03)
+  db BANK(AttribmapTable04)
+  db BANK(AttribmapTable05)
+  db BANK(AttribmapTable06)
+  db BANK(AttribmapTable07)
+  db BANK(AttribmapTable08)
 
 AttribmapAddressTable::
-  dw $4000 ; AttribmapTable00
-  dw $4000 ; AttribmapTable01
-  dw $4000 ; AttribmapTable02
-  dw $4000 ; AttribmapTable03
-  dw $663B ; AttribmapTable04
-  dw $557C ; AttribmapTable05
-  dw $6032 ; AttribmapTable06
-  ; dw $6146 (kabuto) or $611E (kuwagata) ; AttribmapTable07
-  ; dw $49FA ; AttribmapTable08
+  dw AttribmapTable00
+  dw AttribmapTable01
+  dw AttribmapTable02
+  dw AttribmapTable03
+  dw AttribmapTable04
+  dw AttribmapTable05
+  dw AttribmapTable06
+  dw AttribmapTable07
+  dw AttribmapTable08
 
 SECTION "Load Attribmaps 2", ROM0[$0A1D]
 AttribmapRecallValue::
