@@ -45,7 +45,7 @@ meta_tilemap_names_file = os.path.join(scripts_res_path, f"meta_{map_label}_file
 
 roms = ([
             ("baserom_kabuto.gbc", "kabuto"), 
-            #("baserom_kuwagata.gbc", "kuwagata")
+            ("baserom_kuwagata.gbc", "kuwagata")
         ])
 
 # Map real address to a defined name
@@ -57,19 +57,20 @@ else:
     namefile = open(meta_tilemap_names_file, "w")
 
 default_version = roms[0]
-tilemap_tables = None
+tilemap_tables = {}
 
 try:
-    with open(default_version[0], "rb") as rom:
-        rom.seek(map_bank_table)
-        tilemap_banks = [utils.read_byte(rom) for i in range(0, map_table_count)]
-        rom.seek(map_addr_table)
-        tilemap_addrs = [utils.read_short(rom) for i in range(0, map_table_count)]
+    for versionidx, version in enumerate(roms):
+        rom_filename = version[0]
+        ver = version[1]
+        with open(rom_filename, "rb") as rom:
+            rom.seek(map_bank_table)
+            tilemap_banks = [utils.read_byte(rom) for i in range(0, map_table_count)]
+            rom.seek(map_addr_table)
+            tilemap_addrs = [utils.read_short(rom) for i in range(0, map_table_count)]
 
-        # The tilemap locations are in the same place in both versions
-        tilemap_tables = list(zip(tilemap_banks, tilemap_addrs))
-        # Remove duplicates
-        tilemap_tables = list(dict.fromkeys(tilemap_tables))
+            tilemap_tables[versionidx] = list(zip(tilemap_banks, tilemap_addrs))
+            tilemap_tables[versionidx] = list(dict.fromkeys(tilemap_tables[versionidx]))
 
     tilemap_data = {} # [version] -> [identifier] -> (realaddr, data)
     duplicate_map = {} # [version] -> [identifier] -> identity
@@ -85,7 +86,7 @@ try:
         with open(rom_filename, "rb") as rom:
             pointers = None
 
-            for tableidx, tableptr in enumerate(tilemap_tables):
+            for tableidx, tableptr in enumerate(tilemap_tables[versionidx]):
                 current_bank = tableptr[0]
                 rom.seek(utils.rom2realaddr(tableptr))
 
@@ -204,7 +205,11 @@ try:
                         common_file.write(f"{map_label.capitalize()}Table{tableidx:02X}Terminator::\n")
                     common_file.write('\n')
                 filelist = []
-                common_file.write(f'SECTION "{map_label.capitalize()} Table {identifier[0]:02X}", ROMX[${tilemap_tables[identifier[0]][1]:04X}], BANK[${tilemap_tables[identifier[0]][0]:02X}]\n')
+                # Note if tilemap tables are in different locations between versions
+                if any(tilemap_tables[0][identifier[0]] != tilemap_tables[x][identifier[0]] for x in tilemap_tables):
+                    common_file.write(f'SECTION "{map_label.capitalize()} Table {identifier[0]:02X}", ROMX[cADDR_{identifier[0]}_GAMEVERSION], BANK[cBANK_{identifier[0]}_GAMEVERSION]\n')
+                else:
+                    common_file.write(f'SECTION "{map_label.capitalize()} Table {identifier[0]:02X}", ROMX[${tilemap_tables[0][identifier[0]][1]:04X}], BANK[${tilemap_tables[0][identifier[0]][0]:02X}]\n')
                 common_file.write(f"{map_label.capitalize()}Table{identifier[0]:02X}::\n")
             tableidx = identifier[0]
 
@@ -263,13 +268,22 @@ try:
                     common_file.write(f"{map_label.capitalize()}Table{tableidx:02X}Terminator::\n")
                 common_file.write('\n') 
 
-    for version in file_constants:
+
+    # This assumes that there are an equal number of tables between the versions
+    shifted_table_indices = [idx for idx, val in enumerate(tilemap_tables[0]) if any(val != tilemap_tables[x][idx] for x in tilemap_tables)]
+
+    for versionidx, version in enumerate(file_constants):
         version_file_path = os.path.join(version_src_path, f"{version}/{map_label}_table.asm")
         with open(version_file_path, "w") as version_file:
             for var in file_constants[version]:
                 name = file_constants[version][var]
                 version_file.write(f'c{map_label.capitalize()}{var}        EQUS "\\"{os.path.join(output_path, f"{name}.map")}\\""\n')
-            version_file.write(f'\nINCLUDE "{os.path.join(version_src_path, f"{map_label}_table.asm")}"\n')
+
+            for idx in shifted_table_indices:
+                version_file.write(f'cBANK_{idx}_GAMEVERSION        EQU ${tilemap_tables[versionidx][idx][0]:02X}\n')
+                version_file.write(f'cADDR_{idx}_GAMEVERSION        EQU ${tilemap_tables[versionidx][idx][1]:04X}\n')
+
+            version_file.write(f'INCLUDE "{os.path.join(version_src_path, f"{map_label}_table.asm")}"\n')
 
     if namefile:
         for identity in basename_map:

@@ -2638,7 +2638,7 @@ Attribmap06_68::
   INCBIN "./build/attribmaps/0667.map"
 AttribmapTable06Terminator::
 
-SECTION "Attribmap Table 07", ROMX[$6146], BANK[$24]
+SECTION "Attribmap Table 07", ROMX[cADDR_7_GAMEVERSION], BANK[cBANK_7_GAMEVERSION]
 AttribmapTable07::
   dw Attribmap07_00 ; 00
   dw Attribmap07_01 ; 01
@@ -2646,7 +2646,7 @@ AttribmapTable07::
   dw Attribmap07_03 ; 03
   dw Attribmap07_04 ; 04
   dw Attribmap07_05 ; 05
-  dw Attribmap07_06 ; 06
+  dw Attribmap07_06_GAMEVERSION ; 06
   dw Attribmap07_07 ; 07
   dw Attribmap07_07 ; 08 (07_08)
   dw Attribmap07_07 ; 09 (07_09)
@@ -2741,14 +2741,14 @@ AttribmapTable07::
   dw Attribmap07_62 ; 62
   dw Attribmap07_63 ; 63
   dw Attribmap07_64 ; 64
-  dw Attribmap07_65 ; 65
-  dw Attribmap07_66 ; 66
-  dw Attribmap07_67 ; 67
-  dw Attribmap07_68 ; 68
-  dw Attribmap07_69 ; 69
-  dw Attribmap07_6A ; 6A
-  dw Attribmap07_6B ; 6B
-  dw Attribmap07_6C ; 6C
+  dw Attribmap07_65_GAMEVERSION ; 65
+  dw Attribmap07_66_GAMEVERSION ; 66
+  dw Attribmap07_67_GAMEVERSION ; 67
+  dw Attribmap07_68_GAMEVERSION ; 68
+  dw Attribmap07_69_GAMEVERSION ; 69
+  dw Attribmap07_6A_GAMEVERSION ; 6A
+  dw Attribmap07_6B_GAMEVERSION ; 6B
+  dw Attribmap07_6C_GAMEVERSION ; 6C
   dw Attribmap07_6D ; 6D
   dw Attribmap07_6D ; 6E (07_6E)
   dw Attribmap07_6D ; 6F (07_6F)
@@ -2908,8 +2908,8 @@ Attribmap07_04::
   INCBIN "./build/attribmaps/0704.map"
 Attribmap07_05::
   INCBIN "./build/attribmaps/0705.map"
-Attribmap07_06::
-  INCBIN "./build/attribmaps/0706.map"
+Attribmap07_06_GAMEVERSION::
+  INCBIN cAttribmap07_06_GAMEVERSION
 Attribmap07_07::
   INCBIN "./build/attribmaps/0707.map"
 Attribmap07_41::
@@ -2984,22 +2984,22 @@ Attribmap07_63::
   INCBIN "./build/attribmaps/0763.map"
 Attribmap07_64::
   INCBIN "./build/attribmaps/0764.map"
-Attribmap07_65::
-  INCBIN "./build/attribmaps/0765.map"
-Attribmap07_66::
-  INCBIN "./build/attribmaps/0766.map"
-Attribmap07_67::
-  INCBIN "./build/attribmaps/0767.map"
-Attribmap07_68::
-  INCBIN "./build/attribmaps/0768.map"
-Attribmap07_69::
-  INCBIN "./build/attribmaps/0769.map"
-Attribmap07_6A::
-  INCBIN "./build/attribmaps/076A.map"
-Attribmap07_6B::
-  INCBIN "./build/attribmaps/076B.map"
-Attribmap07_6C::
-  INCBIN "./build/attribmaps/076C.map"
+Attribmap07_65_GAMEVERSION::
+  INCBIN cAttribmap07_65_GAMEVERSION
+Attribmap07_66_GAMEVERSION::
+  INCBIN cAttribmap07_66_GAMEVERSION
+Attribmap07_67_GAMEVERSION::
+  INCBIN cAttribmap07_67_GAMEVERSION
+Attribmap07_68_GAMEVERSION::
+  INCBIN cAttribmap07_68_GAMEVERSION
+Attribmap07_69_GAMEVERSION::
+  INCBIN cAttribmap07_69_GAMEVERSION
+Attribmap07_6A_GAMEVERSION::
+  INCBIN cAttribmap07_6A_GAMEVERSION
+Attribmap07_6B_GAMEVERSION::
+  INCBIN cAttribmap07_6B_GAMEVERSION
+Attribmap07_6C_GAMEVERSION::
+  INCBIN cAttribmap07_6C_GAMEVERSION
 Attribmap07_6D::
   INCBIN "./build/attribmaps/076D.map"
 AttribmapTable07Terminator::

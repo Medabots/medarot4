@@ -551,7 +551,7 @@ TilemapTable01::
   dw Tilemap01_24 ; 24
   dw Tilemap01_25 ; 25
   dw Tilemap01_26 ; 26
-  dw Tilemap01_27 ; 27
+  dw Tilemap01_27_GAMEVERSION ; 27
   dw Tilemap01_28 ; 28
   dw Tilemap01_28 ; 29 (01_29)
   dw Tilemap01_28 ; 2A (01_2A)
@@ -822,8 +822,8 @@ Tilemap01_25::
   INCBIN "./build/tilemaps/0125.map"
 Tilemap01_26::
   INCBIN "./build/tilemaps/0126.map"
-Tilemap01_27::
-  INCBIN "./build/tilemaps/0127.map"
+Tilemap01_27_GAMEVERSION::
+  INCBIN cTilemap01_27_GAMEVERSION
 Tilemap01_28::
   INCBIN "./build/tilemaps/0128.map"
 Tilemap01_2B::
@@ -2376,7 +2376,7 @@ Tilemap05_31::
   INCBIN "./build/tilemaps/0531.map"
 TilemapTable05Terminator::
 
-SECTION "Tilemap Table 06", ROMX[$4B01], BANK[$24]
+SECTION "Tilemap Table 06", ROMX[cADDR_6_GAMEVERSION], BANK[cBANK_6_GAMEVERSION]
 TilemapTable06::
   dw Tilemap06_00 ; 00
   dw Tilemap06_01 ; 01
@@ -2384,7 +2384,7 @@ TilemapTable06::
   dw Tilemap06_03 ; 03
   dw Tilemap06_04 ; 04
   dw Tilemap06_05 ; 05
-  dw Tilemap06_06 ; 06
+  dw Tilemap06_06_GAMEVERSION ; 06
   dw Tilemap06_07 ; 07
   dw Tilemap06_08 ; 08
   dw Tilemap06_09 ; 09
@@ -2478,15 +2478,15 @@ TilemapTable06::
   dw Tilemap06_61 ; 61
   dw Tilemap06_62 ; 62
   dw Tilemap06_63 ; 63
-  dw Tilemap06_64 ; 64
-  dw Tilemap06_65 ; 65
-  dw Tilemap06_66 ; 66
-  dw Tilemap06_67 ; 67
-  dw Tilemap06_68 ; 68
-  dw Tilemap06_69 ; 69
-  dw Tilemap06_6A ; 6A
-  dw Tilemap06_6B ; 6B
-  dw Tilemap06_6C ; 6C
+  dw Tilemap06_64_GAMEVERSION ; 64
+  dw Tilemap06_65_GAMEVERSION ; 65
+  dw Tilemap06_66_GAMEVERSION ; 66
+  dw Tilemap06_67_GAMEVERSION ; 67
+  dw Tilemap06_68_GAMEVERSION ; 68
+  dw Tilemap06_69_GAMEVERSION ; 69
+  dw Tilemap06_6A_GAMEVERSION ; 6A
+  dw Tilemap06_6B_GAMEVERSION ; 6B
+  dw Tilemap06_6C_GAMEVERSION ; 6C
   dw Tilemap06_6D ; 6D
   dw Tilemap06_6D ; 6E (06_6E)
   dw Tilemap06_6D ; 6F (06_6F)
@@ -2646,8 +2646,8 @@ Tilemap06_04::
   INCBIN "./build/tilemaps/0604.map"
 Tilemap06_05::
   INCBIN "./build/tilemaps/0605.map"
-Tilemap06_06::
-  INCBIN "./build/tilemaps/0606.map"
+Tilemap06_06_GAMEVERSION::
+  INCBIN cTilemap06_06_GAMEVERSION
 Tilemap06_07::
   INCBIN "./build/tilemaps/0607.map"
 Tilemap06_08::
@@ -2834,24 +2834,24 @@ Tilemap06_62::
   INCBIN "./build/tilemaps/0662.map"
 Tilemap06_63::
   INCBIN "./build/tilemaps/0663.map"
-Tilemap06_64::
-  INCBIN "./build/tilemaps/0664.map"
-Tilemap06_65::
-  INCBIN "./build/tilemaps/0665.map"
-Tilemap06_66::
-  INCBIN "./build/tilemaps/0666.map"
-Tilemap06_67::
-  INCBIN "./build/tilemaps/0667.map"
-Tilemap06_68::
-  INCBIN "./build/tilemaps/0668.map"
-Tilemap06_69::
-  INCBIN "./build/tilemaps/0669.map"
-Tilemap06_6A::
-  INCBIN "./build/tilemaps/066A.map"
-Tilemap06_6B::
-  INCBIN "./build/tilemaps/066B.map"
-Tilemap06_6C::
-  INCBIN "./build/tilemaps/066C.map"
+Tilemap06_64_GAMEVERSION::
+  INCBIN cTilemap06_64_GAMEVERSION
+Tilemap06_65_GAMEVERSION::
+  INCBIN cTilemap06_65_GAMEVERSION
+Tilemap06_66_GAMEVERSION::
+  INCBIN cTilemap06_66_GAMEVERSION
+Tilemap06_67_GAMEVERSION::
+  INCBIN cTilemap06_67_GAMEVERSION
+Tilemap06_68_GAMEVERSION::
+  INCBIN cTilemap06_68_GAMEVERSION
+Tilemap06_69_GAMEVERSION::
+  INCBIN cTilemap06_69_GAMEVERSION
+Tilemap06_6A_GAMEVERSION::
+  INCBIN cTilemap06_6A_GAMEVERSION
+Tilemap06_6B_GAMEVERSION::
+  INCBIN cTilemap06_6B_GAMEVERSION
+Tilemap06_6C_GAMEVERSION::
+  INCBIN cTilemap06_6C_GAMEVERSION
 Tilemap06_6D::
   INCBIN "./build/tilemaps/066D.map"
 TilemapTable06Terminator::
