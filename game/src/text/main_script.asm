@@ -153,12 +153,12 @@ MainScriptProcessorPutCharLoop::
   cp $D1
   jp z, ControlCodeD1 ; New page without input code.
   cp $D2
-  jp z, $1F96 ; ControlCodeD2 ; Portrait display code.
+  jp z, ControlCodeD2 ; Portrait display code.
   cp $D3
-  jp z, $2142 ; ControlCodeD3 ; Kanji drawing code.
+  jp z, ControlCodeD3 ; Kanji drawing code.
   cp $D4
-  jp z, $2193 ; ControlCodeD4 ; Red text drawing code.
-  jp $1F6F ; MainScriptMapCharacter ; Map character to the screen.
+  jp z, ControlCodeD4 ; Red text toggle code.
+  jp MainScriptProcessLiteralCharacter ; Map character to the screen.
 
 ControlCodeCC:: ; End code.
   ld a, [W_MainScriptCCSubState]
@@ -487,6 +487,313 @@ ControlCodeD1:: ; New page without input code.
   ld [W_MainScriptKanjiDrawingRegionTileIndex], a
   pop hl
   ret
+
+MainScriptProcessLiteralCharacter::
+  ld b, 1
+  call MainScriptProgressXChars
+  xor a
+  ld [W_MainScriptIterator], a
+  ld [W_MainScriptPauseAutoAdvanceTimer], a
+  ld a, [hl]
+  ld [$C4EE], a
+  ld a, [$C4EE]
+  call MainScriptPrintChar
+  ld a, [W_MainScriptSpeed]
+  ld [W_MainScriptPauseTimer], a
+  pop hl
+  cp $FF
+  ret nz
+  xor a
+  ld [W_MainScriptPauseTimer], a
+  jp MainScriptProcessorPutCharLoop
+
+ControlCodeD2:: ; Portrait display code.
+  push hl
+  inc hl
+  ld a, [hl]
+  pop hl
+  cp $FF
+  jr nz, .changePortrait
+
+.clearPortrait
+  ld a, [W_MainScriptPortraitCharacter]
+  cp $FF
+  jp z, .exit
+  pop hl
+  ld a, [W_MainScriptCCSubState]
+  cp 0
+  jp z, ControlCodeCC.exitSubState1
+  cp 1
+  jp z, ControlCodeCC.exitSubState2
+  ld a, $FF
+  ld [W_MainScriptPortraitCharacter], a
+  ld [W_MainScriptPortraitPriorPlacement], a
+  ld [W_MainScriptPortraitExpression], a
+  xor a
+  ld [W_MainScriptCCSubState], a
+  ld b, 4
+  call MainScriptProgressXChars
+  jp $21A4
+
+.changePortrait
+  ld a, [W_MainScriptCCSubState]
+  cp 0
+  jr z, .state0
+  cp 1
+  jp z, .state1
+  jp .state2
+
+.exit
+  pop hl
+  ld b, 4
+  call MainScriptProgressXChars
+  ret
+
+.state0
+  inc hl
+  ld a, [hli]
+  ld [W_MainScriptPortraitPlacement], a
+  ld a, [hli]
+  ld [W_MainScriptPortraitCharacter], a
+  ld a, [hl]
+  ld [W_MainScriptPortraitExpression], a
+  ld a, [W_MainScriptPortraitPlacement]
+  cp $FF
+  jp z, .exit
+  ld a, [W_MainScriptCCSubState]
+  inc a
+  ld [W_MainScriptCCSubState], a
+  ld a, 1
+  ld [$C498], a
+  ld a, [W_MainScriptPortraitPriorPlacement]
+  cp $FF
+  jr z, .checkMappingLocation
+  and $F0
+  ld b, a
+  ld a, [W_MainScriptPortraitPlacement]
+  and $F0
+  cp b
+  jr z, .checkMappingLocation
+
+.changedSides
+  call $21A4
+  ld [$C46D], a
+  ld a, $23
+  call $382B
+  jr .checkMappingLocation
+
+.checkMappingLocation
+  ld a, [W_MainScriptPortraitPlacement]
+  and $F0
+  or a
+  jr nz, .rightSideOfScreen
+
+.leftSideOfScreen
+  ld b, $50
+  ld c, $68
+  ld d, 0
+  ld e, $18
+  ld [$C46D], a
+  ld a, $22
+  call $382B
+  pop hl
+  ret
+
+.rightSideOfScreen
+  ld b, $50
+  ld c, $68
+  ld d, $80
+  ld e, $98
+  ld [$C46D], a
+  ld a, $22
+  call $382B
+  pop hl
+  ret
+
+.state1
+  ld a, [W_MainScriptPortraitPriorPlacement]
+  cp $FF
+  jr nz, .portraitIsEmpty
+  ld a, 0
+  ld [$C4EE], a
+  ld a, $14
+  ld [$C4EF], a
+  ld a, 9
+  ld [$C4F0], a
+  ld a, 4
+  ld [$C4F1], a
+  ld a, 0
+  ld [$C46D], a
+  ld a, $B2
+  call $382B
+
+.portraitIsEmpty
+  ld a, 1
+  ld [W_OAM_SpritesReady], a
+  ld a, [W_MainScriptCCSubState]
+  inc a
+  ld [W_MainScriptCCSubState], a
+  pop hl
+  ret
+
+.state2
+  ld a, [W_MainScriptPortraitCharacter]
+  cp $FF
+  jr z, .portraitCharacterIsFF
+  ld a, [W_MainScriptPortraitExpression]
+  ld b, a
+  ld a, [W_MainScriptPortraitCharacter]
+  call $2CDF
+  jr .portraitPlacementMath
+
+.portraitCharacterIsFF
+  ld a, [W_MainScriptPortraitExpression]
+  cp $FE
+  jr nz, .portraitExpressionIsNotFE
+  ld a, 5
+  rst 8
+  ld a, [$C6AA]
+  ld hl, $10
+  call $335E
+  ld de, $D000
+  add hl, de
+  ld de, 3
+  add hl, de
+  ld a, [hl]
+
+.portraitExpressionIsNotFE
+  call $2D38
+
+.portraitPlacementMath
+  ld a, [W_MainScriptPortraitPlacement]
+  and $F0
+  swap a
+  sla a
+  sla a
+  sla a
+  sla a
+  ld b, a
+  ld c, 9
+  push bc
+  ld a, [W_MainScriptPortraitPlacement]
+  and $F
+  add $10
+  ld e, a
+  push de
+  ld a, 0
+  call $13A4
+  pop de
+  pop bc
+  ld a, 0
+  call $13AC
+  ld a, [W_MainScriptPortraitCharacter]
+  cp $FF
+  jr z, .portraitCharacterEqualsFF
+  ld hl, $380
+  ld b, 0
+  ld a, [W_MainScriptPortraitCharacter]
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld a, 6
+  call CGBLoadSingleBGPPaletteIndex
+  ld a, 1
+  ld [W_CGBPaletteStagedBGP], a
+  jr .preExit
+  
+.portraitCharacterEqualsFF
+  ld a, [W_MainScriptPortraitExpression]
+  cp $FE
+  jr nz, .portraitExpressionEqualsFE
+  ld a, 5
+  rst 8
+  ld a, [$C6AA]
+  ld hl, $10
+  call $335E
+  ld de, $D000
+  add hl, de
+  ld de, 3
+  add hl, de
+  ld a, [hl]
+
+.portraitExpressionEqualsFE
+  ld hl, $C00
+  ld b, 0
+  ld c, a
+  add hl, bc
+  ld b, h
+  ld c, l
+  ld a, 6
+  call CGBLoadSingleBGPPaletteIndex
+  ld a, 1
+  ld [W_CGBPaletteStagedBGP], a
+
+.preExit
+  ld a, [W_MainScriptTextBank]
+  rst $10
+  xor a
+  ld [W_MainScriptCCSubState], a
+  ld a, [W_MainScriptPortraitPlacement]
+  ld [W_MainScriptPortraitPriorPlacement], a
+  jp .exit
+
+PortraitIndexOffsetTableA::
+  db 0,$C,$1F,$34,$6B
+
+PortraitIndexOffsetTableB::
+  db 0,$3F,$7E,$BD
+
+ControlCodeD3:: ; Kanji drawing code.
+  ld b, 2
+  call MainScriptProgressXChars
+  inc hl
+  ld a, [hl]
+  ld [$C4EE], a
+  call MainScriptGetKanjiDrawingAddress
+  ld a, [W_MainScriptRedTextMode]
+  ld b, a
+  ld a, [$C4EE]
+  call MainScriptDrawKanjiCharacter
+  ld a, [W_MainScriptLineMappingBaseLocation]
+  ld h, a
+  ld a, [W_MainScriptLineMappingBaseLocation + 1]
+  ld l, a
+  ld a, [W_MainScriptKanjiDrawingRegionTileIndex]
+  add $BB
+  di
+  push af
+  rst $20
+  pop af
+  ld [hli], a
+  ei
+  call $0A53
+  ld a, h
+  ld [W_MainScriptLineMappingBaseLocation], a
+  ld a, l
+  ld [W_MainScriptLineMappingBaseLocation + 1], a
+  ld a, [W_MainScriptTextBank]
+  rst $10
+  ld a, [W_MainScriptKanjiDrawingRegionTileIndex]
+  inc a
+  ld [W_MainScriptKanjiDrawingRegionTileIndex], a
+  pop hl
+  ld a, [W_MainScriptSpeed]
+  ld [W_MainScriptPauseTimer], a
+  cp $FF
+  ret nz
+  xor a
+  ld [W_MainScriptPauseTimer], a
+  jp MainScriptProcessorPutCharLoop
+
+ControlCodeD4:: ; Red text toggle code.
+  ld a, [W_MainScriptRedTextMode]
+  xor 1
+  ld [W_MainScriptRedTextMode], a
+  ld b, 1
+  call MainScriptProgressXChars
+  pop hl
+  jp MainScriptProcessorPutCharLoop
 
 SECTION "Main Script Helper Functions 1", ROM0[$2324]
 MainScriptProgressXChars::
