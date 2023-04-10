@@ -64,6 +64,7 @@ MODULES := \
 core \
 gfx \
 link \
+titlemenu \
 text
 
 # Toolchain

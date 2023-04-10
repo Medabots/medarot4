@@ -315,3 +315,49 @@ ConfineAddressToTilemap0::
   or $98
   ld h, a
   ret
+
+SECTION "Clear Tilemaps and Attribmaps", ROMX[$408E], BANK[$15]
+ClearMappings0::
+  ld hl, $9800
+  jr ClearMappings1.extEntry
+
+ClearMappings1::
+  ld hl, $9C00
+
+.extEntry
+  ld a, 0
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+  ld bc, $400
+  push hl
+
+.tilemapClearLoop
+  di
+  rst $20
+  xor a
+  ld [hli], a
+  ei
+  dec bc
+  ld a, b
+  or c
+  jr nz, .tilemapClearLoop
+  ld bc, $400
+  pop hl
+  ld a, 1
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+
+.attribmapClearLoop
+  di
+  rst $20
+  xor a
+  ld [hli], a
+  ei
+  dec bc
+  ld a, b
+  or c
+  jr nz, .attribmapClearLoop
+  ld a, 0
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+  ret
