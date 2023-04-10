@@ -1,4 +1,5 @@
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Main Script Variables 1", WRAM0[$C4C3]
 W_MainScriptPointerLocationOffset:: ds 2
@@ -228,9 +229,7 @@ ControlCodeCC:: ; End code.
   ret
 
 .exitSubState1
-  ld [$C46D], a
-  ld a, $23
-  call $382B
+  cbcallindex $23
   ld a, 1
   ld [W_OAM_SpritesReady], a
   jp .nextSubState
@@ -577,9 +576,7 @@ ControlCodeD2:: ; Portrait display code.
 
 .changedSides
   call $21A4
-  ld [$C46D], a
-  ld a, $23
-  call $382B
+  cbcallindex $23
   jr .checkMappingLocation
 
 .checkMappingLocation
@@ -593,9 +590,7 @@ ControlCodeD2:: ; Portrait display code.
   ld c, $68
   ld d, 0
   ld e, $18
-  ld [$C46D], a
-  ld a, $22
-  call $382B
+  cbcallindex $22
   pop hl
   ret
 
@@ -604,9 +599,7 @@ ControlCodeD2:: ; Portrait display code.
   ld c, $68
   ld d, $80
   ld e, $98
-  ld [$C46D], a
-  ld a, $22
-  call $382B
+  cbcallindex $22
   pop hl
   ret
 
@@ -623,9 +616,7 @@ ControlCodeD2:: ; Portrait display code.
   ld a, 4
   ld [$C4F1], a
   ld a, 0
-  ld [$C46D], a
-  ld a, $B2
-  call $382B
+  cbcallindex $B2
 
 .portraitIsEmpty
   ld a, 1

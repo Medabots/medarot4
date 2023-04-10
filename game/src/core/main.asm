@@ -1,4 +1,5 @@
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Hardware Identifier",  WRAM0[$C486]
 W_GameboyType:: ds 1
@@ -28,14 +29,10 @@ Main::
   ld a, 0
   ld [X_MBC5SRAMBank], a
   call SwitchToNormalSpeedMode ; Pointless since the gbc starts in normal speed mode, but whatever.
-  ld [$C46D], a
-  ld a, $15
-  call $382B
+  cbcallindex $15
   ld a, [W_GameboyType]
   push af
-  ld [$C46D], a
-  ld a, $16
-  call $382B
+  cbcallindex $16
   pop af
   ld [W_GameboyType], a
   xor a

@@ -22,6 +22,24 @@ MACRO dbwb
   db \3
   ENDM
 
+MACRO cbpointer
+Banked_\1::
+  db BANK(\1)
+  dw \1
+  ENDM
+
+MACRO cbcall
+  ld [W_CrossBankCallPassthroughA], a
+  ld a, (Banked_\1 - CrossBankFunctionTable) / 3
+  call CrossBankCall
+  ENDM
+
+MACRO cbcallindex
+  ld [W_CrossBankCallPassthroughA], a
+  ld a, \1
+  call CrossBankCall
+  ENDM
+
 MACRO TableStart
   RSRESET
   ENDM

@@ -18,3 +18,10 @@ SetInitialStateAndSubstate::
   ld a, 4
   ld [W_CoreSubStateIndex], a
   ret
+
+SECTION "Increment Substate Index", ROM0[$0D98]
+IncSubStateIndex::
+  ld a, [W_CoreSubStateIndex]
+  inc a
+  ld [W_CoreSubStateIndex], a
+  ret
