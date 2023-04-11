@@ -18,3 +18,17 @@ ClearSprites::
   ld a, 1
   ld [W_OAM_SpritesReady], a
   ret
+
+ClearSingleSprite::
+  ld b, $20
+  xor a
+
+.clearLoop
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .clearLoop
+
+  ld a, 1
+  ld [W_OAM_SpritesReady], a
+  ret

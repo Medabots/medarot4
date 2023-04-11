@@ -24,11 +24,11 @@ CrossBankFunctionTable::
 	dbw $00, $15C8 ; 12
 	dbw $00, $170D ; 13
 	dbw $00, $30B6 ; 14
-	dbw $15, $4000 ; 15
-	dbw $15, $402A ; 16
-	dbw $15, $4037 ; 17
+	cbpointer ClearVRAM ; 15
+	cbpointer ClearWRAM ; 16
+	cbpointer ClearWRAMExceptBank0 ; 17
 	cbpointer ClearSprites ; 18
-	dbw $15, $4065 ; 19
+	cbpointer ClearSingleSprite ; 19
 	dbw $15, $4073 ; 1A
 	cbpointer ClearMappings0 ; 1B
 	cbpointer ClearMappings1 ; 1C
