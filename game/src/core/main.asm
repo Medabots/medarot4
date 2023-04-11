@@ -29,10 +29,10 @@ Main::
   ld a, 0
   ld [X_MBC5SRAMBank], a
   call SwitchToNormalSpeedMode ; Pointless since the gbc starts in normal speed mode, but whatever.
-  cbcallindex $15
+  cbcall ClearVRAM
   ld a, [W_GameboyType]
   push af
-  cbcallindex $16
+  cbcall ClearWRAM
   pop af
   ld [W_GameboyType], a
   xor a

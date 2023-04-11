@@ -16,7 +16,7 @@ TitleMenuStateMachine::
   dw TitleMenuFadeInState
   dw $4CF3
   dw $4D8C
-  dw $4E6F
+  dw TitleMenuFadeOutState
   dw $4E7F
   dw $4EEC
 
@@ -128,6 +128,14 @@ TitleMenuPrepareFadeInState::
   jp IncSubStateIndex
 
 TitleMenuFadeInState::
+  cbcallindex $35
+  ld a, [W_PaletteAnimRunning]
+  or a
+  ret nz
+  jp IncSubStateIndex
+
+SECTION "Title Menu State Machine 2", ROMX[$4E6F], BANK[$03]
+TitleMenuFadeOutState::
   cbcallindex $35
   ld a, [W_PaletteAnimRunning]
   or a

@@ -21,3 +21,41 @@ memcpy::
   or c
   jr nz, memcpy
   ret
+
+SECTION "Clear WRAM", ROMX[$402A], BANK[$15]
+ClearWRAM::
+  ld bc, $1000
+  ld hl, $C000
+
+.clearLoop
+  xor a
+  ld [hli], a
+  dec bc
+  ld a, b
+  or c
+  jr nz, .clearLoop
+
+ClearWRAMExceptBank0::
+  ld d, 1
+
+.loopWRAMBank
+  ld a, d
+  rst 8
+  rst 8
+  ld bc, $1000
+  ld hl, $D000
+
+.clearLoop
+  xor a
+  ld [hli], a
+  dec bc
+  ld a, b
+  or c
+  jr nz, .clearLoop
+  inc d
+  ld a, d
+  cp 8
+  jr nz, .loopWRAMBank
+  xor a
+  rst 8
+  ret
