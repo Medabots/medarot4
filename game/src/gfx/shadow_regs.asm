@@ -51,3 +51,18 @@ SyncShadowRegs::
   ld a, [W_ShadowREG_LYC]
   ldh [H_RegLYC], a
   ret
+
+SECTION "Screen Reset Thing", ROMX[$40C8], BANK[$15]
+ScreenResetThing::
+  xor a
+  ld [W_ShadowREG_SCX], a
+  ld [W_ShadowREG_SCY], a
+  ld [$C497], a
+  ld [W_ShadowREG_WX], a
+  ld [W_ShadowREG_WY], a
+  ld [W_ShadowREG_LYC], a
+  ld [$C46B], a
+  ld [$C46C], a
+  ld a, $C3
+  ld [W_ShadowREG_LCDC], a
+  ret

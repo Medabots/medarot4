@@ -32,11 +32,11 @@ CrossBankFunctionTable::
 	dbw $15, $4073 ; 1A
 	cbpointer ClearMappings0 ; 1B
 	cbpointer ClearMappings1 ; 1C
-	dbw $15, $40C8 ; 1D
-	dbw $15, $40E7 ; 1E
-	dbw $15, $4119 ; 1F
-	dbw $15, $4152 ; 20
-	dbw $15, $41CF ; 21
+	cbpointer ScreenResetThing ; 1D
+	cbpointer WriteSaveHeaderAndChecksum ; 1E
+	cbpointer WriteSaveChecksum ; 1F
+	cbpointer ValidateSave ; 20
+	cbpointer ResetSaveData ; 21
 	dbw $15, $41ED ; 22
 	dbw $15, $42BF ; 23
 	dbw $15, $4301 ; 24
