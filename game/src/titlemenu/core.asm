@@ -24,7 +24,7 @@ TitleMenuDrawingState::
   cbcall ClearMappings0
   cbcall ClearMappings1
   cbcall ClearSprites
-  cbcallindex $1D
+  cbcall ScreenResetThing
   cbcallindex $24
   ld bc, 2
   cbcall LoadMaliasGraphics

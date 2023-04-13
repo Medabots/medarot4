@@ -65,6 +65,7 @@ core \
 gfx \
 link \
 titlemenu \
+saveclock \
 text
 
 # Toolchain
