@@ -10,6 +10,16 @@ memclr::
   jr nz, memclr
   ret
 
+SECTION "Clear Memory 2", ROM0[$0365]
+memclralt::
+  ld a, 0
+  ld [hli], a
+  dec bc
+  ld a, b
+  or c
+  jr nz, memclralt
+  ret
+
 SECTION "Copy Memory", ROM0[$101B]
 ;Copy bc bytes from [hl] to [de].
 memcpy::
