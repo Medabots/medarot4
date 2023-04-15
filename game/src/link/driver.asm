@@ -45,6 +45,24 @@ W_SerIO_RecvBufferReady:: ds 1
 SECTION "SerIO Driver Variables 12", WRAM0[$CC3E]
 W_SerIO_RecvBufferReadOffset:: ds 1
 
+SECTION "SerIO Driver 1", ROM0[$36B4]
+SerIO_SwitchToInternalClock::
+  ld a, [W_SerIO_State]
+  and a
+  ret z
+  ld a, [W_SerIO_DoingXfer]
+  and a
+  ret nz
+  ld a, [W_SerIO_PacketType]
+  and a
+  ret z
+  ld a, [W_SerIO_DoingXfer]
+  and a
+  ret nz
+  ld a, $81
+  ldh [H_RegSC], a
+  ret
+
 SECTION "SerIO Driver 2", ROM0[$3768]
 SerIO_ResetConnection::
   ld hl, W_SerIO_SendBuffer
