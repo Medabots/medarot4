@@ -308,8 +308,43 @@ Tilemap0WrapToLineBackwards::
   pop af
   ret
 
-SECTION "Calculate Tilemap Address 2", ROM0[$0A69]
+SECTION "Calculate Tilemap Address 2", ROM0[$0A53]
+MainScriptConstrainTilemapAddress::
+  push af
+  call MainScriptConstrainTilemapAddressHighByte
+  ld a, l
+  and $3F
+  jr z, .wrapToPreviousRow
+  pop af
+  ret
+
+.wrapToPreviousRow
+  push bc
+  ld bc, -$20 ; Shouldn't this be -$1E, -$F, or -$E? I have no idea what the intent of this is.
+  add hl, bc
+  call MainScriptConstrainTilemapAddressHighByte
+  pop bc
+  pop af
+  ret
+
 ConfineAddressToTilemap0::
+  ld a, h
+  and 3
+  or $98
+  ld h, a
+  ret
+
+MainScriptConstrainTilemapAddressHighByte::
+  ld a, [$C9BE]
+  cp $9C
+  jr c, .inLowerRange
+  ld a, h
+  and 3
+  or $9C
+  ld h, a
+  ret
+
+.inLowerRange
   ld a, h
   and 3
   or $98
