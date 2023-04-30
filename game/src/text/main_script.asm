@@ -289,7 +289,7 @@ ControlCodeCD:: ; Newline code.
   ld l, a
   ld bc, $40
   add hl, bc
-  call $0A53
+  call MainScriptConstrainTilemapAddress
   ld a, h
   ld [W_MainScriptLineMappingBaseLocation], a
   ld [$C9BE], a
@@ -449,7 +449,7 @@ ControlCodeD0:: ; Print subtext code.
   pop af
   ld [hli], a
   ei
-  call $0A53
+  call MainScriptConstrainTilemapAddress
   ld a, h
   ld [W_MainScriptLineMappingBaseLocation], a
   ld a, l
@@ -758,7 +758,7 @@ ControlCodeD3:: ; Kanji drawing code.
   pop af
   ld [hli], a
   ei
-  call $0A53
+  call MainScriptConstrainTilemapAddress
   ld a, h
   ld [W_MainScriptLineMappingBaseLocation], a
   ld a, l
@@ -981,7 +981,7 @@ MainScriptPrintChar::
   pop af
   ld [hli], a
   ei
-  call $0A53
+  call MainScriptConstrainTilemapAddress
   ld a, h
   ld [W_MainScriptLineMappingBaseLocation], a
   ld a, l
@@ -1006,7 +1006,7 @@ MainScriptPrintChar::
   pop af
   ld [hli], a
   ei
-  call $0A53
+  call MainScriptConstrainTilemapAddress
   ld a, h
   ld [W_MainScriptLineMappingBaseLocation], a
   ld a, l

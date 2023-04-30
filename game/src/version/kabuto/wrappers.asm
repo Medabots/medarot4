@@ -15,7 +15,7 @@ CrossBankFunctionTable::
 	dbw $00, $0C81 ; 09
 	cbpointer CGBLoadBGPPaletteIndexes ; 0A
 	cbpointer CGBLoadOBPPaletteIndexes ; 0B
-	dbw $00, $0ECE ; 0C
+	cbpointer ParseTilesetScript ; 0C
 	cbpointer SetupPalswapAnimation ; 0D
 	dbw $00, $1316 ; 0E
 	dbw $00, $13A4 ; 0F
@@ -54,7 +54,7 @@ CrossBankFunctionTable::
 	dbw $00, $279A ; 30
 	dbw $05, $42D4 ; 31
 	dbw $00, $2877 ; 32
-	dbw $00, $299C ; 33
+	cbpointer BufferTextFromList ; 33
 	dbw $00, $2A1A ; 34
 	dbw $15, $430C ; 35
 	dbw $00, $2B3B ; 36

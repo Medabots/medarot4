@@ -103,7 +103,7 @@ Main::
   call SerIO_RecvBufferPull
   call SerIO_SendBufferPush
   call SerIO_SendConnectPacket
-  call $0540
+  call JPInput_SampleJoypad
   ld a, 1
   rst $10
   call $4000
