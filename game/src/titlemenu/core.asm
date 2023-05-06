@@ -59,7 +59,7 @@ TitleMenuDrawingState::
   ld bc, $13
   cbcall LoadMaliasGraphics
   ld bc, 3
-  cbcallindex $C
+  cbcall ParseTilesetScript
   jp IncSubStateIndex
 
 TitleMenuMappingState::
