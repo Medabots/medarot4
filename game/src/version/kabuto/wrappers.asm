@@ -18,8 +18,8 @@ CrossBankFunctionTable::
 	cbpointer ParseTilesetScript ; 0C
 	cbpointer SetupPalswapAnimation ; 0D
 	dbw $00, $1316 ; 0E
-	dbw $00, $13A4 ; 0F
-	dbw $00, $13AC ; 10
+	cbpointer DecompressTilemap0ScrollAdjusted ; 0F
+	cbpointer DecompressAttribmap0ScrollAdjusted ; 10
 	dbw $00, $14A2 ; 11
 	dbw $00, $15C8 ; 12
 	dbw $00, $170D ; 13
@@ -42,7 +42,7 @@ CrossBankFunctionTable::
 	dbw $15, $4301 ; 24
 	cbpointer InitiateMainScript ; 25
 	cbpointer InitiateMainScriptAlternate ; 26
-	dbw $00, $1CAC ; 27
+	cbpointer MainScriptLoopHelper ; 27
 	dbw $00, $2482 ; 28
 	dbw $00, $254D ; 29
 	dbw $15, $6181 ; 2A

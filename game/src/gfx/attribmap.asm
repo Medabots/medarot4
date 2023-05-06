@@ -299,3 +299,10 @@ AttribmapRecallValue::
   or b
   pop bc
   ret
+
+SECTION "Load Attribmaps 3", ROM0[$13AC]
+DecompressAttribmap0ScrollAdjusted::
+  push af
+  call GetOverworldScrollTileOffset
+  pop af
+  jp DecompressAttribmap0

@@ -92,7 +92,24 @@ MapMainScriptWindow::
   ld a, 0
   jp DecompressTilemap1
 
-SECTION "Main Script 2", ROM0[$1CC4]
+MainScriptLoopHelper::
+  push bc
+  push af
+  call MainScriptProcessor
+  pop af
+  pop bc
+  and a
+  ret nz
+  ld a, [W_MainScriptExitMode]
+  and a
+  ret nz
+  ld a, [$C61F]
+  and a
+  ret z
+  xor a
+  call MainScriptProcessor
+  ret
+
 MainScriptProcessor::
   call LoadTextPointer
   ld a, [W_MainScriptExitMode]
@@ -672,11 +689,11 @@ ControlCodeD2:: ; Portrait display code.
   ld e, a
   push de
   ld a, 0
-  call $13A4
+  call DecompressTilemap0ScrollAdjusted
   pop de
   pop bc
   ld a, 0
-  call $13AC
+  call DecompressAttribmap0ScrollAdjusted
   ld a, [W_MainScriptPortraitCharacter]
   cp $FF
   jr z, .portraitCharacterEqualsFF

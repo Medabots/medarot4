@@ -40,6 +40,18 @@ MACRO cbcallindex
   call CrossBankCall
   ENDM
 
+MACRO cbjp
+  ld [W_CrossBankCallPassthroughA], a
+  ld a, (Banked_\1 - CrossBankFunctionTable) / 3
+  jp CrossBankCall
+  ENDM
+
+MACRO cbjpindex
+  ld [W_CrossBankCallPassthroughA], a
+  ld a, \1
+  jp CrossBankCall
+  ENDM
+
 MACRO TableStart
   RSRESET
   ENDM

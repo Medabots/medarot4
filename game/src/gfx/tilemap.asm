@@ -351,6 +351,63 @@ MainScriptConstrainTilemapAddressHighByte::
   ld h, a
   ret
 
+SECTION "Calculate Tilemap Address 3", ROM0[$1371]
+GetOverworldScrollRelativeMappingAddress::
+  push de
+  push bc
+  call GetOverworldScrollTileOffset
+  ld a, b
+  and $1F
+  ld b, a
+  ld a, c
+  and $1F
+  ld c, a
+  push bc
+  ld c, b
+  ld b, 0
+  ld hl, $9800
+  add hl, bc
+  pop bc
+  ld b, 0
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  sla c
+  rl b
+  add hl, bc
+  call ConfineAddressToTilemap0
+  pop bc
+  pop de
+  ret
+
+SECTION "Load Tilemaps 2", ROM0[$13A4]
+DecompressTilemap0ScrollAdjusted::
+  push af
+  call GetOverworldScrollTileOffset
+  pop af
+  jp DecompressTilemap0
+
+SECTION "Load Tilemaps 3", ROM0[$13B4]
+GetOverworldScrollTileOffset::
+  ld a, [W_ShadowREG_SCX]
+  srl a
+  srl a
+  srl a
+  add b
+  ld b, a
+  ld a, [W_ShadowREG_SCY]
+  srl a
+  srl a
+  srl a
+  add c
+  ld c, a
+  ret
+
 SECTION "Clear Tilemaps and Attribmaps", ROMX[$408E], BANK[$15]
 ClearMappings0::
   ld hl, $9800
