@@ -99,7 +99,7 @@ CopyNewPaletteIndexesForFade::
   push bc
   ld a, 3
   rst 8
-  ld a, $31 ; BANK(BGPPaletteGroupTable)
+  ld a, BANK(BGPPaletteGroupTable)
   rst $10
   sla l
   rl h
@@ -109,7 +109,7 @@ CopyNewPaletteIndexesForFade::
   rl h
   sla l
   rl h
-  ld bc, $4000 ; BGPPaletteGroupTable
+  ld bc, BGPPaletteGroupTable
   add hl, bc
   ld de, W_FadeStagingNewBGPaletteIndexes
   ld bc, $10
@@ -123,7 +123,7 @@ CopyNewPaletteIndexesForFade::
   rl b
   sla c
   rl b
-  ld hl, $7000 ; OBPPaletteGroupTable
+  ld hl, OBPPaletteGroupTable
   add hl, bc
   ld de, W_FadeStagingNewOBPaletteIndexes
   ld bc, $10
@@ -138,7 +138,7 @@ StagePalettesForFade::
 .unpackOldBGPalettesLoop
   ld hl, W_FadeStagingOldBGPaletteIndexes
   call CalculatePaletteIndexAddressForFadeStaging
-  ld a, $2F ; BANK(BGPPaletteColorTableA)
+  ld a, BANK(BGPPaletteColorTableA)
   rst $10
   ld a, b
   cp 8
@@ -146,11 +146,11 @@ StagePalettesForFade::
   
   sub 8
   ld b, a
-  ld a, $30 ; BANK(BGPPaletteColorTableB)
+  ld a, BANK(BGPPaletteColorTableB)
   rst $10
 
 .useFirstBank
-  ld hl, $4000 ; BGPPaletteColorTableA
+  ld hl, BGPPaletteColorTableA
   call CalculatePaletteAddressForFadeStaging
   push hl
   ld hl, W_FadeStagingCurrentBGPaletteArea
@@ -169,7 +169,7 @@ StagePalettesForFade::
   cp 8
   jr nz, .unpackOldBGPalettesLoop
 
-  ld a, $30 ; BANK(OBPPaletteColorTable)
+  ld a, BANK(OBPPaletteColorTable)
   rst $10
   xor a
   ld [W_FadePaletteForUnpacking], a
@@ -177,7 +177,7 @@ StagePalettesForFade::
 .unpackOldOBPalettesLoop
   ld hl, W_FadeStagingOldOBPaletteIndexes
   call CalculatePaletteIndexAddressForFadeStaging
-  ld hl, $6800 ; OBPPaletteColorTable
+  ld hl, OBPPaletteColorTable
   call CalculatePaletteAddressForFadeStaging
   push hl
   ld hl, W_FadeStagingCurrentOBPaletteArea
@@ -202,7 +202,7 @@ StagePalettesForFade::
 .unpackNewBGPalettesLoop
   ld hl, W_FadeStagingNewBGPaletteIndexes
   call CalculatePaletteIndexAddressForFadeStaging
-  ld a, $2F ; BANK(BGPPaletteColorTableA)
+  ld a, BANK(BGPPaletteColorTableA)
   rst $10
   ld a, b
   cp 8
@@ -210,11 +210,11 @@ StagePalettesForFade::
   
   sub 8
   ld b, a
-  ld a, $30 ; BANK(BGPPaletteColorTableB)
+  ld a, BANK(BGPPaletteColorTableB)
   rst $10
 
 .useBankA
-  ld hl, $4000 ; BGPPaletteColorTableA
+  ld hl, BGPPaletteColorTableA
   call CalculatePaletteAddressForFadeStaging
   push hl
   ld hl, W_FadeStagingDestinationBGPaletteArea
@@ -233,7 +233,7 @@ StagePalettesForFade::
   cp 8
   jr nz, .unpackNewBGPalettesLoop
 
-  ld a, $30 ; BANK(OBPPaletteColorTable)
+  ld a, BANK(OBPPaletteColorTable)
   rst $10
   xor a
   ld [W_FadePaletteForUnpacking], a
@@ -241,7 +241,7 @@ StagePalettesForFade::
 .unpackNewOBPalettesLoop
   ld hl, W_FadeStagingNewOBPaletteIndexes
   call CalculatePaletteIndexAddressForFadeStaging
-  ld hl, $6800 ; OBPPaletteColorTable
+  ld hl, OBPPaletteColorTable
   call CalculatePaletteAddressForFadeStaging
   push hl
   ld hl, W_FadeStagingDestinationOBPaletteArea
@@ -300,7 +300,7 @@ RestageDestinationBGPalettesForFade::
   ld [hli], a
   ld a, c
   ld [hl], a
-  ld a, $2F ; BANK(BGPPaletteColorTableA)
+  ld a, BANK(BGPPaletteColorTableA)
   rst $10
   ld a, b
   cp 8
@@ -308,11 +308,11 @@ RestageDestinationBGPalettesForFade::
   
   sub 8
   ld b, a
-  ld a, $30 ; BANK(BGPPaletteColorTableB)
+  ld a, BANK(BGPPaletteColorTableB)
   rst $10
 
 .dontUseSecondBank
-  ld hl, $4000 ; BGPPaletteColorTableA
+  ld hl, BGPPaletteColorTableA
   call CalculatePaletteAddressForFadeStaging
   pop af
   push hl
@@ -341,7 +341,7 @@ RestageDestinationOBPalettesForFade::
   rl d
   ld a, 3
   rst 8
-  ld a, $30 ; BANK(OBPPaletteColorTable)
+  ld a, BANK(OBPPaletteColorTable)
   rst $10
   ld hl,W_FadeStagingNewOBPaletteIndexes
   add hl, de
@@ -349,7 +349,7 @@ RestageDestinationOBPalettesForFade::
   ld [hli], a
   ld a, c
   ld [hl], a
-  ld hl, $6800 ; OBPPaletteColorTable
+  ld hl, OBPPaletteColorTable
   call CalculatePaletteAddressForFadeStaging
   pop af
   push hl
