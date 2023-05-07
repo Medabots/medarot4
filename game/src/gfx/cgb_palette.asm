@@ -32,19 +32,19 @@ CGBCommitPalettesBGP::
   ld d, a
   ld a, [hli]
   ld e, a
-  ld a, $2F
+  ld a, BANK(BGPPaletteColorTableA)
   ld [X_MBC5ROMBankLow], a
   ld a, d
   cp 8
-  jr c, .jpA
+  jr c, .useFirstBank
   sub 8
   ld d, a
-  ld a, $30
+  ld a, BANK(BGPPaletteColorTableB)
   ld [X_MBC5ROMBankLow], a
 
-.jpA
+.useFirstBank
   push hl
-  ld hl, $4000
+  ld hl, BGPPaletteColorTableA
   sla e
   rl d
   sla e
@@ -81,9 +81,9 @@ CGBLoadBGPPaletteIndexes::
   ld [W_CGBPaletteBGPGroupIndex], a
   ld a, c
   ld [W_CGBPaletteBGPGroupIndex + 1], a
-  ld a, $31 ; BANK(BGPPaletteGroupTable)
+  ld a, BANK(BGPPaletteGroupTable)
   rst $10
-  ld hl, $4000 ; BGPPaletteGroupTable
+  ld hl, BGPPaletteGroupTable
   sla c
   rl b
   sla c
@@ -127,7 +127,7 @@ CGBLoadSingleBGPPaletteIndex::
   ret
 
 CGBCommitPalettesOBP::
-  ld a, $30 ; BANK(OBPPaletteColorTable)
+  ld a, BANK(OBPPaletteColorTable)
   ld [X_MBC5ROMBankLow], a
   
   ld hl, W_CGBPaletteIndexesStagedOBP
@@ -141,7 +141,7 @@ CGBCommitPalettesOBP::
   ld a, [hli]
   ld e, a
   push hl
-  ld hl, $6800 ; OBPPaletteColorTable
+  ld hl, OBPPaletteColorTable
   sla e
   rl d
   sla e
@@ -178,9 +178,9 @@ CGBLoadOBPPaletteIndexes::
   ld [W_CGBPaletteOBPGroupIndex], a
   ld a, c
   ld [W_CGBPaletteOBPGroupIndex + 1], a
-  ld a, $31 ; BANK(OBPPaletteGroupTable)
+  ld a, BANK(OBPPaletteGroupTable)
   rst $10
-  ld hl, $7000 ; OBPPaletteGroupTable
+  ld hl, OBPPaletteGroupTable
   sla c
   rl b
   sla c
