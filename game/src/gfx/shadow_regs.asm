@@ -66,3 +66,18 @@ ScreenResetThing::
   ld a, $C3
   ld [W_ShadowREG_LCDC], a
   ret
+
+SECTION "LCDC Set Bit 5", ROM0[$13D9]
+LCDCTileOverlaySetVisibility::
+  or a
+  jr nz, .show
+  ld a, [W_ShadowREG_LCDC]
+  res 5, a
+  ld [W_ShadowREG_LCDC], a
+  ret
+
+.show
+  ld a, [W_ShadowREG_LCDC]
+  set 5, a
+  ld [W_ShadowREG_LCDC], a
+  ret
