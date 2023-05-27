@@ -66,6 +66,7 @@ gfx \
 link \
 titlemenu \
 saveclock \
+nameentry \
 text
 
 # Toolchain
