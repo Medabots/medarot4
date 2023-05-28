@@ -231,5 +231,5 @@ CrossBankFunctionTable::
 	dbw $15, $616F ; E1
 	dbw $03, $4F6B ; E2
 	dbw $0A, $7464 ; E3
-	dbw $15, $4287 ; E4
+	cbpointer ClearPortrait ; E4
 
