@@ -1,4 +1,5 @@
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Naming Screen State Machine (Kuwagata)", ROMX[$5609], BANK[$03]
 NamingScreenStateMachine::
@@ -23,10 +24,10 @@ NamingScreenMedalNamingState::
   or a
   ret z
   cp 2
-  jr z, .jpA
+  jr z, .exitB
   jp IncSubStateIndex
 
-.jpA
+.exitB
   ld a, 4
   ld [W_CoreSubStateIndex], a
   ret
@@ -47,4 +48,10 @@ NamingScreenExitBState::
   ld [W_CoreSubStateIndex], a
   xor a
   ld [$CD91], a
+  ret
+
+SECTION "Increment Naming Screen SubSubstate Index (Kabuto)", ROMX[$69D9], BANK[$03]
+IncNamingScreenSubSubStateIndex::
+  ld hl, W_NamingScreenSubSubStateIndex
+  inc [hl]
   ret

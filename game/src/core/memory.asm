@@ -42,6 +42,21 @@ memcpy::
   jr nz, memcpy
   ret
 
+SECTION "Copy Memory to VRAM", ROM0[$05C3]
+;Copy bc bytes from [hl] to [de], where writing to [de] expects a wfb beforehand.
+memcpytovram::
+  di
+  rst $20
+  ld a, [hli]
+  ld [de], a
+  ei
+  inc de
+  dec bc
+  ld a, b
+  or c
+  jr nz, memcpytovram
+  ret
+
 SECTION "Clear WRAM", ROMX[$402A], BANK[$15]
 ClearWRAM::
   ld bc, $1000
