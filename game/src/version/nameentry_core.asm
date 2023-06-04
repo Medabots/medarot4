@@ -1,7 +1,4 @@
-INCLUDE "game/src/common/constants.asm"
-INCLUDE "game/src/common/macros.asm"
-
-SECTION "Naming Screen State Machine (Kabuto)", ROMX[$5604], BANK[$03]
+SECTION "Naming Screen State Machine", ROMX[$5604+cNSOFFSET], BANK[$03]
 NamingScreenStateMachine::
   ld a, [W_CoreSubStateIndex]
   rst 0
@@ -50,7 +47,7 @@ NamingScreenExitBState::
   ld [$CD91], a
   ret
 
-SECTION "Increment Naming Screen SubSubstate Index (Kabuto)", ROMX[$69D4], BANK[$03]
+SECTION "Increment Naming Screen SubSubstate Index (Kabuto)", ROMX[$69D4+cNSOFFSET], BANK[$03]
 IncNamingScreenSubSubStateIndex::
   ld hl, W_NamingScreenSubSubStateIndex
   inc [hl]

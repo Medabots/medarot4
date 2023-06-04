@@ -1,7 +1,4 @@
-INCLUDE "game/src/common/constants.asm"
-INCLUDE "game/src/common/macros.asm"
-
-SECTION "Medal Naming Screen State Machine 1 (Kabuto)", ROMX[$658C], BANK[$03]
+SECTION "Medal Naming Screen State Machine 1", ROMX[$658C+cNSOFFSET], BANK[$03]
 MedalNamingScreenStateMachine::
   xor a
   ld [W_NamingScreenExitIndicator], a
@@ -17,7 +14,7 @@ MedalNamingScreenStateMachine::
   dw PlayerNamingScreenTextEntryState
   dw PlayerNamingScreenPrepareFadeOutState
   dw PlayerNamingScreenFadeOutState
-  dw $67B3
+  dw $67B3+cNSOFFSET
   dw PlayerNamingScreenExitState
   dw PlayerNamingScreenPlaceholderState
 
@@ -87,10 +84,10 @@ MedalNamingScreenInitState::
   ld [$C762], a
   ld a, 1
   ld [$C761], a
-  call $699D
-  call $697C
-  call $699D
-  call $69C8
+  call $699D+cNSOFFSET
+  call $697C+cNSOFFSET
+  call $699D+cNSOFFSET
+  call $69C8+cNSOFFSET
   push af
   ld [W_NamingScreenEnteredTextLength], a
   pop af
@@ -130,12 +127,12 @@ MedalNamingScreenMapScreenAndPrepareSpritesState::
   ld e, $1E
   ld a, 1
   cbcall DecompressTilemap0
-  call $5FDA
+  call NamingEntryMapCurrentPage
   ld bc, 0
   ld e, $22
   ld a, 1
   cbcall DecompressTilemap0
-  call $601B
+  call $601B+cNSOFFSET
   ld a, [$C762]
   ld [W_ListItemIndexForBuffering], a
   ld b, $B
@@ -147,7 +144,7 @@ MedalNamingScreenMapScreenAndPrepareSpritesState::
   ld bc, W_ListItemBufferArea
   ld a, 5
   call PutStringFixedLength
-  call $600D
+  call $600D+cNSOFFSET
   push hl
   ld hl, W_NamingScreenEnteredTextBuffer
   pop de
