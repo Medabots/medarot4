@@ -1,7 +1,4 @@
-INCLUDE "game/src/common/constants.asm"
-INCLUDE "game/src/common/macros.asm"
-
-SECTION "Player Naming Screen State Machine (Kabuto)", ROMX[$62C3], BANK[$03]
+SECTION "Player Naming Screen State Machine", ROMX[$62C3+cNSOFFSET], BANK[$03]
 PlayerNamingScreenStateMachine::
   xor a
   ld [W_NamingScreenExitIndicator], a
@@ -143,13 +140,13 @@ PlayerNamingScreenMapScreenAndPrepareSpritesState::
   ld e, $1E
   ld a, 1
   cbcall DecompressTilemap0
-  call $5FDA
+  call NamingEntryMapCurrentPage
   ld bc, 0
   ld e, $21
   ld a, 1
   cbcall DecompressTilemap0
-  call $601B
-  call $600D
+  call $601B+cNSOFFSET
+  call $600D+cNSOFFSET
   ld a, $02 ; 'イ'
   di
   push af
@@ -264,7 +261,7 @@ PlayerNamingScreenTextEntryState::
   jp IncNamingScreenSubSubStateIndex
 
 .textEntryActive
-  call $5651
+  call NamingEntryStateMachine
   ret 
 
 PlayerNamingScreenCopyNameState::
