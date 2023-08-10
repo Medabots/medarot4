@@ -58,9 +58,16 @@ TILESET_OUT := $(BUILD)/tilesets
 TILEMAP_OUT := $(BUILD)/tilemaps
 ATTRIBMAP_OUT := $(BUILD)/attribmaps
 
+# Patch Specific
+VWF_TSET_SRC_TYPE := 1bpp
+VWF_TSET_TYPE := vwffont
+PATCH_TILESET_GFX := $(TILESET_GFX)/patch
+PATCH_TILESET_OUT := $(TILESET_OUT)/patch
+
 # Source Modules (directories in SRC), version directories (kuwagata/kabuto) are implied
 # We explicitly separate this with newlines to avoid silly conflicts with tr_EN
 MODULES := \
+patch\
 core \
 gfx \
 link \
@@ -122,12 +129,23 @@ TILEMAP_FILES_VERSIONED := $(foreach FILE,$(TILEMAPS_VERSIONED),$(TILEMAP_OUT)/$
 ATTRIBMAP_FILES_COMMON := $(foreach FILE,$(ATTRIBMAPS_COMMON),$(ATTRIBMAP_OUT)/$(FILE).$(TMAP_TYPE))
 ATTRIBMAP_FILES_VERSIONED := $(foreach FILE,$(ATTRIBMAPS_VERSIONED),$(ATTRIBMAP_OUT)/$(FILE).$(TMAP_TYPE))
 
+## Patch Specific
+PATCH_TEXT_TILESETS := $(notdir $(basename $(wildcard $(PATCH_TILESET_GFX)/*.$(VWF_TSET_SRC_TYPE).$(RAW_TSET_SRC_TYPE)))) # .1bpp.png -> 1bpp
+PATCH_TILESETS := $(filter-out $(PATCH_TEXT_TILESETS), $(notdir $(basename $(wildcard $(PATCH_TILESET_GFX)/*.$(RAW_TSET_SRC_TYPE))))) # .png -> 2bpp
+
+PATCH_TEXT_TILESET_FILES := $(foreach FILE,$(PATCH_TEXT_TILESETS),$(PATCH_TILESET_OUT)/$(FILE))
+PATCH_TILESET_FILES := $(foreach FILE,$(PATCH_TILESETS),$(PATCH_TILESET_OUT)/$(FILE).$(COMPRESSED_TSET_TYPE)) # Malias compressed
+
 # Additional dependencies, per module granularity (i.e. story, gfx, core) or per file granularity (e.g. story_text_tables_ADDITIONAL)
 core_ADDITIONAL :=
 version_text_tables_ADDITIONAL := $(DIALOG_OUT)/text_table_constants_PLACEHOLDER_VERSION.asm
 version_tileset_table_ADDITIONAL := $(COMPRESSED_TILESET_FILES_COMMON) $(VERSION_SRC)/tileset_table.asm $(COMPRESSED_TILESET_FILES_GAMEVERSION) $(TILESET_OUT)/PLACEHOLDER_VERSION.stamp
 version_tilemap_table_ADDITIONAL :=  $(TILEMAP_FILES_COMMON) $(VERSION_SRC)/tilemap_table.asm $(TILEMAP_OUT)/PLACEHOLDER_VERSION.stamp
 version_attribmap_table_ADDITIONAL :=  $(ATTRIBMAP_FILES_COMMON) $(VERSION_SRC)/attribmap_table.asm $(ATTRIBMAP_OUT)/PLACEHOLDER_VERSION.stamp
+
+# Patch Specific, including any tilesets we move into the patch tileset
+patch_tilesets_ADDITIONAL := $(PATCH_TILESET_FILES) $(PATCH_TEXT_TILESET_FILES)
+patch_vwf_ADDITIONAL := $(PATCH_TEXT_TILESET_FILES)
 
 .PHONY: $(VERSIONS) all clean default
 default: kabuto
@@ -207,6 +225,18 @@ $(ATTRIBMAP_OUT)/%.stamp: $$(call FILTER,%,$(ATTRIBMAP_FILES_VERSIONED))
 	touch $@
 
 ## Patch Specific
+$(PATCH_TILESET_OUT)/%.$(VWF_TSET_TYPE): $(PATCH_TILESET_GFX)/%.$(VWF_TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
+	cp $< $@
+
+$(PATCH_TILESET_OUT)/%.$(COMPRESSED_TSET_TYPE): $(PATCH_TILESET_OUT)/%.$(TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
+	$(PYTHON) $(SCRIPT)/tileset2malias.py $@ $< $(TILESET_PREBUILT)
+
+$(PATCH_TILESET_OUT)/%.$(VWF_TSET_SRC_TYPE): $(PATCH_TILESET_GFX)/%.$(VWF_TSET_SRC_TYPE).$(RAW_TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
+	$(CCGFX) $(CCGFX_ARGS) -d 1 -o $@ $<
+
+$(PATCH_TILESET_OUT)/%.$(TSET_SRC_TYPE): $(PATCH_TILESET_GFX)/%.$(RAW_TSET_SRC_TYPE) | $(PATCH_TILESET_OUT)
+	$(CCGFX) $(CCGFX_ARGS) -d 2 -o $@ $<
+
 
 # TRANSLATION_SHEET="~/sheet.xlsx" make csv_from_xlsx
 .PHONY: csv_from_xlsx
@@ -246,6 +276,11 @@ test_attribmaps:
 	$(PYTHON) $(SCRIPT)/test_maps.py "$(ATTRIBMAP_PREBUILT)"
 
 #Make directories if necessary
+
+# Patch Specific
+$(PATCH_TILESET_OUT):
+	mkdir -p $(PATCH_TILESET_OUT)
+
 $(BUILD):
 	mkdir -p $(BUILD)
 
