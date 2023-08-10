@@ -10,6 +10,11 @@ on:
 
   # Allows running manually
   workflow_dispatch:
+    inputs:
+      use-latest-translations:
+        required: false
+        default: true
+        description: 'Use latest translations from shared Google Docs sheet (default: true)'
 
 jobs:
   build:
@@ -41,6 +46,15 @@ jobs:
         run: |
           cp $GITHUB_WORKSPACE/baserom/*.gbc $GITHUB_WORKSPACE/code
 
+      - name: Get latest text from source
+        if: github.event.inputs.use-latest-translations == 'true'
+        working-directory: 'code'
+        env:
+          TRANSLATION_SHEET: sheet.xlsx
+        run: |
+          wget -q --no-check-certificate "${{ secrets.TRANSLATION_SHEET_URL_SOURCE }}" -O $TRANSLATION_SHEET
+          make csv_from_xlsx
+
       - name: Make all
         working-directory: 'code'
         run: |
@@ -60,6 +74,7 @@ jobs:
           retention-days: 1
 
       - name: Verify there are no uncommitted changes
+        if: github.event.inputs.use-latest-translations != 'true'
         working-directory: 'code'
         run: |
           [ -z "$(git status --porcelain)" ] && exit 0 || exit 1

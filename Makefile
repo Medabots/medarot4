@@ -206,6 +206,13 @@ $(ATTRIBMAP_OUT)/%.$(TMAP_TYPE): $(ATTRIBMAP_GFX)/%.$(TEXT_TYPE) | $(ATTRIBMAP_O
 $(ATTRIBMAP_OUT)/%.stamp: $$(call FILTER,%,$(ATTRIBMAP_FILES_VERSIONED))
 	touch $@
 
+## Patch Specific
+
+# TRANSLATION_SHEET="~/sheet.xlsx" make csv_from_xlsx
+.PHONY: csv_from_xlsx
+csv_from_xlsx:
+	$(PYTHON) $(SCRIPT)/xlsx2csv.py $(TRANSLATION_SHEET) $(DIALOG_TEXT) $(DIALOG)
+
 # Dump scripts
 .PHONY: dump dump_text dump_tilesets dump_tilemaps dump_attribmaps
 dump: dump_text dump_tilesets dump_tilemaps dump_attribmaps
