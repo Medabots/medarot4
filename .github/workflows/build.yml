@@ -41,15 +41,23 @@ jobs:
         run: |
           cp $GITHUB_WORKSPACE/baserom/*.gbc $GITHUB_WORKSPACE/code
 
-      - name: Make dump
-        working-directory: 'code'
-        run: |
-          make -j dump
-
       - name: Make all
         working-directory: 'code'
         run: |
           make -j all
+
+      - name: Generate IPS files
+        working-directory: 'code'
+        run: |
+          ips_util create baserom_kabuto.gbc medarot4_kabuto.gbc -o m4kabuto-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          ips_util create baserom_kuwagata.gbc medarot4_kuwagata.gbc -o m4kuwagata-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+
+      - name: 'Archive IPS files'
+        uses: actions/upload-artifact@v2
+        with:
+          name: ips_files
+          path: code/*.ips
+          retention-days: 1
 
       - name: Verify there are no uncommitted changes
         working-directory: 'code'
