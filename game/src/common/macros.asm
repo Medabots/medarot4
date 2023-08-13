@@ -75,6 +75,18 @@ MACRO TableAddressBankEntry
   EXPORT \1IDX_\2
   ENDM
 
+MACRO VRAMSwitchToBank1
+  ld a, 1
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+  ENDM
+
+MACRO VRAMSwitchToBank0
+  xor a
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+  ENDM
+
 MACRO dcolor
   dw ((\3) << 10) + ((\2) << 5) + (\1)
   ENDM
