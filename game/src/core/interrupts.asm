@@ -62,7 +62,7 @@ VBlankingIRQ::
   call CGBCommitFadePalettesOBP
   ld a, 1
   ldh [H_VBlankCompleted], a
-  call $0399 ; Music most likely.
+  call HighBankSafeMusic
   call SerIO_SwitchToInternalClock
   xor a
   ld [W_VBlankInterruptInProgress], a
@@ -80,7 +80,7 @@ VBlankingIRQ::
   ld [W_VBlankInterruptInProgress], a
   ld a, [W_ShadowREG_SCY]
   ldh [H_RegSCY], a
-  call $0399 ; Music most likely.
+  call HighBankSafeMusic
   ld a, 1
   ldh [H_VBlankCompleted], a
   xor a
@@ -102,6 +102,8 @@ LCDCStatusIRQ::
   push hl
   ld a, 8
   ld [X_MBC5ROMBankLow], a
+  xor a
+  ld [X_MBC5ROMBankHigh], a
   ld a, [$C9BC]
   srl a
   ld hl, $5FF5
@@ -132,12 +134,13 @@ LCDCStatusIRQ::
   ldh [H_RegLYC], a
   pop hl
   pop de
+
+.skipInterrupt
   pop af
   reti
 
 .restoreBankDuringVBlankInterrupt
-  ld a, [W_VBlankInterruptCurrentBank]
-  ld [X_MBC5ROMBankLow], a
+  call LCDCStatusRestoreBank
   ldh a, [H_RegLYC]
   inc a
   ldh [H_RegLYC], a
@@ -145,7 +148,4 @@ LCDCStatusIRQ::
   pop de
   pop af
   reti
-
-.skipInterrupt
-  pop af
-  reti
+  nop

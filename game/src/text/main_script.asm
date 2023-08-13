@@ -67,9 +67,9 @@ InitiateMainScriptAlternate::
   ld [W_MainScriptPauseTimer], a
   ld [W_MainScriptCCSubState], a
   ld [W_MainScriptPauseAutoAdvanceTimer], a
-  ld a, 0
   ld [W_MainScriptSpeed], a
-  ld a, $FF
+  dec a
+  ld [W_VWFIsInit], a
   ld [W_MainScriptPortraitCharacter], a
   ld [W_MainScriptPortraitPriorPlacement], a
   ld [W_MainScriptPortraitPlacement], a
@@ -143,12 +143,19 @@ MainScriptProcessor::
   ret
 
 .doNotPause
-  sla c
-  rl b
   add hl, bc
+  add hl, bc
+  add hl, bc
+  ld a, [hli]
+  ld [W_VWFTextBank], a
+  push af
   ld a, [hli]
   ld h, [hl]
   ld l, a
+  pop af
+
+MainScriptProcessor_bankSwitch::
+  call VWFHighBankswitch
 
 MainScriptProcessorPutCharLoop::
   push hl
@@ -158,400 +165,290 @@ MainScriptProcessorPutCharLoop::
   ld c, a
   add hl, bc
   ld a, [hl]
-  cp $CC
-  jp z, ControlCodeCC ; End code.
-  cp $CD
-  jp z, ControlCodeCD ; Newline code.
-  cp $CE
-  jp z, ControlCodeCE ; Text speed code.
-  cp $CF
-  jp z, ControlCodeCF ; New page after input code.
-  cp $D0
-  jp z, ControlCodeD0 ; Print subtext code.
-  cp $D1
-  jp z, ControlCodeD1 ; New page without input code.
-  cp $D2
-  jp z, ControlCodeD2 ; Portrait display code.
-  cp $D3
-  jp z, ControlCodeD3 ; Kanji drawing code.
-  cp $D4
-  jp z, ControlCodeD4 ; Red text toggle code.
-  jp MainScriptProcessLiteralCharacter ; Map character to the screen.
-
-ControlCodeCC:: ; End code.
-  ld a, [W_MainScriptCCSubState]
-  or a
-  jp nz, .subsequentStateLoader
-
-.exitSubState0
+  call VWFAutoNLWrapper
+  ld bc, W_VWFCurrentLetter
   inc hl
-  ld a, [hl]
-  pop hl
-  ld hl, .table
-  rst $30
-  jp hl
-
-.subsequentStateLoader
-  pop hl
-  add 5
-  rst 0
-
-.table
-  dw .exitCode0
-  dw .exitCode1
-  dw .exitCode2
-  dw .exitCode3
-  dw .exitCode4
-  dw .exitCode5
-  dw .exitSubState1
-  dw .exitSubState2
-  dw .exitSubState3
-
-.exitCode0
-  call .inputCheck
-  or a
-  ret z
-  ld a, 9
-  call ScheduleSoundEffect
-  call $21D5
-  jp .exitCodeCommon
-
-.exitCode1
-  call $21D5
-  jp .exitCodeCommon
-
-.exitCode2
-  call .inputCheck
-  or a
-  ret z
-  ld a, 9
-  call ScheduleSoundEffect
-  jp .exitCodeCommon
-
-.exitCode3
-  call .inputCheck
-  or a
-  ret z
-  ld a, 9
-  call ScheduleSoundEffect
-  call MapMainScriptWindow
-  jp .exitCodeCommon
- 
-.exitCode4
-  jp .exitCodeCommon
-
-.exitCode5
-  ld a, 1
-  ld [W_MainScriptExitMode], a
-  ret
-
-.exitSubState1
-  cbcallindex $23
-  ld a, 1
-  ld [W_OAM_SpritesReady], a
-  jp .nextSubState
-
-.exitSubState2
-  jp .nextSubState
-
-.exitSubState3
-  ld a, 1
-  ld [W_MainScriptExitMode], a
-  jp $21A4
-
-.nextSubState
-  ld a, [W_MainScriptCCSubState]
-  inc a
-  ld [W_MainScriptCCSubState], a
-  ret
-
-.exitCodeCommon
-  ld a, [W_MainScriptPortraitPlacement]
-  cp $FF
-  jr nz, .continueIntoState1
-
-.exitNow
-  ld a, 1
-  ld [W_MainScriptExitMode], a
-  ret
-
-.continueIntoState1
-  ld a, 1
-  ld [W_MainScriptCCSubState], a
-  ret
-
-.inputCheck
-  ldh a, [H_JPInputChanged]
-  and M_JPInputA
-  jr nz, .aButtonPressed
-  ldh a, [H_JPInputHeldDown]
-  and M_JPInputA
-  ret z
-  ld a, [W_MainScriptIterator]
-  cp $C
-  jp z, .aButtonPressed
-  inc a
-  ld [W_MainScriptIterator], a
-  xor a
-  ret
-
-.aButtonPressed
-  ld a, 1
-  ret
-
-ControlCodeCD:: ; Newline code.
-  ld a, [$C9BE]
-  ld h, a
-  ld a, [$C9BF]
-  ld l, a
-  ld bc, $40
-  add hl, bc
-  call MainScriptConstrainTilemapAddress
-  ld a, h
-  ld [W_MainScriptLineMappingBaseLocation], a
-  ld [$C9BE], a
-  ld a, l
-  ld [W_MainScriptLineMappingBaseLocation + 1], a
-  ld [$C9BF], a
-  ld b, 1
-  call MainScriptProgressXChars
-  xor a
-  ld [W_MainScriptIterator], a
-  ld [W_MainScriptPauseAutoAdvanceTimer], a
-  pop hl
-  jp MainScriptProcessorPutCharLoop
-
-ControlCodeCE:: ; Text speed code.
-  inc hl
-  ld a, [hl]
-  ld [W_MainScriptPauseTimer], a
-  ld [W_MainScriptSpeed], a
-  ld b, 2
-  call MainScriptProgressXChars
-  pop hl
-  ld a, [W_MainScriptPauseTimer]
-  cp $FE
-  jr z, .feFound
-  cp $FF
-  ret nz
-  xor a
-  ld [W_MainScriptPauseTimer], a
-  jp MainScriptProcessorPutCharLoop
-
-.feFound
-  ld a, [$C61C]
-  ld [W_MainScriptPauseTimer], a
-  ld [W_MainScriptSpeed], a
-  ret
-
-ControlCodeCF:: ; New page after input code.
-  pop hl
-  ld hl, $9C00
-  ld bc, $72
-  add hl, bc
-  ld b, $F7
-  ld a, [W_UniversalLoopingTimer]
-  and 4
-  jr nz, .showNextPageIndicator
-  ld b, 0
-
-.showNextPageIndicator
-  ld a, b
-  di
-  push af
-  rst $20
-  pop af
-  ld [hl], a
-  ei
-  ldh a, [H_JPInputChanged]
-  and M_JPInputA
-  jr nz, .aButtonPressed
-  ldh a, [H_JPInputHeldDown]
-  and M_JPInputA
-  ret z
-  ld a, [W_MainScriptIterator]
-  cp $C
-  jp z, .aButtonPressed
-  inc a
-  ld [W_MainScriptIterator], a
-  ret
-
-.aButtonPressed
-  ld a, 9
-  call ScheduleSoundEffect
-  xor a
-  ld [W_MainScriptIterator], a
-  ld [W_MainScriptPauseAutoAdvanceTimer], a
-  ld bc, 0
-  ld e, 1
-  ld a, 0
-  call DecompressTilemap1
-  ld hl, $9C21
-  ld a, h
-  ld [W_MainScriptLineMappingBaseLocation], a
-  ld [$C9BE], a
-  ld a, l
-  ld [W_MainScriptLineMappingBaseLocation + 1], a
-  ld [$C9BF], a
-  ld b, 1
-  call MainScriptProgressXChars
-  xor a
-  ld [W_MainScriptKanjiDrawingRegionTileIndex], a
-  ret
-
-ControlCodeD0:: ; Print subtext code.
-  inc hl
+  ld [bc], a
+  inc bc
   ld a, [hli]
-  ld h, [hl]
-  ld l, a
-  ld a, [W_MainScriptIterator]
-  ld c, a
-  ld b, 0
-  add hl, bc
+  ld [bc], a
+  inc bc
+  ld a, [hli]
+  ld [bc], a
+  inc bc
+  ld a, [hl]
+  ld [bc], a
+  ld hl, W_VWFCurrentLetter
+  ld a, BANK(VWFDrawCharLoop)
+  call VWFLowBankswitch
+  jp VWFDrawCharLoop
+
+VWFHighBankswitch::
+  rst $10
+  ld a, 1
+  ld [W_CurrentHighBank], a
+  ld [X_MBC5ROMBankHigh], a
+  ret
+
+VWFLowBankswitch::
+  rst $10
+  xor a
+  ld [W_CurrentHighBank], a
+  ld [X_MBC5ROMBankHigh], a
+  ret
+
+HighBankSafeMusic::
+  xor a
+  ld [W_VBlankInterruptCurrentHighBank], a
+  ld [X_MBC5ROMBankHigh], a
+  call $0399
+  ld a, [W_CurrentHighBank]
+  ld [W_VBlankInterruptCurrentHighBank], a
+  ld [X_MBC5ROMBankHigh], a
+  ret
+
+LCDCStatusRestoreBank::
+  ld a, [W_VBlankInterruptCurrentBank]
+  ld [X_MBC5ROMBankLow], a
+  ld a, [W_VBlankInterruptCurrentHighBank]
+  ld [X_MBC5ROMBankHigh], a
+  ret
+
+VWFControlCodeCCCrossBank21D5::
+  call $21D5
+  ld a, BANK(VWFDrawCharLoop)
+  rst $10
+  ret
+
+MainScriptProcessorPutCharLoopCrossBank::
+  ld a, [W_VWFTextBank]
+  jp MainScriptProcessor_bankSwitch
+
+VWFDrawStringLeftFullAddress5Tiles::
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; de is the address we are mapping tiles to.
+  ; h is the tile index of our drawing area.
+  ld a, 5 ; 5 tiles happens fairly commonly
+  jr VWFDrawStringLeftFullAddress
+
+VWFDrawStringLeftFullAddress8Tiles::
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; de is the address we are mapping tiles to.
+  ; h is the tile index of our drawing area.
+  ld a, 8
+  ; Continues into VWFDrawStringLeftFullAddress.
+
+VWFDrawStringLeftFullAddress::
+  ; a is the number of tiles our drawing area is comprised of.
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; de is the address we are mapping tiles to.
+  ; h is the tile index of our drawing area.
+  call VWFDrawStringInit
+  call VWFStoreMappingAddress
+  call VWFDrawStringMeasureString
+  call VWFAlignToLeft
+  jp VWFDrawStringLoop
+
+VWFDrawStringCentredFullAddress8Tiles::
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; de is the address we are mapping tiles to.
+  ; h is the tile index of our drawing area.
+  ld a, 8
+  ; Continues into VWFDrawStringCentredFullAddress.
+
+VWFDrawStringCentredFullAddress::
+  ; a is the number of tiles our drawing area is comprised of.
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; de is the address we are mapping tiles to.
+  ; h is the tile index of our drawing area.
+  call VWFDrawStringInit
+  call VWFStoreMappingAddress
+  call VWFDrawStringMeasureString
+  call VWFAlignToCentre
+  jp VWFDrawStringLoop
+
+VWFDrawStringRightFullAddress8Tiles::
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; de is the address we are mapping tiles to.
+  ; h is the tile index of our drawing area.
+  ld a, 8
+  ; Continues into VWFDrawStringRightFullAddress.
+
+VWFDrawStringRightFullAddress::
+  ; a is the number of tiles our drawing area is comprised of.
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; de is the address we are mapping tiles to.
+  ; h is the tile index of our drawing area.
+  call VWFDrawStringInit
+  call VWFStoreMappingAddress
+  call VWFDrawStringMeasureString
+  call VWFAlignToRight
+  jp VWFDrawStringLoop
+
+VWFDrawStringLeft8Tiles::
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; h is the tile index of our drawing area.
+  ; l is a single-byte representation of an address for mapping tiles to.
+  ld a, 8
+  ; Continues into VWFDrawStringLeft.
+  
+VWFDrawStringLeft::
+  ; a is the number of tiles our drawing area is comprised of.
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; h is the tile index of our drawing area.
+  ; l is a single-byte representation of an address for mapping tiles to.
+  call VWFDrawStringInit
+  call VWFExpandMappingPseudoIndexAndStoreMappingAddress
+  call VWFDrawStringMeasureString
+  call VWFAlignToLeft
+  jp VWFDrawStringLoop
+
+VWFDrawStringCentred8Tiles::
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; h is the tile index of our drawing area.
+  ; l is a single-byte representation of an address for mapping tiles to.
+  ld a, 8
+  ; Continues into VWFDrawStringCentred.
+  
+VWFDrawStringCentred::
+  ; a is the number of tiles our drawing area is comprised of.
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; h is the tile index of our drawing area.
+  ; l is a single-byte representation of an address for mapping tiles to.
+  call VWFDrawStringInit
+  call VWFExpandMappingPseudoIndexAndStoreMappingAddress
+  call VWFDrawStringMeasureString
+  call VWFAlignToCentre
+  jp VWFDrawStringLoop
+
+VWFDrawStringRight8Tiles::
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; h is the tile index of our drawing area.
+  ; l is a single-byte representation of an address for mapping tiles to.
+  ld a, 8
+  ; Continues into VWFDrawStringRight.
+
+VWFDrawStringRight::
+  ; a is the number of tiles our drawing area is comprised of.
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; h is the tile index of our drawing area.
+  ; l is a single-byte representation of an address for mapping tiles to.
+  call VWFDrawStringInit
+  call VWFExpandMappingPseudoIndexAndStoreMappingAddress
+  call VWFDrawStringMeasureString
+  call VWFAlignToRight
+  jp VWFDrawStringLoop
+
+; Since 'hl' is sometimes the target address, these functions just swap hl and de
+VWFDrawStringLeftFullAddressAlternate::
+  ; a is the number of tiles our drawing area is comprised of.
+  ; bc is the address of the string to print, terminated by 0xCB.
+  ; hl is the address we are mapping tiles to.
+  ; d is the tile index of our drawing area
+  push hl
+  ld h, d
+  pop de
+  call VWFDrawStringInit
+  call VWFStoreMappingAddress
+  call VWFDrawStringMeasureString
+  call VWFAlignToLeft
+  jp VWFDrawStringLoop
+
+VWFDrawStringInit::
+  ld [W_VWFTileLength], a
+  ld a, [W_CurrentBank]
+  ld [W_BankPreservation], a
+  ld a, BANK(VWFDrawStringInitContinued)
+  rst $10
+  jp VWFDrawStringInitContinued
+
+VWFDrawStringMeasureString::
+  ld a, [W_VWFInitialPaddingOffset]
+  ld [W_VWFDrawnAreaLength], a
+  push hl
+
+.loop
+  call VWFDrawStringSwitchToStringBank
   ld a, [hl]
   cp $CB
-  jr nz, .mapCharacter
+  jr z, .checkLimits
+  ld [W_VWFCurrentLetter], a
+  ld a, BANK(VWFMeasureCharacterInSequence)
+  call VWFLowBankswitch
+  call VWFMeasureCharacterInSequence
+  jr .loop
 
-.terminatorFound
-  ld b, 3
-  call MainScriptProgressXChars
-  xor a
-  ld [W_MainScriptIterator], a
-  ld [W_MainScriptPauseAutoAdvanceTimer], a
-  ld a, [W_MainScriptSpeed]
-  ld [W_MainScriptPauseTimer], a
+.checkLimits
   pop hl
-  cp $FF
-  ret nz
-  xor a
-  ld [W_MainScriptPauseTimer], a
-  jp MainScriptProcessorPutCharLoop
+  ld a, BANK(VWFDrawStringCheckLimits)
+  call VWFLowBankswitch
+  jp VWFDrawStringCheckLimits
 
-.mapCharacter
-  ld [$C4EE], a
-  cp $D3
-  jr z, .kanjiHandling
-  ld a, [$C4EE]
-  call MainScriptPrintChar
-  ld a, [W_MainScriptIterator]
-  inc a
-  ld [W_MainScriptIterator], a
-  ld a, [W_MainScriptSpeed]
-  ld [W_MainScriptPauseTimer], a
+VWFDrawStringLoop::
+  call VWFDrawStringSwitchToStringBank
+  ld a, [hli]
+  cp $CB
+  jr z, .exit
+  ld [W_VWFCurrentLetter], a
+  ld a, BANK(VWFWriteCharLimited)
+  call VWFLowBankswitch
+  push hl
+  call VWFWriteCharLimited
   pop hl
-  cp $FF
-  ret nz
-  xor a
-  ld [W_MainScriptPauseTimer], a
-  jp MainScriptProcessorPutCharLoop
+  jr VWFDrawStringLoop
 
-.kanjiHandling
-  inc hl
-  ld a, [hl]
-  ld [$C4EE], a
-  call MainScriptGetKanjiDrawingAddress
-  ld a, [W_MainScriptRedTextMode]
-  ld b, a
-  ld a, [$C4EE]
-  call MainScriptDrawKanjiCharacter
-  ld a, [W_MainScriptLineMappingBaseLocation]
-  ld h, a
-  ld a, [W_MainScriptLineMappingBaseLocation + 1]
-  ld l, a
-  ld a, [W_MainScriptKanjiDrawingRegionTileIndex]
-  add $BB
-  di
-  push af
-  rst $20
-  pop af
-  ld [hli], a
-  ei
-  call MainScriptConstrainTilemapAddress
-  ld a, h
-  ld [W_MainScriptLineMappingBaseLocation], a
-  ld a, l
-  ld [W_MainScriptLineMappingBaseLocation + 1], a
-  ld a, [W_MainScriptTextBank]
+.exit
+  ld a, BANK(VWFMapRenderedString)
+  call VWFLowBankswitch
+  call VWFMapRenderedString
+  ; Continue into VWFDrawStringSwitchToStringBank.
+
+VWFDrawStringSwitchToStringBank::
+  ld a, [W_BankPreservation]
+  jp VWFHighBankswitch
+
+VWFAutoNLWrapper::
+  or a
+  jr z, .isSpace
+  cp $20
+  ret nz
+
+.isSpace
+  ld a, BANK(VWFAutoNL)
   rst $10
-  ld a, [W_MainScriptKanjiDrawingRegionTileIndex]
-  inc a
-  ld [W_MainScriptKanjiDrawingRegionTileIndex], a
-  pop hl
-  ld a, [W_MainScriptIterator]
-  add 2
-  ld [W_MainScriptIterator], a
-  ld a, [W_MainScriptSpeed]
-  ld [W_MainScriptPauseTimer], a
-  cp $FF
-  ret nz
-  xor a
-  ld [W_MainScriptPauseTimer], a
-  jp MainScriptProcessorPutCharLoop
-
-ControlCodeD1:: ; New page without input code.
-  call MapMainScriptWindow
-  ld hl, $9C21
-  ld a, h
-  ld [W_MainScriptLineMappingBaseLocation], a
-  ld [$C9BE], a
-  ld a, l
-  ld [W_MainScriptLineMappingBaseLocation + 1], a
-  ld [$C9BF], a
-  ld b, 1
-  call MainScriptProgressXChars
-  xor a
-  ld [W_MainScriptKanjiDrawingRegionTileIndex], a
-  pop hl
+  call VWFAutoNL
+  ld d, a
+  ld a, [W_VWFTextBank]
+  rst $10
+  ld a, d
   ret
 
-MainScriptProcessLiteralCharacter::
-  ld b, 1
-  call MainScriptProgressXChars
-  xor a
-  ld [W_MainScriptIterator], a
-  ld [W_MainScriptPauseAutoAdvanceTimer], a
+VWFAutoNLFetchChar::
+  push bc
+  ld a, [W_VWFTextBank]
+  rst $10
+  ld bc, W_VWFCurrentLetter
+  ld a, [hli]
+  ld [bc], a
+  inc bc
+  ld a, [hli]
+  ld [bc], a
+  inc bc
+  ld a, [hli]
+  ld [bc], a
+  inc bc
   ld a, [hl]
-  ld [$C4EE], a
-  ld a, [$C4EE]
-  call MainScriptPrintChar
-  ld a, [W_MainScriptSpeed]
-  ld [W_MainScriptPauseTimer], a
-  pop hl
-  cp $FF
-  ret nz
-  xor a
-  ld [W_MainScriptPauseTimer], a
-  jp MainScriptProcessorPutCharLoop
+  ld [bc], a
+  ld hl, W_VWFCurrentLetter
+  ld a, BANK(VWFAutoNL)
+  rst $10
+  pop bc
+  ret
 
-ControlCodeD2:: ; Portrait display code.
-  push hl
-  inc hl
-  ld a, [hl]
-  pop hl
-  cp $FF
-  jr nz, .changePortrait
+  padend ($1FCB)
 
-.clearPortrait
-  ld a, [W_MainScriptPortraitCharacter]
-  cp $FF
-  jp z, .exit
-  pop hl
-  ld a, [W_MainScriptCCSubState]
-  cp 0
-  jp z, ControlCodeCC.exitSubState1
-  cp 1
-  jp z, ControlCodeCC.exitSubState2
-  ld a, $FF
-  ld [W_MainScriptPortraitCharacter], a
-  ld [W_MainScriptPortraitPriorPlacement], a
-  ld [W_MainScriptPortraitExpression], a
-  xor a
-  ld [W_MainScriptCCSubState], a
-  ld b, 4
-  call MainScriptProgressXChars
-  jp $21A4
-
-.changePortrait
+SECTION "Main Script Portraits", ROM0[$1FCB]
+ControlCodeD2_changePortrait::
   ld a, [W_MainScriptCCSubState]
   cp 0
   jr z, .state0
@@ -751,57 +648,8 @@ PortraitIndexOffsetTableA::
 
 PortraitIndexOffsetTableB::
   db 0,$3F,$7E,$BD
-
-ControlCodeD3:: ; Kanji drawing code.
-  ld b, 2
-  call MainScriptProgressXChars
-  inc hl
-  ld a, [hl]
-  ld [$C4EE], a
-  call MainScriptGetKanjiDrawingAddress
-  ld a, [W_MainScriptRedTextMode]
-  ld b, a
-  ld a, [$C4EE]
-  call MainScriptDrawKanjiCharacter
-  ld a, [W_MainScriptLineMappingBaseLocation]
-  ld h, a
-  ld a, [W_MainScriptLineMappingBaseLocation + 1]
-  ld l, a
-  ld a, [W_MainScriptKanjiDrawingRegionTileIndex]
-  add $BB
-  di
-  push af
-  rst $20
-  pop af
-  ld [hli], a
-  ei
-  call MainScriptConstrainTilemapAddress
-  ld a, h
-  ld [W_MainScriptLineMappingBaseLocation], a
-  ld a, l
-  ld [W_MainScriptLineMappingBaseLocation + 1], a
-  ld a, [W_MainScriptTextBank]
-  rst $10
-  ld a, [W_MainScriptKanjiDrawingRegionTileIndex]
-  inc a
-  ld [W_MainScriptKanjiDrawingRegionTileIndex], a
-  pop hl
-  ld a, [W_MainScriptSpeed]
-  ld [W_MainScriptPauseTimer], a
-  cp $FF
-  ret nz
-  xor a
-  ld [W_MainScriptPauseTimer], a
-  jp MainScriptProcessorPutCharLoop
-
-ControlCodeD4:: ; Red text toggle code.
-  ld a, [W_MainScriptRedTextMode]
-  xor 1
-  ld [W_MainScriptRedTextMode], a
-  ld b, 1
-  call MainScriptProgressXChars
-  pop hl
-  jp MainScriptProcessorPutCharLoop
+  
+  padend ($21A4)
 
 SECTION "Main Script Helper Functions 1", ROM0[$2324]
 MainScriptProgressXChars::
