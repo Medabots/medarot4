@@ -1,325 +1,404 @@
 INCLUDE "./build/dialog/text_table_constants_{GAMEVERSION}.asm"
 
-SECTION "TextSection00", ROMX[$5504], BANK[$14]
+SECTION "Text Pointers 0", ROMX[$4000], BANK[$110]
 TextSection00:
   INCBIN cTextSection00
-
-SECTION "TextSection01", ROMX[$4000], BANK[$46]
 TextSection01:
   INCBIN cTextSection01
-
-SECTION "TextSection02", ROMX[$4000], BANK[$48]
 TextSection02:
   INCBIN cTextSection02
-
-SECTION "TextSection03", ROMX[$5675], BANK[$48]
 TextSection03:
   INCBIN cTextSection03
-
-SECTION "TextSection04", ROMX[$5c17], BANK[$48]
 TextSection04:
   INCBIN cTextSection04
-
-SECTION "TextSection05", ROMX[$61ba], BANK[$48]
 TextSection05:
   INCBIN cTextSection05
-
-SECTION "TextSection06", ROMX[$7042], BANK[$48]
 TextSection06:
   INCBIN cTextSection06
-
-SECTION "TextSection07", ROMX[$4da3], BANK[$46]
 TextSection07:
   INCBIN cTextSection07
-
-SECTION "TextSection08", ROMX[$4000], BANK[$47]
 TextSection08:
   INCBIN cTextSection08
-
-SECTION "TextSection09", ROMX[$43c6], BANK[$32]
 TextSection09:
   INCBIN cTextSection09
-
-SECTION "TextSection10", ROMX[$5ffc], BANK[$7b]
 TextSection10:
   INCBIN cTextSection10
-
-SECTION "TextSection11", ROMX[$5592], BANK[$47]
 TextSection11:
   INCBIN cTextSection11
-
-SECTION "TextSection12", ROMX[$5d38], BANK[$ff]
 TextSection12:
   INCBIN cTextSection12
-
-SECTION "TextSection13", ROMX[$64c8], BANK[$f9]
 TextSection13:
   INCBIN cTextSection13
-
-SECTION "TextSection14", ROMX[$5d58], BANK[$ff]
 TextSection14:
   INCBIN cTextSection14
-
-SECTION "TextSection15", ROMX[$68a1], BANK[$f7]
 TextSection15:
   INCBIN cTextSection15
-
-SECTION "TextSection16", ROMX[$4cf0], BANK[$58]
 TextSection16:
   INCBIN cTextSection16
-
-SECTION "TextSection17", ROMX[$6898], BANK[$ff]
 TextSection17:
   INCBIN cTextSection17
-
-SECTION "TextSection18", ROMX[$6745], BANK[$47]
 TextSection18:
   INCBIN cTextSection18
-
-SECTION "TextSection19", ROMX[$4000], BANK[$98]
 TextSection19:
   INCBIN cTextSection19
-
-SECTION "TextSection20", ROMX[$4000], BANK[$99]
 TextSection20:
   INCBIN cTextSection20
-
-SECTION "TextSection21", ROMX[$4000], BANK[$9a]
 TextSection21:
   INCBIN cTextSection21
-
-SECTION "TextSection22", ROMX[$4000], BANK[$9b]
 TextSection22:
   INCBIN cTextSection22
-
-SECTION "TextSection23", ROMX[$4000], BANK[$9c]
 TextSection23:
   INCBIN cTextSection23
-
-SECTION "TextSection24", ROMX[$4000], BANK[$9d]
 TextSection24:
   INCBIN cTextSection24
-
-SECTION "TextSection25", ROMX[$4000], BANK[$bd]
 TextSection25:
   INCBIN cTextSection25
-
-SECTION "TextSection26", ROMX[$4000], BANK[$ba]
+SECTION "Text Pointers 1", ROMX[$4000], BANK[$111]
 TextSection26:
   INCBIN cTextSection26
-
-SECTION "TextSection27", ROMX[$4000], BANK[$bb]
 TextSection27:
   INCBIN cTextSection27
-
-SECTION "TextSection28", ROMX[$4000], BANK[$bc]
 TextSection28:
   INCBIN cTextSection28
-
-SECTION "TextSection29", ROMX[$4000], BANK[$9e]
 TextSection29:
   INCBIN cTextSection29
-
-SECTION "TextSection30", ROMX[$4000], BANK[$9f]
 TextSection30:
   INCBIN cTextSection30
-
-SECTION "TextSection31", ROMX[$4000], BANK[$a0]
 TextSection31:
   INCBIN cTextSection31
-
-SECTION "TextSection32", ROMX[$4000], BANK[$a1]
 TextSection32:
   INCBIN cTextSection32
-
-SECTION "TextSection33", ROMX[$4000], BANK[$e7]
 TextSection33:
   INCBIN cTextSection33
-
-SECTION "TextSection34", ROMX[$4000], BANK[$20]
 TextSection34:
   INCBIN cTextSection34
-
-SECTION "TextSection35", ROMX[$4000], BANK[$a2]
 TextSection35:
   INCBIN cTextSection35
-
-SECTION "TextSection36", ROMX[$4000], BANK[$a3]
 TextSection36:
   INCBIN cTextSection36
-
-SECTION "TextSection37", ROMX[$4000], BANK[$a4]
 TextSection37:
   INCBIN cTextSection37
-
-SECTION "TextSection38", ROMX[$4000], BANK[$a5]
 TextSection38:
   INCBIN cTextSection38
-
-SECTION "TextSection39", ROMX[$4000], BANK[$a6]
 TextSection39:
   INCBIN cTextSection39
-
-SECTION "TextSection40", ROMX[$4000], BANK[$a7]
+SECTION "Text Pointers 2", ROMX[$4000], BANK[$112]
 TextSection40:
   INCBIN cTextSection40
-
-SECTION "TextSection41", ROMX[$4000], BANK[$e8]
 TextSection41:
   INCBIN cTextSection41
-
-SECTION "TextSection42", ROMX[$4000], BANK[$a8]
 TextSection42:
   INCBIN cTextSection42
-
-SECTION "TextSection43", ROMX[$4000], BANK[$a9]
 TextSection43:
   INCBIN cTextSection43
-
-SECTION "TextSection44", ROMX[$4000], BANK[$aa]
 TextSection44:
   INCBIN cTextSection44
-
-SECTION "TextSection45", ROMX[$4000], BANK[$ab]
 TextSection45:
   INCBIN cTextSection45
-
-SECTION "TextSection46", ROMX[$4000], BANK[$ac]
 TextSection46:
   INCBIN cTextSection46
-
-SECTION "TextSection47", ROMX[$4000], BANK[$bf]
 TextSection47:
   INCBIN cTextSection47
-
-SECTION "TextSection48", ROMX[$4000], BANK[$e6]
 TextSection48:
   INCBIN cTextSection48
-
-SECTION "TextSection49", ROMX[$4000], BANK[$ad]
 TextSection49:
   INCBIN cTextSection49
-
-SECTION "TextSection50", ROMX[$4000], BANK[$ae]
 TextSection50:
   INCBIN cTextSection50
-
-SECTION "TextSection51", ROMX[$4000], BANK[$af]
 TextSection51:
   INCBIN cTextSection51
-
-SECTION "TextSection52", ROMX[$4000], BANK[$e9]
 TextSection52:
   INCBIN cTextSection52
-
-SECTION "TextSection53", ROMX[$4000], BANK[$ea]
 TextSection53:
   INCBIN cTextSection53
-
-SECTION "TextSection54", ROMX[$4000], BANK[$80]
 TextSection54:
   INCBIN cTextSection54
 
+SECTION "Text0", ROMX[$4000], BANK[$113]
+Text0:
+  INCBIN cText0
+SECTION "Text1", ROMX[$4000], BANK[$114]
+Text1:
+  INCBIN cText1
+SECTION "Text2", ROMX[$4000], BANK[$115]
+Text2:
+  INCBIN cText2
+SECTION "Text3", ROMX[$4000], BANK[$116]
+Text3:
+  INCBIN cText3
+SECTION "Text4", ROMX[$4000], BANK[$117]
+Text4:
+  INCBIN cText4
+SECTION "Text5", ROMX[$4000], BANK[$118]
+Text5:
+  INCBIN cText5
+SECTION "Text6", ROMX[$4000], BANK[$119]
+Text6:
+  INCBIN cText6
+SECTION "Text7", ROMX[$4000], BANK[$11A]
+Text7:
+  INCBIN cText7
+SECTION "Text8", ROMX[$4000], BANK[$11B]
+Text8:
+  INCBIN cText8
+SECTION "Text9", ROMX[$4000], BANK[$11C]
+Text9:
+  INCBIN cText9
+SECTION "Text10", ROMX[$4000], BANK[$11D]
+Text10:
+  INCBIN cText10
+SECTION "Text11", ROMX[$4000], BANK[$11E]
+Text11:
+  INCBIN cText11
+SECTION "Text12", ROMX[$4000], BANK[$11F]
+Text12:
+  INCBIN cText12
+SECTION "Text13", ROMX[$4000], BANK[$120]
+Text13:
+  INCBIN cText13
+SECTION "Text14", ROMX[$4000], BANK[$121]
+Text14:
+  INCBIN cText14
+SECTION "Text15", ROMX[$4000], BANK[$122]
+Text15:
+  INCBIN cText15
+SECTION "Text16", ROMX[$4000], BANK[$123]
+Text16:
+  INCBIN cText16
+SECTION "Text17", ROMX[$4000], BANK[$124]
+Text17:
+  INCBIN cText17
+SECTION "Text18", ROMX[$4000], BANK[$125]
+Text18:
+  INCBIN cText18
+SECTION "Text19", ROMX[$4000], BANK[$126]
+Text19:
+  INCBIN cText19
+SECTION "Text20", ROMX[$4000], BANK[$127]
+Text20:
+  INCBIN cText20
+SECTION "Text21", ROMX[$4000], BANK[$128]
+Text21:
+  INCBIN cText21
+SECTION "Text22", ROMX[$4000], BANK[$129]
+Text22:
+  INCBIN cText22
+SECTION "Text23", ROMX[$4000], BANK[$12A]
+Text23:
+  INCBIN cText23
+SECTION "Text24", ROMX[$4000], BANK[$12B]
+Text24:
+  INCBIN cText24
+SECTION "Text25", ROMX[$4000], BANK[$12C]
+Text25:
+  INCBIN cText25
+SECTION "Text26", ROMX[$4000], BANK[$12D]
+Text26:
+  INCBIN cText26
+SECTION "Text27", ROMX[$4000], BANK[$12E]
+Text27:
+  INCBIN cText27
+SECTION "Text28", ROMX[$4000], BANK[$12F]
+Text28:
+  INCBIN cText28
+SECTION "Text29", ROMX[$4000], BANK[$130]
+Text29:
+  INCBIN cText29
+SECTION "Text30", ROMX[$4000], BANK[$131]
+Text30:
+  INCBIN cText30
+SECTION "Text31", ROMX[$4000], BANK[$132]
+Text31:
+  INCBIN cText31
+SECTION "Text32", ROMX[$4000], BANK[$133]
+Text32:
+  INCBIN cText32
+SECTION "Text33", ROMX[$4000], BANK[$134]
+Text33:
+  INCBIN cText33
+SECTION "Text34", ROMX[$4000], BANK[$135]
+Text34:
+  INCBIN cText34
+SECTION "Text35", ROMX[$4000], BANK[$136]
+Text35:
+  INCBIN cText35
+SECTION "Text36", ROMX[$4000], BANK[$137]
+Text36:
+  INCBIN cText36
+SECTION "Text37", ROMX[$4000], BANK[$138]
+Text37:
+  INCBIN cText37
+SECTION "Text38", ROMX[$4000], BANK[$139]
+Text38:
+  INCBIN cText38
+SECTION "Text39", ROMX[$4000], BANK[$13A]
+Text39:
+  INCBIN cText39
+SECTION "Text40", ROMX[$4000], BANK[$13B]
+Text40:
+  INCBIN cText40
+SECTION "Text41", ROMX[$4000], BANK[$13C]
+Text41:
+  INCBIN cText41
+SECTION "Text42", ROMX[$4000], BANK[$13D]
+Text42:
+  INCBIN cText42
+SECTION "Text43", ROMX[$4000], BANK[$13E]
+Text43:
+  INCBIN cText43
+SECTION "Text44", ROMX[$4000], BANK[$13F]
+Text44:
+  INCBIN cText44
+SECTION "Text45", ROMX[$4000], BANK[$140]
+Text45:
+  INCBIN cText45
+SECTION "Text46", ROMX[$4000], BANK[$141]
+Text46:
+  INCBIN cText46
+SECTION "Text47", ROMX[$4000], BANK[$142]
+Text47:
+  INCBIN cText47
+SECTION "Text48", ROMX[$4000], BANK[$143]
+Text48:
+  INCBIN cText48
+SECTION "Text49", ROMX[$4000], BANK[$144]
+Text49:
+  INCBIN cText49
+SECTION "Text50", ROMX[$4000], BANK[$145]
+Text50:
+  INCBIN cText50
+SECTION "Text51", ROMX[$4000], BANK[$146]
+Text51:
+  INCBIN cText51
+SECTION "Text52", ROMX[$4000], BANK[$147]
+Text52:
+  INCBIN cText52
+SECTION "Text53", ROMX[$4000], BANK[$148]
+Text53:
+  INCBIN cText53
+SECTION "Text54", ROMX[$4000], BANK[$149]
+Text54:
+  INCBIN cText54
+SECTION "Text55", ROMX[$4000], BANK[$14A]
+Text55:
+  INCBIN cText55
+SECTION "Text56", ROMX[$4000], BANK[$14B]
+Text56:
+  INCBIN cText56
+SECTION "Text57", ROMX[$4000], BANK[$14C]
+Text57:
+  INCBIN cText57
+SECTION "Text58", ROMX[$4000], BANK[$14D]
+Text58:
+  INCBIN cText58
+SECTION "Text59", ROMX[$4000], BANK[$14E]
+Text59:
+  INCBIN cText59
+SECTION "Text60", ROMX[$4000], BANK[$14F]
+Text60:
+  INCBIN cText60
+
+
 SECTION "Dialog Text Tables", ROM0[$21ef]
 TextTableBanks:: ; 0x21ef
-  db BANK(TextSection00)
-  db BANK(TextSection01)
-  db BANK(TextSection02)
-  db BANK(TextSection03)
-  db BANK(TextSection04)
-  db BANK(TextSection05)
-  db BANK(TextSection06)
-  db BANK(TextSection07)
-  db BANK(TextSection08)
-  db BANK(TextSection09)
-  db BANK(TextSection10)
-  db BANK(TextSection11)
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection12)
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection13)
-  db BANK(TextSection14)
-  db BANK(TextSection15)
-  db BANK(TextSection16)
-  db BANK(TextSection17)
-  db BANK(TextSection18)
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection11) ; Duplicate
-  db BANK(TextSection19)
-  db BANK(TextSection20)
-  db BANK(TextSection21)
-  db BANK(TextSection22)
-  db BANK(TextSection23)
-  db BANK(TextSection24)
-  db BANK(TextSection25)
-  db BANK(TextSection26)
-  db BANK(TextSection27)
-  db BANK(TextSection28)
+  db LOW(BANK(TextSection00))
+  db LOW(BANK(TextSection01))
+  db LOW(BANK(TextSection02))
+  db LOW(BANK(TextSection03))
+  db LOW(BANK(TextSection04))
+  db LOW(BANK(TextSection05))
+  db LOW(BANK(TextSection06))
+  db LOW(BANK(TextSection07))
+  db LOW(BANK(TextSection08))
+  db LOW(BANK(TextSection09))
+  db LOW(BANK(TextSection10))
+  db LOW(BANK(TextSection11))
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection12))
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection13))
+  db LOW(BANK(TextSection14))
+  db LOW(BANK(TextSection15))
+  db LOW(BANK(TextSection16))
+  db LOW(BANK(TextSection17))
+  db LOW(BANK(TextSection18))
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection11)) ; Duplicate
+  db LOW(BANK(TextSection19))
+  db LOW(BANK(TextSection20))
+  db LOW(BANK(TextSection21))
+  db LOW(BANK(TextSection22))
+  db LOW(BANK(TextSection23))
+  db LOW(BANK(TextSection24))
+  db LOW(BANK(TextSection25))
+  db LOW(BANK(TextSection26))
+  db LOW(BANK(TextSection27))
+  db LOW(BANK(TextSection28))
   db $FF ; Empty entry
-  db BANK(TextSection29)
-  db BANK(TextSection30)
-  db BANK(TextSection31)
-  db BANK(TextSection32)
-  db BANK(TextSection33)
-  db BANK(TextSection34)
-  db $FF ; Empty entry
-  db $FF ; Empty entry
-  db $FF ; Empty entry
-  db $FF ; Empty entry
-  db $FF ; Empty entry
-  db BANK(TextSection35)
-  db BANK(TextSection36)
-  db BANK(TextSection37)
-  db BANK(TextSection38)
-  db BANK(TextSection39)
-  db BANK(TextSection40)
-  db BANK(TextSection41)
+  db LOW(BANK(TextSection29))
+  db LOW(BANK(TextSection30))
+  db LOW(BANK(TextSection31))
+  db LOW(BANK(TextSection32))
+  db LOW(BANK(TextSection33))
+  db LOW(BANK(TextSection34))
   db $FF ; Empty entry
   db $FF ; Empty entry
   db $FF ; Empty entry
   db $FF ; Empty entry
-  db BANK(TextSection42)
-  db BANK(TextSection43)
-  db BANK(TextSection44)
-  db BANK(TextSection45)
-  db BANK(TextSection46)
-  db BANK(TextSection47)
-  db BANK(TextSection48)
+  db $FF ; Empty entry
+  db LOW(BANK(TextSection35))
+  db LOW(BANK(TextSection36))
+  db LOW(BANK(TextSection37))
+  db LOW(BANK(TextSection38))
+  db LOW(BANK(TextSection39))
+  db LOW(BANK(TextSection40))
+  db LOW(BANK(TextSection41))
   db $FF ; Empty entry
   db $FF ; Empty entry
   db $FF ; Empty entry
   db $FF ; Empty entry
-  db BANK(TextSection49)
-  db BANK(TextSection50)
-  db BANK(TextSection51)
-  db BANK(TextSection52)
-  db BANK(TextSection53)
-  db BANK(TextSection54)
+  db LOW(BANK(TextSection42))
+  db LOW(BANK(TextSection43))
+  db LOW(BANK(TextSection44))
+  db LOW(BANK(TextSection45))
+  db LOW(BANK(TextSection46))
+  db LOW(BANK(TextSection47))
+  db LOW(BANK(TextSection48))
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db $FF ; Empty entry
+  db LOW(BANK(TextSection49))
+  db LOW(BANK(TextSection50))
+  db LOW(BANK(TextSection51))
+  db LOW(BANK(TextSection52))
+  db LOW(BANK(TextSection53))
+  db LOW(BANK(TextSection54))
   db $FF ; Empty entry
   db $FF ; Empty entry
   db $FF ; Empty entry

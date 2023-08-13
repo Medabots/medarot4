@@ -180,7 +180,7 @@ $(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(su
 # build/intermediate/dialog/*.bin from dialog csv files
 .SECONDEXPANSION:
 $(DIALOG_INT)/%.$(DIALOG_TYPE): $(DIALOG_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(CSV_TYPE) $(SCRIPT_RES)/ptrs.tbl | $(DIALOG_INT)
-	$(PYTHON) $(SCRIPT)/dialog2bin.py $@ $^ "Original" $(subst $(subst .$(CSV_TYPE),,$(<F))_,,$*)
+	$(PYTHON) $(SCRIPT)/dialog2bin.py $@ $^ "Translated" $(subst $(subst .$(CSV_TYPE),,$(<F))_,,$*)
 
 # build/pointer_constants.asm from scripts/res/ptrs.tbl
 $(BUILD)/pointer_constants.asm: $(SCRIPT_RES)/ptrs.tbl | $(BUILD)
