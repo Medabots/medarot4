@@ -40,9 +40,9 @@ InitiateMainScript::
   ld [W_MainScriptPauseTimer], a
   ld [W_MainScriptCCSubState], a
   ld [W_MainScriptPauseAutoAdvanceTimer], a
-  ld a, 0
   ld [W_MainScriptSpeed], a
-  ld a, $FF
+  dec a
+  ld [W_VWFIsInit], a
   ld [W_MainScriptPortraitCharacter], a
   ld [W_MainScriptPortraitPriorPlacement], a
   ld [W_MainScriptPortraitPlacement], a
@@ -143,9 +143,7 @@ MainScriptProcessor::
   ret
 
 .doNotPause
-  add hl, bc
-  add hl, bc
-  add hl, bc
+  call VWFGetTextPointerAddress
   ld a, [hli]
   ld [W_VWFTextBank], a
   push af
@@ -183,8 +181,16 @@ MainScriptProcessorPutCharLoop::
   call VWFLowBankswitch
   jp VWFDrawCharLoop
 
+VWFGetTextPointerAddress::
+  add hl, bc
+  add hl, bc
+  add hl, bc
+  jr VWFHighBankswitch.extEntry
+
 VWFHighBankswitch::
   rst $10
+
+.extEntry
   ld a, 1
   ld [W_CurrentHighBank], a
   ld [X_MBC5ROMBankHigh], a
