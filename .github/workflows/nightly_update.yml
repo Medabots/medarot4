@@ -1,0 +1,73 @@
+name: Nightly Update (EN)
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # run at 2 AM UTC
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    container: docker://variantxyz/rgbds-20220711:1a126d774613431dd5eb568472493977a3682175
+
+    steps:
+      - name: List versions
+        run: |
+          git --version
+          python3 --version
+          rgbasm --version
+          rgblink --version
+          rgbgfx --version
+
+      - name: Checkout main repository
+        uses: actions/checkout@v2
+        with:
+          path: 'code'
+
+      - name: Checkout baserom repository
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ secrets.BASEROM_REPOSITORY }}
+          ssh-key: ${{ secrets.BASEROM_KEY }}
+          path: 'baserom'
+
+      - name: Copy baserom into main repository
+        run: |
+          cp $GITHUB_WORKSPACE/baserom/*.gbc $GITHUB_WORKSPACE/code
+
+      - name: Get Tag Info
+        working-directory: 'code'
+        run: |
+          git fetch --tags --all
+          echo "TAG_NAME=`git rev-parse --abbrev-ref HEAD`" >> $GITHUB_ENV
+          echo "LATEST_TAG_NAME=`git tag --list --sort=version:refname \"\`git name-rev --name-only HEAD\`+nightly.*\"`" >> $GITHUB_ENV
+
+      - name: Get latest text from source
+        working-directory: 'code'
+        env:
+          TRANSLATION_SHEET: sheet.xlsx
+        run: |
+          wget -q --no-check-certificate "${{ secrets.TRANSLATION_SHEET_URL_SOURCE }}" -O $TRANSLATION_SHEET
+          make csv_from_xlsx
+          git status --porcelain
+
+      - name: Push and release if there are changes
+        working-directory: 'code'
+        run: |
+          [ -z "$(git status --porcelain)" ] && git diff --exit-code $LATEST_TAG_NAME && exit 0
+
+          make -j all
+
+          git config user.email "${{ secrets.USER_EMAIL }}"
+          git config user.name "$GITHUB_ACTOR"
+
+          git commit -am "Nightly text update - `date +%Y%m%d`"
+
+          mkdir patch
+          ips_util create baserom_kabuto.gbc medarot4_kabuto.gbc -o ./patch/m4kabuto-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
+          ips_util create baserom_kuwagata.gbc medarot4_kuwagata.gbc -o ./patch/m4kuwagata-$GITHUB_RUN_NUMBER-`git rev-parse HEAD`.ips
+
+          git push
+
+          ghr -t ${{ secrets.GITHUB_TOKEN }} -u $GITHUB_REPOSITORY_OWNER -r medarot4 -delete $TAG_NAME+nightly.`date +%Y%m%d` ./patch/
