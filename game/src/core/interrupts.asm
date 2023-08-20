@@ -1,4 +1,5 @@
 INCLUDE "game/src/common/constants.asm"
+INCLUDE "game/src/common/macros.asm"
 
 SECTION "Scrolling Animations", WRAM0[$C510]
 W_ScrollInstructions:: ds $F
@@ -88,6 +89,9 @@ VBlankingIRQ::
   pop af
   reti
 
+  padend $0365
+
+SECTION "LCDC Status IRQ", ROM0[$1EA0]
 LCDCStatusIRQ::
   push af
   ld a, [$C4DE]
@@ -105,7 +109,7 @@ LCDCStatusIRQ::
   xor a
   ld [X_MBC5ROMBankHigh], a
   ld a, [$C9BC]
-  srl a
+  rra ; The carry flag should still be cleared after using xor a, making this equivalent to srl a in practice, except much faster.
   ld hl, $5FF5
   rst $30
   ld a, [$C9BD]
@@ -126,7 +130,8 @@ LCDCStatusIRQ::
   ld a, [W_VBlankInterruptInProgress]
   and a
   jr nz, .restoreBankDuringVBlankInterrupt
-
+  ld a, [W_CurrentHighBank]
+  ld [W_VBlankInterruptCurrentHighBank], a
   ld a, [W_CurrentBank]
   ld [X_MBC5ROMBankLow], a
   ldh a, [H_RegLY]
@@ -140,7 +145,10 @@ LCDCStatusIRQ::
   reti
 
 .restoreBankDuringVBlankInterrupt
-  call LCDCStatusRestoreBank
+  ld a, [W_VBlankInterruptCurrentBank]
+  ld [X_MBC5ROMBankLow], a
+  ld a, [W_VBlankInterruptCurrentHighBank]
+  ld [X_MBC5ROMBankHigh], a
   ldh a, [H_RegLYC]
   inc a
   ldh [H_RegLYC], a
@@ -148,4 +156,5 @@ LCDCStatusIRQ::
   pop de
   pop af
   reti
-  nop
+
+  padend $1FCB
