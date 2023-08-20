@@ -1,7 +1,7 @@
 INCLUDE "game/src/common/constants.asm"
 INCLUDE "game/src/common/macros.asm"
 
-SECTION "List Pointer Table", ROM0[$29C6]
+SECTION "List Pointer Table", ROMX[$7FAC], BANK[$D6]
 ListPointerTable::
   dbw $7F, $5379
   dbw $49, $51B5

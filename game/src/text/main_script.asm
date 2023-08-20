@@ -421,11 +421,11 @@ VWFAutoNLWrapper::
 
 .isSpace
   ld a, BANK(VWFAutoNL)
-  rst $10
+  call VWFLowBankswitch
   call VWFAutoNL
   ld d, a
   ld a, [W_VWFTextBank]
-  rst $10
+  call VWFHighBankswitch
   ld a, d
   ret
 
@@ -451,7 +451,7 @@ VWFAutoNLFetchChar::
   pop bc
   ret
 
-  padend ($1FCB)
+  padend $1EA0
 
 SECTION "Main Script Portraits", ROM0[$1FCB]
 ControlCodeD2_changePortrait::
