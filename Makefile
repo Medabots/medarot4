@@ -167,7 +167,7 @@ $(DIALOG_INT)/%.$(DIALOG_TYPE): $(DIALOG_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(C
 
 # build/pointer_constants.asm from scripts/res/ptrs.tbl
 $(BUILD)/pointer_constants.asm: $(SCRIPT_RES)/ptrs.tbl | $(BUILD)
-	awk -F "=0x" '{ print "c"$$1 " EQU " "$$"$$2 > "$@" }' $<
+	awk -F "=0x" '{ print "DEF c"$$1 " EQU " "$$"$$2 > "$@" }' $<
 
 # build/tilesets/*.2bpp from source png
 $(TILESET_OUT)/%.$(TSET_SRC_TYPE): $(TILESET_GFX)/%.$(RAW_TSET_SRC_TYPE) | $(TILESET_OUT)

@@ -410,7 +410,66 @@ NamingEntryMapCurrentPage::
 .pageAttribmaps
   db $B0, $B1, $B2
 
-SECTION "Naming Screen Entry Functions 2", ROMX[$6065+cNSOFFSET], BANK[$03]
+GetNameEntryFirstCharacterTileAddress::
+  push bc
+  ld a, [W_NamingScreenTypeIndex]
+  ld hl, .table
+  rst $30
+  pop bc
+  ret
+
+.table
+  dw $982B
+  dw $982A
+
+RenderNameEntryTextInputUnderlines::
+; Draws dashes for input.
+  ld a, [W_NamingScreenTypeIndex]
+  ld hl, .table
+  ld d, 0
+  ld e, a
+  add hl, de
+  ld b, [hl]
+  ld c, 2
+  ld e, $23
+  ld a, 1
+  cbcall DecompressTilemap0
+  call GetNameEntryFirstCharacterTileAddress
+  ld de, $20
+  add hl, de
+  ld a, [W_NamingScreenEnteredTextLength]
+  ld b, 0
+  ld c, a
+  add hl, bc
+  ld d, 0
+  ld a, [W_NamingScreenEnteredTextLength]
+  cp 8
+  jp nz, .nameEntryNotFull
+  push hl
+  ld hl, .boundaryTileTable
+  ld a, [W_NamingScreenTypeIndex]
+  ld d, 0
+  ld e, a
+  add hl, de
+  ld d, [hl]
+  pop hl
+
+.nameEntryNotFull
+  ld a, d
+  di 
+  push af
+  rst $20
+  pop af
+  ld [hli], a
+  ei 
+  ret
+
+.table
+db $B,$A
+
+.boundaryTileTable
+db $F1,0
+
 PositionNameEntryBottomRowCursor::
   ld a, [W_NamingEntryBottomRowSelection]
   ld hl, .table
@@ -431,3 +490,73 @@ PositionNameEntryBottomRowCursor::
   db $08, $87
   db $40, $88
   db $70, $88
+
+NameEntryAdvanceToNextPage::
+  ld a, 4
+  call ScheduleSoundEffect
+  ld a, [W_NamingEntryCurrentPage]
+  inc a
+  cp 3
+  jr nz, .dontLoopToStart
+  xor a
+
+.dontLoopToStart
+  ld [W_NamingEntryCurrentPage], a
+  call NamingEntryMapCurrentPage
+
+; The third page is only 3 rows instead of 5, so we need to shift the cursor upwards if it is on rows 4 or 5.
+  ld a, [W_NamingEntryCurrentPage]
+  cp 2
+  ret nz
+  ld a, [W_NamingScreenSubSubSubStateIndex]
+  cp $11
+  ret z
+  cp $12
+  ret z
+
+.repositionCursorLoop
+  ld a, [W_NamingScreenCursorPositionIndex]
+  cp $2D
+  ret c
+  ld a, [W_NamingScreenCursorPositionIndex]
+  sub $F
+  ld [W_NamingScreenCursorPositionIndex], a
+  call $6179+cNSOFFSET
+  ld a, 1
+  ld [W_OAM_SpritesReady], a
+  jr .repositionCursorLoop
+
+NameEntryDoBackspace::
+  ld a, [W_NamingScreenEnteredTextLength]
+  cp 8
+  jp nz, .skipCursorRestore
+  ld a, 1
+  ld [$C1E0], a
+
+.skipCursorRestore
+  ld a, [W_NamingScreenEnteredTextLength]
+  dec a
+  ld [W_NamingScreenEnteredTextLength], a
+  ld hl, W_NamingScreenEnteredTextBuffer
+  ld b, 0
+  ld c, a
+  add hl, bc
+  ld [hl], 0
+  ld b, 0
+  ld c, a
+  call GetNameEntryFirstCharacterTileAddress
+  add hl, bc
+  xor a
+  di
+  push af
+  rst $20
+  pop af
+  ld [hli], a
+  ei
+  ld a, [$C1E3]
+  sub 8
+  ld [$C1E3], a
+  ld a, 1
+  ld [W_OAM_SpritesReady], a
+  call RenderNameEntryTextInputUnderlines
+  ret

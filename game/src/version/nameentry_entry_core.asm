@@ -34,7 +34,7 @@ NamingEntryInputHandlerState::
   cbcallindex 9
   ld de, $C220
   cbcallindex 9
-  ld a, [$C761]
+  ld a, [W_NamingScreenTypeIndex]
   or a
   jr nz, .noWalkingAnimation
   ld de, $C200
@@ -194,7 +194,7 @@ NamingEntryInputHandlerState::
   ret
 
 NamingEntrySwitchCaseState::
-  call $6087+cNSOFFSET
+  call NameEntryAdvanceToNextPage
   ld a, 1
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -243,7 +243,7 @@ NamingEntryInputCharacterState::
   add hl, bc
   ld a, [$C4EE]
   ld [hl], a
-  call $600D+cNSOFFSET
+  call GetNameEntryFirstCharacterTileAddress
   ld a, [W_NamingScreenEnteredTextLength]
   ld b, 0
   ld c, a
@@ -263,7 +263,7 @@ NamingEntryInputCharacterState::
   ld [$C1E3], a
   ld a, 1
   ld [W_OAM_SpritesReady], a
-  call $601B+cNSOFFSET
+  call RenderNameEntryTextInputUnderlines
   jp .exit
 
 .dakuten
@@ -303,7 +303,7 @@ NamingEntryInputCharacterState::
   dec a
   ld b, 0
   ld c, a
-  call $600D+cNSOFFSET
+  call GetNameEntryFirstCharacterTileAddress
   add hl, bc
   ld a, [$C4EE]
   di
@@ -362,7 +362,7 @@ NamingEntryInputCharacterState::
   dec a
   ld b, 0
   ld c, a
-  call $600D+cNSOFFSET
+  call GetNameEntryFirstCharacterTileAddress
   add hl, bc
   ld a, [$C4EE]
   di
@@ -414,7 +414,7 @@ NamingEntryBackspaceState::
   ld a, [W_NamingScreenEnteredTextLength]
   or a
   jp z, .exit
-  call $60C2+cNSOFFSET
+  call NameEntryDoBackspace
 
 .exit
   ld a, 1
@@ -468,7 +468,7 @@ NamingEntrySubmitNameState::
 NamingEntryBottomRowInputHandlerState::
   ld de, $C1E0
   cbcallindex 9
-  ld a, [$C761]
+  ld a, [W_NamingScreenTypeIndex]
   or a
   jr nz, .noWalkingAnimation
   ld de, $C200
@@ -566,7 +566,7 @@ NamingEntryBottomRowInputHandlerState::
   ret
 
 NamingEntrySwitchCaseFromBottomRowState::
-  call $6087+cNSOFFSET
+  call NameEntryAdvanceToNextPage
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -590,7 +590,7 @@ NamingEntryDirectSelectionFromBottomRowState::
   dw .submitName
 
 .switchCase
-  call $6087+cNSOFFSET
+  call NameEntryAdvanceToNextPage
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -601,7 +601,7 @@ NamingEntryDirectSelectionFromBottomRowState::
   ld a, [W_NamingScreenEnteredTextLength]
   or a
   jp z, .backspaceExit
-  call $60C2+cNSOFFSET
+  call NameEntryDoBackspace
 
 .backspaceExit
   ld a, $10
@@ -617,7 +617,7 @@ NamingEntryBackspaceFromBottomRowState::
   ld a, [W_NamingScreenEnteredTextLength]
   or a
   jp z, .exit
-  call $60C2+cNSOFFSET
+  call NameEntryDoBackspace
 
 .exit
   ld a, $10

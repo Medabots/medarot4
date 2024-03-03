@@ -11,5 +11,6 @@ W_NamingScreenExitIndicator:: ds 1
   
 SECTION "Naming Screen Variables 4", WRAM0[$C760]
 W_NamingScreenSubSubSubStateIndex:: ds 1
+W_NamingScreenTypeIndex:: ds 1
 
 ; Look in version folders for the actual code.

@@ -83,7 +83,7 @@ MedalNamingScreenInitState::
   pop af
   ld [$C762], a
   ld a, 1
-  ld [$C761], a
+  ld [W_NamingScreenTypeIndex], a
   call $699D+cNSOFFSET
   call $697C+cNSOFFSET
   call $699D+cNSOFFSET
@@ -132,7 +132,7 @@ MedalNamingScreenMapScreenAndPrepareSpritesState::
   ld e, $22
   ld a, 1
   cbcall DecompressTilemap0
-  call $601B+cNSOFFSET
+  call RenderNameEntryTextInputUnderlines
   ld a, [$C762]
   ld [W_ListItemIndexForBuffering], a
   ld b, $B
@@ -144,7 +144,7 @@ MedalNamingScreenMapScreenAndPrepareSpritesState::
   ld bc, W_ListItemBufferArea
   ld a, 5
   call PutStringFixedLength
-  call $600D+cNSOFFSET
+  call GetNameEntryFirstCharacterTileAddress
   push hl
   ld hl, W_NamingScreenEnteredTextBuffer
   pop de
