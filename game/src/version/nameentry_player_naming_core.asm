@@ -62,7 +62,7 @@ PlayerNamingScreenInitState::
   ld a, 3 ; Initial Name Length
   ld [W_NamingScreenEnteredTextLength], a
   xor a
-  ld [$C761], a
+  ld [W_NamingScreenTypeIndex], a
   jp IncNamingScreenSubSubStateIndex
 
 PlayerNamingScreenPrepareFadeOutFromOverworldState::
@@ -145,8 +145,8 @@ PlayerNamingScreenMapScreenAndPrepareSpritesState::
   ld e, $21
   ld a, 1
   cbcall DecompressTilemap0
-  call $601B+cNSOFFSET
-  call $600D+cNSOFFSET
+  call RenderNameEntryTextInputUnderlines
+  call GetNameEntryFirstCharacterTileAddress
   ld a, $02 ; 'イ'
   di
   push af
