@@ -140,7 +140,7 @@ NamingEntryInputHandlerState::
   ld a, [W_NamingScreenCursorPositionIndex]
   cp $FF
   jp z, .cursorPositionIsDoneOption
-  call $6179+cNSOFFSET ; NameEntryGetCursorPositionIndexDetailsAndPositionCursor
+  call NameEntryGetCursorPositionIndexDetailsAndPositionCursor
   ld a, 1
   ld [W_OAM_SpritesReady], a
   ret
@@ -156,7 +156,7 @@ NamingEntryInputHandlerState::
   ld [W_OAM_SpritesReady], a
   ld a, 0
   ld [W_NamingEntryBottomRowSelection], a
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -172,7 +172,7 @@ NamingEntryInputHandlerState::
   ld [W_OAM_SpritesReady], a
   ld a, 1
   ld [W_NamingEntryBottomRowSelection], a
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -188,7 +188,7 @@ NamingEntryInputHandlerState::
   ld [W_OAM_SpritesReady], a
   ld a, 2
   ld [W_NamingEntryBottomRowSelection], a
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -209,15 +209,15 @@ NamingEntryInputCharacterState::
   add $10
   add 4
   ldh [$FF8E], a
-  call $6296+cNSOFFSET ; GetTileMappingAddressFromCoordinatesForNameEntry
+  call GetTileMappingAddressFromCoordinatesForNameEntry
   di
   rst $20
   ld a, [hl]
   ei
-  call $6214+cNSOFFSET ; NameEntryDiacriticCheck
+  call NameEntryDiacriticCheck
   cp 1
   jp z, .dakuten
-  call $6214+cNSOFFSET ; NameEntryDiacriticCheck
+  call NameEntryDiacriticCheck
   cp 2
   jp z, .handakuten
   ld b, a
@@ -225,7 +225,7 @@ NamingEntryInputCharacterState::
   cp 8
   jp z, .exit
   ld a, b
-  call $6214+cNSOFFSET ; NameEntryDiacriticCheck
+  call NameEntryDiacriticCheck
   cp 3
   jp z, .isSpace
   
@@ -298,7 +298,7 @@ NamingEntryInputCharacterState::
   push af
   ld [hl], a
   ld [$C4EE], a
-  call $6244+cNSOFFSET
+  call NameEntryDiacriticCharacterIndexToDiacriticCharacterIndex
   ld a, [W_NamingScreenEnteredTextLength]
   dec a
   ld b, 0
@@ -357,7 +357,7 @@ NamingEntryInputCharacterState::
   push af
   ld [hl], a
   ld [$C4EE], a
-  call $6244+cNSOFFSET
+  call NameEntryDiacriticCharacterIndexToDiacriticCharacterIndex
   ld a, [W_NamingScreenEnteredTextLength]
   dec a
   ld b, 0
@@ -403,7 +403,7 @@ NamingEntryInputCharacterState::
   ld [W_OAM_SpritesReady], a
   ld a, 2
   ld [W_NamingEntryBottomRowSelection], a
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ld a, 0
@@ -440,7 +440,7 @@ NamingEntrySubmitNameState::
   ld a, d
   or a
   jp nz, .nameHasNonSpaceCharacters
-  call $61AA+cNSOFFSET ; AutofillImagineerAsEnteredName
+  call AutofillImagineerAsEnteredName
   jp .cannotAcceptName
 
 .nameHasNonSpaceCharacters
@@ -518,7 +518,7 @@ NamingEntryBottomRowInputHandlerState::
   and M_JPInputUp
   jr z, .upNotPressed
   xor a
-  call $60FE+cNSOFFSET ; NameEntryNavigateAwayFromBottomRow
+  call NameEntryNavigateAwayFromBottomRow
   ret
 
 .upNotPressed
@@ -526,7 +526,7 @@ NamingEntryBottomRowInputHandlerState::
   and M_JPInputDown
   jr z, .downNotPressed
   ld a, 1
-  call $60FE+cNSOFFSET ; NameEntryNavigateAwayFromBottomRow
+  call NameEntryNavigateAwayFromBottomRow
   ret
 
 .downNotPressed
@@ -542,7 +542,7 @@ NamingEntryBottomRowInputHandlerState::
 .dontLoopToEnd
   ld [W_NamingEntryBottomRowSelection], a
   call PositionNameEntryBottomRowCursor
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ret
   jr .exit
 
@@ -559,7 +559,7 @@ NamingEntryBottomRowInputHandlerState::
 .dontLoopToStart
   ld [W_NamingEntryBottomRowSelection], a
   call PositionNameEntryBottomRowCursor
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ret
 
 .exit
@@ -643,7 +643,7 @@ NamingEntrySubmitNameFromBottomRowState::
   ld a, d
   or a
   jp nz, .nameHasNonSpaceCharacters
-  call $61AA+cNSOFFSET ; AutofillImagineerAsEnteredName
+  call AutofillImagineerAsEnteredName
   jp .cannotAcceptName
 
 .nameHasNonSpaceCharacters

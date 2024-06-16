@@ -521,7 +521,7 @@ NameEntryAdvanceToNextPage::
   ld a, [W_NamingScreenCursorPositionIndex]
   sub $F
   ld [W_NamingScreenCursorPositionIndex], a
-  call $6179+cNSOFFSET
+  call NameEntryGetCursorPositionIndexDetailsAndPositionCursor
   ld a, 1
   ld [W_OAM_SpritesReady], a
   jr .repositionCursorLoop
@@ -559,4 +559,377 @@ NameEntryDoBackspace::
   ld a, 1
   ld [W_OAM_SpritesReady], a
   call RenderNameEntryTextInputUnderlines
+  ret
+
+NameEntryNavigateAwayFromBottomRow::
+  push af
+  ld hl, .table
+  ld a, [W_NamingEntryCurrentPage]
+  rst $30
+  pop af
+  rst $30
+  push hl
+  ld a, [W_NamingEntryBottomRowSelection]
+  ld d, 0
+  ld e, a
+  ld h, 0
+  ld l, a
+  sla e
+  rl d
+  sla e
+  rl d
+  add hl, de
+  pop de
+  add hl, de
+  ld a, [W_NamingEntryCursorPositionIndexWithinGroup]
+  ld d, 0
+  ld e, a
+  add hl, de
+  ld a, [hl]
+  ld [W_NamingScreenCursorPositionIndex], a
+  call NameEntryGetCursorPositionIndexDetailsAndPositionCursor
+  ld a, $83
+  ld [$C222], a
+  ld a, 1
+  ld [W_OAM_SpritesReady], a
+  call NameEntryRemoveBottomRowOptionHighlight
+  ld a, 1
+  ld [W_NamingScreenSubSubSubStateIndex], a
+  ret
+
+.table
+  dw .pageABTable, .pageABTable, .pageCTable
+
+.pageABTable
+  dw .pageABUpTable, .downTable
+
+.pageCTable
+  dw .pageCUpTable, .downTable
+
+.pageABUpTable
+  db $3C, $3D, $3E, $3F, $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $4A
+
+.pageCUpTable
+  db $1E, $1F, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $2A, $2B, $2C
+
+.downTable
+  db $00, $01, $02, $03, $04, $05, $06, $07, $08, $09, $0A, $0B, $0C, $0D, $0E
+
+NameEntryGetCursorPositionIndexDetailsAndPositionCursor::
+  ld hl, NamingEntryCursorIndexInformationTable
+  ld b, 0
+  ld a, [W_NamingEntryCurrentPage]
+  ld c, a
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld h, [hl]
+  ld l, a
+  ld b, 0
+  ld a, [W_NamingScreenCursorPositionIndex]
+  ld c, a
+  sla c
+  rl b
+  sla c
+  rl b
+  add hl, bc
+  ld a, [hli]
+  ld [$C223], a
+  ld a, [hli]
+  ld [$C224], a
+  ld a, [hli]
+  ld [W_NamingEntryCursorPositionIndexWithinGroup], a
+  ld a, [hl]
+  ld [W_NamingEntryCursorRowIndex], a
+  ret
+
+AutofillImagineerAsEnteredName::
+  ld hl, W_NamingScreenEnteredTextBuffer
+  ld a, 2
+  ld [hli], a
+  ld a, $1F
+  ld [hli], a
+  ld a, $73
+  ld [hli], a
+  ld a, $16
+  ld [hli], a
+  ld a, 1
+  ld [hli], a
+  xor a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld [hli], a
+  ld a, 5
+  ld [W_NamingScreenEnteredTextLength], a
+  call RenderNameEntryTextInputUnderlines
+  call GetNameEntryFirstCharacterTileAddress
+  ld a, 2 ; イ
+  di
+  push af
+  rst $20
+  pop af
+  ld [hli], a
+  ei
+  ld a, $1F ; マ
+  di
+  push af
+  rst $20
+  pop af
+  ld [hli], a
+  ei
+  ld a, $73 ; ジ
+  di
+  push af
+  rst $20
+  pop af
+  ld [hli], a
+  ei
+  ld a, $16 ; ニ
+  di
+  push af
+  rst $20
+  pop af
+  ld [hli], a
+  ei
+  ld a, 1 ; ア
+  di
+  push af
+  rst $20
+  pop af
+  ld [hli], a
+  ei
+  ld a, 1
+  ld [$C1E0], a
+  ld a, [W_NamingScreenTypeIndex]
+  ld hl, .table
+  ld d, 0
+  ld e, a
+  add hl, de
+  ld a, [hl]
+  ld [$C1E3], a
+  ld a, 1
+  ld [W_OAM_SpritesReady], a
+  ld a, 8
+  call ScheduleSoundEffect
+  ret
+
+.table
+  db $80, $78
+
+NameEntryDiacriticCheck::
+  ld [$C4EE], a
+  cp 1
+  jr z, .diacriticMaybe
+  cp 2
+  jr z, .diacriticMaybe
+  cp 3
+  jr z, .diacriticMaybe
+  jr .notDiacritic
+
+.diacriticMaybe
+  ld a, 1
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+  di
+  rst $20
+  ld a, [hl]
+  ei
+  and 8
+  push af
+  ld a, 0
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+  pop af
+  or a
+  jr z, .isDiacritic
+
+.notDiacritic
+  xor a
+  ret
+
+.isDiacritic
+  ld a, [$C4EE]
+  ret
+
+NameEntryDiacriticCharacterIndexToDiacriticCharacterIndex::
+; Yes, as the name imples this function is 100% redundant. This takes the value in $C4EE and replaces it with that exact same value, but via a table.
+  push hl
+  push bc
+  xor a
+  ld [$C4EF], a
+  ld a, [$C4EE]
+  cp $6D
+  jr c, .notDiacritic
+  cp $9E
+  jr nc, .notDiacritic
+  sub $6D
+  ld hl, .table
+  ld c, a
+  ld b, 0
+  add hl, bc
+  ld a, [hl]
+  ld [$C4EE], a
+
+.notDiacritic
+  pop bc
+  pop hl
+  ret
+
+.table
+  db $6D, $6E, $6F, $70, $71, $72, $73, $74, $75, $76, $77, $78, $79, $7A, $7B, $7C, $7D, $7E, $7F, $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8A, $8B, $8C, $8D, $8E, $8F, $90, $91, $92, $93, $94, $95, $96, $97, $98, $99, $9A, $9B, $9C, $9D
+
+GetTileMappingAddressFromCoordinatesForNameEntry::
+  ldh a, [$FF8E]
+  sub $10
+  srl a
+  srl a
+  srl a
+  ld de, 0
+  ld e, a
+  ld hl, $9800
+  ld b, $20
+
+.mappingRowMathLoop
+  add hl, de
+  dec b
+  jr nz, .mappingRowMathLoop
+
+  ldh a, [$FF8F]
+  sub 8
+  srl a
+  srl a
+  srl a
+  ld de, 0
+  ld e, a
+  add hl, de
+  ld a, h
+  ldh [$FF90], a
+  ld a, l
+  ldh [$FF91], a
+  ret
+
+SECTION "Naming Screen Entry Functions 2", ROMX[$697C+cNSOFFSET], BANK[$03]
+BufferDefaultMedalName::
+  push hl
+  push hl
+  call MedalNameEntryCountNameLength
+  pop hl
+  ld de, W_NamingScreenEnteredTextBuffer
+  ld b, 0
+  ld c, a
+  call memcpy
+  pop hl
+  push de
+  call MedalNameEntryCountNameLength
+  ld b, a
+  ld a, 9
+  sub b
+  ld b, a
+  pop de
+
+.clearLoop
+  xor a
+  ld [de], a
+  inc de
+  dec b
+  jr nz, .clearLoop
+  ret
+
+GetDefaultMedalName::
+  ld a, [W_NamingEntryMedalIndex]
+  ld [W_ListItemIndexForBuffering], a
+  ld b, $1A
+  ld c, 9
+  ld a, 0
+  ld [W_ListItemInitialOffsetForBuffering], a
+  cbcall BufferTextFromList
+  ld hl, W_ListItemBufferArea
+  ret
+
+SECTION "Naming Screen Entry Functions 3", ROMX[$69C8+cNSOFFSET], BANK[$03]
+MedalNameEntryCountNameLength::
+  ld b, 0
+
+.loop
+  ld a, [hli]
+  cp $CB
+  jr z, .exitLoop
+  inc b
+  jr .loop
+
+.exitLoop
+  ld a, b
+  ret
+
+SECTION "Naming Screen Entry Functions 4", ROMX[$69D9+cNSOFFSET], BANK[$03]
+NameEntryRemoveBottomRowOptionHighlight::
+  ld hl, $9A02
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ld hl, $9A09
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ld hl, $9A0F
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ret
+
+NameEntryHighlightBottomRowOption::
+  ld a, [W_NamingEntryBottomRowSelection]
+  cp 0
+  jr z, .highlightFirstOption
+  cp 1
+  jr z, .highlightSecondOption
+  cp 2
+  jr z, .highlightThirdOption
+  ret
+
+.highlightFirstOption
+  ld hl, $9A02
+  ld bc, $401
+  ld a, $A
+  call MapAttributeRect
+  ld hl, $9A09
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ld hl, $9A0F
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ret
+
+.highlightSecondOption
+  ld hl, $9A02
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ld hl, $9A09
+  ld bc, $401
+  ld a, $A
+  call MapAttributeRect
+  ld hl, $9A0F
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ret
+
+.highlightThirdOption
+  ld hl, $9A02
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ld hl, $9A09
+  ld bc, $401
+  ld a, $B
+  call MapAttributeRect
+  ld hl, $9A0F
+  ld bc, $401
+  ld a, $A
+  call MapAttributeRect
   ret
