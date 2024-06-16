@@ -306,3 +306,39 @@ DecompressAttribmap0ScrollAdjusted::
   call GetOverworldScrollTileOffset
   pop af
   jp DecompressAttribmap0
+
+SECTION "Map Attribute Rect", ROM0[$2950]
+MapAttributeRect::
+; Maps attribute index A to a rectangle mapped at HL (top-left corner) that is B tiles wide and C tiles high.
+
+  ld [$C4EF], a
+  ld a, 1
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+  ld a, b
+  ld [$C4EE], a
+
+.rowLoop
+  push hl
+  ld a, [$C4EE]
+  ld b, a
+
+.colLoop
+  di
+  rst $20
+  ld a, [$C4EF]
+  ld [hli], a
+  ei
+  dec b
+  jr nz, .colLoop
+
+  pop hl
+  ld de, $20
+  add hl, de
+  dec c
+  jr nz, .rowLoop
+
+  ld a, 0
+  ld [W_CurrentVRAMBank], a
+  ldh [H_RegVBK], a
+  ret
