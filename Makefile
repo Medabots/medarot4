@@ -67,6 +67,7 @@ link \
 titlemenu \
 saveclock \
 nameentry \
+pausemenu \
 text
 
 # Toolchain
