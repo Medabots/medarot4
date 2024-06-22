@@ -1,4 +1,37 @@
 INCLUDE "./build/ptrlists/ptrlist_data_constants_{GAMEVERSION}.asm"
+INCLUDE "game/src/common/macros.asm"
+
+SECTION "List Pointer Table", ROM0[$29c6]
+ListPointerTable::
+  dbw BANK(PtrListUnknown00), PtrListUnknown00
+  dbw BANK(PtrListPartsHead), PtrListPartsHead
+  dbw BANK(PtrListPartsRArm), PtrListPartsRArm
+  dbw BANK(PtrListPartsLArm), PtrListPartsLArm
+  dbw BANK(PtrListPartsLegs), PtrListPartsLegs
+  dbw BANK(PtrListAttributes), PtrListAttributes
+  dbw BANK(PtrListSkills), PtrListSkills
+  dbw BANK(PtrListMovement), PtrListMovement
+  dbw BANK(PtrListUnknown08), PtrListUnknown08
+  dbw BANK(PtrListPersonalities), PtrListPersonalities
+  dbw BANK(PtrListMedaforce), PtrListMedaforce
+  dbw BANK(PtrListMedals), PtrListMedals
+  dbw BANK(PtrListUnknown0C), PtrListUnknown0C
+  dbw BANK(PtrListItems), PtrListItems
+  dbw BANK(PtrListUnknown0E), PtrListUnknown0E
+  dbw $00, $0000
+  dbw $00, $0000
+  dbw BANK(PtrListTerrain), PtrListTerrain
+  dbw BANK(PtrListAttacks), PtrListAttacks
+  dbw BANK(PtrListEncounterNames), PtrListEncounterNames
+  dbw BANK(PtrListUnknown12), PtrListUnknown12
+  dbw BANK(PtrListMedarots), PtrListMedarots
+  dbw BANK(PtrListMedarotters), PtrListMedarotters
+  dbw BANK(PtrListUnknown15), PtrListUnknown15
+  dbw BANK(PtrListUnknown16), PtrListUnknown16
+  dbw BANK(PtrListUnknown17), PtrListUnknown17
+  dbw BANK(PtrListUnknown18), PtrListUnknown18
+  dbw BANK(PtrListMusicTitles), PtrListMusicTitles
+
 
 SECTION "Pointer List - Unknown00", ROMX[$5379], BANK[$7f]
 PtrListUnknown00::
@@ -60,33 +93,33 @@ SECTION "Pointer List - Unknown0E", ROMX[$4000], BANK[$29]
 PtrListUnknown0E::
   INCBIN cUnknown0E
 
-SECTION "Pointer List - Medarotters", ROMX[$4dd7], BANK[$49]
-PtrListMedarotters::
-  INCBIN cMedarotters
-
-SECTION "Pointer List - Unknown10", ROMX[$4e56], BANK[$49]
-PtrListUnknown10::
-  INCBIN cUnknown10
-
-SECTION "Pointer List - Terrain", ROMX[$4000], BANK[$2a]
+SECTION "Pointer List - Terrain", ROMX[$4dd7], BANK[$49]
 PtrListTerrain::
   INCBIN cTerrain
+
+SECTION "Pointer List - Attacks", ROMX[$4e56], BANK[$49]
+PtrListAttacks::
+  INCBIN cAttacks
+
+SECTION "Pointer List - EncounterNames", ROMX[$4000], BANK[$2a]
+PtrListEncounterNames::
+  INCBIN cEncounterNames
 
 SECTION "Pointer List - Unknown12", ROMX[$4364], BANK[$2a]
 PtrListUnknown12::
   INCBIN cUnknown12
 
-SECTION "Pointer List - Attacks", ROMX[$4000], BANK[$49]
-PtrListAttacks::
-  INCBIN cAttacks
-
-SECTION "Pointer List - CharacterNames", ROMX[$44d0], BANK[$29]
-PtrListCharacterNames::
-  INCBIN cCharacterNames
-
-SECTION "Pointer List - Medarots", ROMX[$4630], BANK[$2b]
+SECTION "Pointer List - Medarots", ROMX[$4000], BANK[$49]
 PtrListMedarots::
   INCBIN cMedarots
+
+SECTION "Pointer List - Medarotters", ROMX[$44d0], BANK[$29]
+PtrListMedarotters::
+  INCBIN cMedarotters
+
+SECTION "Pointer List - Unknown15", ROMX[$4630], BANK[$2b]
+PtrListUnknown15::
+  INCBIN cUnknown15
 
 SECTION "Pointer List - Unknown16", ROMX[$4f42], BANK[$29]
 PtrListUnknown16::

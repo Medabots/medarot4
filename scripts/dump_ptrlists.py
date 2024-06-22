@@ -22,6 +22,9 @@ roms = ({
 
 default_version = "kabuto"
 
+# Maybe as an optimization, given the length of the table, we can automatically pull the necessary addresses too
+LIST_POINTER_TABLE = 0x29c6
+
 default_tileset = utils.merge_dicts([
             tilesets.get_tileset("MainDialog1", override_offset=0x0),
             tilesets.get_tileset("MainDialog2", override_offset=0x80),
@@ -29,7 +32,6 @@ default_tileset = utils.merge_dicts([
         ])
 
 kanji = tilesets.get_tileset("Kanji", override_offset=0x0)
-
 
 list_map = ({
     # 'Type' : (Start of Pointers, Strings per pointer, Label(s), Terminator(s), (fixed length, fixed padding), print hex, 'null' indicator, data prefix, in general pointer list, special tileset)
@@ -48,13 +50,15 @@ list_map = ({
     'Unknown0C' : ([(0x26, 0x6186)], 1, [], [None], [(2, 0x00)], [True], None, None, True, None),
     'Items' : ([(0x49, 0x4939)], 2, ["ItemName", "Flags"], [0xCB, None], [(9, 0x00), (1, None)], [False, True], None, None, True, None),
     'Unknown0E' : ([(0x29, 0x4000)], 1, [], [None], [(8, 0x00)], [True], None, None, True, None),
-    'Medarotters' : ([(0x49, 0x4dd7)], 2, ["Unknown", "Name"], [None, 0xCB], [(3, 0x00), (None, None)], [True, False], None, None, True, None),
-    'Unknown10' : ([(0x49, 0x4E56)], 1, [], [0xCB], [(None, None)], [False], None, None, True, None),
-    'Terrain' : ([(0x2A, 0x4000)], 1, ["Terrain"], [0xCB], [(None, None)], [False], None, None, True, None),
+    'Empty1' : None,
+    'Empty2' : None,
+    'Terrain' : ([(0x49, 0x4dd7)], 1, ["Terrain"], [0xCB], [(None, None)], [False], None, None, True, None),
+    'Attacks' : ([(0x49, 0x4E56)], 1, ["AttackName"], [0xCB], [(None, None)], [False], None, None, True, None),
+    'EncounterNames' : ([(0x2A, 0x4000)], 1, ["EncounterName"], [0xCB], [(None, None)], [False], None, None, True, None),
     'Unknown12' : ([(0x2A, 0x4364)], 1, [], [None], [(11, 0x00)], [True], None, None, True, None),
-    'Attacks' : ([(0x49, 0x4000)], 1, ["AttackName"], [0xCB], [(None, None)], [False], None, None, True, None),
-    'CharacterNames' : ([(0x29, 0x44D0)], 1, ["CharacterName"], [0xCB], [(None, None)], [False], None, None, True, None),
-    'Medarots' : ([(0x2B, 0x4630)], 1, ["MedarotName"], [0xCB], [(None, None)], [False], None, None, True, None),
+    'Medarots' : ([(0x49, 0x4000)], 1, ["MedarotName"], [0xCB], [(None, None)], [False], None, None, True, None),
+    'Medarotters' : ([(0x29, 0x44D0)], 2, ["Unknown", "Name"], [None, 0xCB], [(3, 0x00), (None, None)], [True, False], None, None, True, None),
+    'Unknown15' : ([(0x2B, 0x4630)], 1, [], [0xCB], [(None, None)], [False], None, None, True, None),
     'Unknown16' : ([(0x29, 0x4F42)], 1, [], [None], [(35, 0x00)], [True], None, None, True, None),
     'Unknown17' : ([(0x2B, 0x5290)], 1, [], [None], [(35, 0x00)], [True], None, None, True, None),
     'Unknown18' : ([(0x49, 0x4c78)], 1, [], [0xCB], [(None, None)], [False], None, None, True, None),
@@ -67,8 +71,20 @@ for version_suffix in roms:
 
 with open(os.path.join(version_src_path, "ptrlist_data.asm"), "w") as datafile:
     constants_file = os.path.join(text_build_path, f"ptrlist_data_constants_{{GAMEVERSION}}.asm")
-    datafile.write(f'INCLUDE "{constants_file}"\n\n')
+    datafile.write(f'INCLUDE "{constants_file}"\n')
+    datafile.write(f'INCLUDE "game/src/common/macros.asm"\n\n')
+    datafile.write(f'SECTION "List Pointer Table", ROM0[${LIST_POINTER_TABLE:02x}]\n')
+    datafile.write(f'ListPointerTable::\n')
     for l in list_map:
+        if list_map[l] is None:
+            datafile.write('  dbw $00, $0000\n')
+        else:
+            datafile.write(f'  dbw BANK(PtrList{l}), PtrList{l}\n')
+    datafile.write('\n\n')
+
+    for l in list_map:
+        if list_map[l] is None:
+            continue
         addresses, spp, labels, term, fix_len, print_hex, null_indicator, data_prefix, is_general, special_tileset = list_map[l]
 
         if special_tileset:
@@ -98,7 +114,7 @@ with open(os.path.join(version_src_path, "ptrlist_data.asm"), "w") as datafile:
         else:
             datafile.write(f'SECTION "Pointer List - {l}", ROMX[cAddress{l}], BANK[cBank{l}]\n')
             datafile.write(f'PtrList{l}::\n')
-            datafile.write(f'  INCBIN c{l}\n\n')            
+            datafile.write(f'  INCBIN c{l}\n\n')
 
         entries = OrderedDict()
         with open(os.path.join(text_src_path, f"{l}.txt"), "w", encoding="utf-8-sig") as output:
