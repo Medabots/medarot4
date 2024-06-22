@@ -49,6 +49,7 @@ TILEMAP_GFX := $(GFX)/tilemaps
 TILEMAP_PREBUILT := $(GFX)/prebuilt/tilemaps
 ATTRIBMAP_GFX := $(GFX)/attribmaps
 ATTRIBMAP_PREBUILT := $(GFX)/prebuilt/attribmaps
+PTRLISTS_TEXT := $(TEXT)/ptrlists
 
 # Build Directories
 VERSION_OUT := $(BUILD)/version
@@ -57,6 +58,8 @@ DIALOG_OUT := $(BUILD)/dialog
 TILESET_OUT := $(BUILD)/tilesets
 TILEMAP_OUT := $(BUILD)/tilemaps
 ATTRIBMAP_OUT := $(BUILD)/attribmaps
+PTRLISTS_INT := $(BUILD)/intermediate/ptrlists
+PTRLISTS_OUT := $(BUILD)/ptrlists
 
 # Source Modules (directories in SRC), version directories (kuwagata/kabuto) are implied
 # We explicitly separate this with newlines to avoid silly conflicts with tr_EN
@@ -109,6 +112,7 @@ TILEMAPS_VERSIONED := $(call FILTER,_,$(TILEMAPS))
 ATTRIBMAPS := $(notdir $(basename $(wildcard $(ATTRIBMAP_GFX)/*.$(TEXT_TYPE))))
 ATTRIBMAPS_COMMON := $(call FILTER_OUT,_,$(ATTRIBMAPS))
 ATTRIBMAPS_VERSIONED := $(call FILTER,_,$(ATTRIBMAPS))
+PTRLISTS := $(notdir $(basename $(wildcard $(PTRLISTS_TEXT)/*.$(TEXT_TYPE))))
 
 # Intermediates for common sources (not in version folder)
 ## We explicitly rely on second expansion to handle version-specific files in the version specific objects
@@ -129,6 +133,7 @@ version_text_tables_ADDITIONAL := $(DIALOG_OUT)/text_table_constants_PLACEHOLDER
 version_tileset_table_ADDITIONAL := $(COMPRESSED_TILESET_FILES_COMMON) $(VERSION_SRC)/tileset_table.asm $(COMPRESSED_TILESET_FILES_GAMEVERSION) $(TILESET_OUT)/PLACEHOLDER_VERSION.stamp
 version_tilemap_table_ADDITIONAL :=  $(TILEMAP_FILES_COMMON) $(VERSION_SRC)/tilemap_table.asm $(TILEMAP_OUT)/PLACEHOLDER_VERSION.stamp
 version_attribmap_table_ADDITIONAL :=  $(ATTRIBMAP_FILES_COMMON) $(VERSION_SRC)/attribmap_table.asm $(ATTRIBMAP_OUT)/PLACEHOLDER_VERSION.stamp
+version_ptrlist_data_ADDITIONAL := $(PTRLISTS_OUT)/ptrlist_data_constants_PLACEHOLDER_VERSION.asm
 
 .PHONY: $(VERSIONS) all clean default
 default: kabuto
@@ -166,6 +171,11 @@ $(BUILD)/%.$(INT_TYPE): $(SRC)/$$(firstword $$(subst ., ,$$*))/$$(lastword $$(su
 $(DIALOG_INT)/%.$(DIALOG_TYPE): $(DIALOG_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(CSV_TYPE) $(SCRIPT_RES)/ptrs.tbl | $(DIALOG_INT)
 	$(PYTHON) $(SCRIPT)/dialog2bin.py $@ $^ "Original" $(subst $(subst .$(CSV_TYPE),,$(<F))_,,$*)
 
+# build/intermediate/ptrlists/*.bin from ptrlists csv files
+.SECONDEXPANSION:
+$(PTRLISTS_INT)/%.$(PTRLIST_TYPE): $(PTRLISTS_TEXT)/$$(word 1, $$(subst _, ,$$*)).$(TEXT_TYPE) | $(PTRLISTS_INT)
+	$(PYTHON) $(SCRIPT)/ptrlist2bin.py $@ $< $(subst $(subst .$(TEXT_TYPE),,$(<F))_,,$*)
+
 # build/pointer_constants.asm from scripts/res/ptrs.tbl
 $(BUILD)/pointer_constants.asm: $(SCRIPT_RES)/ptrs.tbl | $(BUILD)
 	awk -F "=0x" '{ print "DEF c"$$1 " EQU " "$$"$$2 > "$@" }' $<
@@ -190,6 +200,10 @@ $(TILESET_OUT)/%.stamp: $$(call FILTER,%,$(COMPRESSED_TILESET_FILES_VERSIONED)) 
 $(DIALOG_OUT)/text_table_constants_%.asm: $(SRC)/version/text_tables.asm $(SRC)/version/%/text_tables.asm $$(foreach FILE,$(DIALOG),$(DIALOG_INT)/$$(FILE)_$$*.$(DIALOG_TYPE)) | $(DIALOG_OUT)
 	$(PYTHON) $(SCRIPT)/dialogbin2asm.py $@ $(DIALOG_OUT) $* $^
 
+.SECONDEXPANSION:
+$(PTRLISTS_OUT)/ptrlist_data_constants_%.asm: $(SRC)/version/ptrlist_data.asm $(SRC)/version/%/ptrlist_data.asm $$(foreach FILE,$(PTRLISTS),$(PTRLISTS_INT)/$$(FILE)_$$*.$(PTRLIST_TYPE)) | $(PTRLISTS_OUT)
+	$(PYTHON) $(SCRIPT)/ptrlistbin2asm.py $@ $(PTRLISTS_OUT) $* $^
+
 # build/tilemaps/*.map from tilemaps txt
 $(TILEMAP_OUT)/%.$(TMAP_TYPE): $(TILEMAP_GFX)/%.$(TEXT_TYPE) | $(TILEMAP_OUT)
 	$(PYTHON) $(SCRIPT)/txt2map.py $@ $^ $(TILEMAP_PREBUILT)
@@ -209,8 +223,8 @@ $(ATTRIBMAP_OUT)/%.stamp: $$(call FILTER,%,$(ATTRIBMAP_FILES_VERSIONED))
 	touch $@
 
 # Dump scripts
-.PHONY: dump dump_text dump_tilesets dump_tilemaps dump_attribmaps
-dump: dump_text dump_tilesets dump_tilemaps dump_attribmaps
+.PHONY: dump dump_text dump_tilesets dump_tilemaps dump_attribmaps dump_ptrlists
+dump: dump_text dump_tilesets dump_tilemaps dump_attribmaps dump_ptrlists
 
 dump_text: | $(DIALOG_TEXT) $(SCRIPT_RES)
 	rm $(DIALOG_TEXT)/*.$(CSV_TYPE) || echo ""
@@ -230,6 +244,10 @@ dump_attribmaps: | $(ATTRIBMAP_GFX) $(ATTRIBMAP_PREBUILT) $(SCRIPT_RES)
 	rm $(ATTRIBMAP_PREBUILT)/*.$(TMAP_TYPE) || echo ""
 	rm $(ATTRIBMAP_GFX)/*.$(TEXT_TYPE) || echo ""
 	$(PYTHON) $(SCRIPT)/dump_maps.py attribmap "$(ATTRIBMAP_GFX)" "$(ATTRIBMAP_PREBUILT)" "$(ATTRIBMAP_OUT)" "$(SCRIPT_RES)" "$(VERSION_SRC)" a02 a0b 9
+
+dump_ptrlists: | $(PTRLISTS_TEXT)
+	rm $(PTRLISTS_TEXT)/*.$(TEXT_TYPE) || echo ""
+	$(PYTHON) $(SCRIPT)/dump_ptrlists.py "$(VERSION_SRC)" "$(PTRLISTS_TEXT)" "$(PTRLISTS_OUT)"
 
 # Tests
 .PHONY: test_tilemaps test_attribmaps
@@ -285,3 +303,12 @@ $(ATTRIBMAP_GFX):
 
 $(ATTRIBMAP_OUT):
 	mkdir -p $(ATTRIBMAP_OUT)
+
+$(PTRLISTS_TEXT):
+	mkdir -p $(PTRLISTS_TEXT)
+
+$(PTRLISTS_INT):
+	mkdir -p $(PTRLISTS_INT)
+
+$(PTRLISTS_OUT):
+	mkdir -p $(PTRLISTS_OUT)

@@ -1,0 +1,14 @@
+﻿(1, ['AttributeName'], [203], [(None, None)], [False], None, None, True, None)
+48
+kabuto#32588
+kuwagata#32588
+Index[#version],AttributeName
+0,そくど
+1,いリょく
+2,しょうじょう
+3,ぼうぎょ
+4,せっち
+5,かいふく
+6,かいじょ
+7,ヘんか
+8,ぼうがい

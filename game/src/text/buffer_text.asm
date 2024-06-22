@@ -40,4 +40,33 @@ BufferTextFromList::
   jr nz, .copyLoop
   ret
 
-; Look in version folders for ListPointerTable
+SECTION "List Pointer Table", ROM0[$29C6]
+ListPointerTable::
+  dbw BANK(PtrListUnknown00), PtrListUnknown00
+  dbw BANK(PtrListPartsHead), PtrListPartsHead
+  dbw BANK(PtrListPartsRArm), PtrListPartsRArm
+  dbw BANK(PtrListPartsLArm), PtrListPartsLArm
+  dbw BANK(PtrListPartsLegs), PtrListPartsLegs
+  dbw BANK(PtrListAttributes), PtrListAttributes
+  dbw BANK(PtrListSkills), PtrListSkills
+  dbw BANK(PtrListMovement), PtrListMovement
+  dbw BANK(PtrListUnknown08),PtrListUnknown08
+  dbw BANK(PtrListPersonalities), PtrListPersonalities
+  dbw BANK(PtrListMedaforce), PtrListMedaforce
+  dbw BANK(PtrListMedals), PtrListMedals
+  dbw BANK(PtrListUnknown0C), PtrListUnknown0C
+  dbw BANK(PtrListItems), PtrListItems
+  dbw BANK(PtrListUnknown0E), PtrListUnknown0E
+  dbw $00, $0000
+  dbw $00, $0000
+  dbw BANK(PtrListMedarotters), PtrListMedarotters
+  dbw BANK(PtrListUnknown10), PtrListUnknown10
+  dbw BANK(PtrListTerrain), PtrListTerrain
+  dbw BANK(PtrListUnknown12), PtrListUnknown12
+  dbw BANK(PtrListAttacks), PtrListAttacks
+  dbw BANK(PtrListCharacterNames), PtrListCharacterNames
+  dbw BANK(PtrListMedarots), PtrListMedarots
+  dbw BANK(PtrListUnknown16), PtrListUnknown16
+  dbw BANK(PtrListUnknown17), PtrListUnknown17
+  dbw BANK(PtrListUnknown18), PtrListUnknown18
+  dbw BANK(PtrListMusicTitles), PtrListMusicTitles
