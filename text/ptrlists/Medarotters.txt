@@ -1,8 +1,8 @@
-﻿(2, ['Unknown', 'Name'], [None, 203], [(3, 0), (None, None)], [True, False], None, None, True, None)
+﻿(2, ['Unknown', 'MedarotterName'], [None, 203], [(3, 0), (None, None)], [True, False], None, None, True, None)
 256
 kabuto#-1
 kuwagata#-1
-Index[#version],Unknown,Name
+Index[#version],Unknown,MedarotterName
 0,\x1d\x00\x01,メダマスタ-
 1,\x01\x01\x00,アリカ
 2,\x01\x01\x00,アリカ

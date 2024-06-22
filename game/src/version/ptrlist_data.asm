@@ -26,7 +26,7 @@ ListPointerTable::
   dbw BANK(PtrListUnknown12), PtrListUnknown12
   dbw BANK(PtrListMedarots), PtrListMedarots
   dbw BANK(PtrListMedarotters), PtrListMedarotters
-  dbw BANK(PtrListUnknown15), PtrListUnknown15
+  dbw BANK(PtrListMedarotters2), PtrListMedarotters2
   dbw BANK(PtrListUnknown16), PtrListUnknown16
   dbw BANK(PtrListUnknown17), PtrListUnknown17
   dbw BANK(PtrListUnknown18), PtrListUnknown18
@@ -117,9 +117,9 @@ SECTION "Pointer List - Medarotters", ROMX[$44d0], BANK[$29]
 PtrListMedarotters::
   INCBIN cMedarotters
 
-SECTION "Pointer List - Unknown15", ROMX[$4630], BANK[$2b]
-PtrListUnknown15::
-  INCBIN cUnknown15
+SECTION "Pointer List - Medarotters2", ROMX[$4630], BANK[$2b]
+PtrListMedarotters2::
+  INCBIN cMedarotters2
 
 SECTION "Pointer List - Unknown16", ROMX[$4f42], BANK[$29]
 PtrListUnknown16::
