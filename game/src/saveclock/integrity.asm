@@ -4,7 +4,7 @@ SECTION "Save Validation Variables", WRAM0[$C4D3]
 W_SaveChecksumToCompare:: ds 2
 W_SaveValidationResults:: ds 1
 
-S_SaveChecksum EQU $BFFE
+DEF S_SaveChecksum EQU $BFFE
 
 SECTION "Save Integrity Functions", ROMX[$40E7], BANK[$15]
 WriteSaveHeaderAndChecksum::

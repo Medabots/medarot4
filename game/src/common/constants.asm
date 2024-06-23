@@ -9,5 +9,5 @@ INCLUDE "game/src/common/joypad.inc"
 ; H = FF00 to FFFF (HRAM and I/O, basically any address ldh works with)
 ; M = for symbolising values
 
-H_PushOAM           EQU $ff80
-H_VBlankCompleted   EQU $ff92
+DEF H_PushOAM           EQU $ff80
+DEF H_VBlankCompleted   EQU $ff92

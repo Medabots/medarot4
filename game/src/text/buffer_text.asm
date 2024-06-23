@@ -165,3 +165,5 @@ ListTextDummyPointerTable::
 REPT $100
   dbw BANK(ListTextDummy), ListTextDummy
 ENDR
+
+; ListPointerTable is defined in version/ptrlist_data.asm

@@ -280,11 +280,11 @@ try:
         with open(version_file_path, "w") as version_file:
             for var in file_constants[version]:
                 name = file_constants[version][var]
-                version_file.write(f'c{map_label.capitalize()}{var}        EQUS "\\"{os.path.join(output_path, f"{name}.map")}\\""\n')
+                version_file.write(f'DEF c{map_label.capitalize()}{var}        EQUS "\\"{os.path.join(output_path, f"{name}.map")}\\""\n')
 
             for idx in shifted_table_indices:
-                version_file.write(f'cBANK_{idx}_GAMEVERSION        EQU ${tilemap_tables[versionidx][idx][0]:02X}\n')
-                version_file.write(f'cADDR_{idx}_GAMEVERSION        EQU ${tilemap_tables[versionidx][idx][1]:04X}\n')
+                version_file.write(f'DEF cBANK_{idx}_GAMEVERSION        EQU ${tilemap_tables[versionidx][idx][0]:02X}\n')
+                version_file.write(f'DEF cADDR_{idx}_GAMEVERSION        EQU ${tilemap_tables[versionidx][idx][1]:04X}\n')
 
             version_file.write(f'INCLUDE "{os.path.join(version_src_path, f"{map_label}_table.asm")}"\n')
 
