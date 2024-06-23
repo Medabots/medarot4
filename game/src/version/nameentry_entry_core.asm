@@ -34,7 +34,7 @@ NamingEntryInputHandlerState::
   cbcallindex 9
   ld de, $C220
   cbcallindex 9
-  ld a, [$C761]
+  ld a, [W_NamingScreenTypeIndex]
   or a
   jr nz, .noWalkingAnimation
   ld de, $C200
@@ -140,7 +140,7 @@ NamingEntryInputHandlerState::
   ld a, [W_NamingScreenCursorPositionIndex]
   cp $FF
   jp z, .cursorPositionIsDoneOption
-  call $6179+cNSOFFSET ; NameEntryGetCursorPositionIndexDetailsAndPositionCursor
+  call NameEntryGetCursorPositionIndexDetailsAndPositionCursor
   ld a, 1
   ld [W_OAM_SpritesReady], a
   ret
@@ -156,7 +156,7 @@ NamingEntryInputHandlerState::
   ld [W_OAM_SpritesReady], a
   ld a, 0
   ld [W_NamingEntryBottomRowSelection], a
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -172,7 +172,7 @@ NamingEntryInputHandlerState::
   ld [W_OAM_SpritesReady], a
   ld a, 1
   ld [W_NamingEntryBottomRowSelection], a
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -188,13 +188,13 @@ NamingEntryInputHandlerState::
   ld [W_OAM_SpritesReady], a
   ld a, 2
   ld [W_NamingEntryBottomRowSelection], a
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
 
 NamingEntrySwitchCaseState::
-  call $6087+cNSOFFSET
+  call NameEntryAdvanceToNextPage
   ld a, 1
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -209,15 +209,15 @@ NamingEntryInputCharacterState::
   add $10
   add 4
   ldh [$FF8E], a
-  call $6296+cNSOFFSET ; GetTileMappingAddressFromCoordinatesForNameEntry
+  call GetTileMappingAddressFromCoordinatesForNameEntry
   di
   rst $20
   ld a, [hl]
   ei
-  call $6214+cNSOFFSET ; NameEntryDiacriticCheck
+  call NameEntryDiacriticCheck
   cp 1
   jp z, .dakuten
-  call $6214+cNSOFFSET ; NameEntryDiacriticCheck
+  call NameEntryDiacriticCheck
   cp 2
   jp z, .handakuten
   ld b, a
@@ -225,7 +225,7 @@ NamingEntryInputCharacterState::
   cp 8
   jp z, .exit
   ld a, b
-  call $6214+cNSOFFSET ; NameEntryDiacriticCheck
+  call NameEntryDiacriticCheck
   cp 3
   jp z, .isSpace
   
@@ -243,7 +243,7 @@ NamingEntryInputCharacterState::
   add hl, bc
   ld a, [$C4EE]
   ld [hl], a
-  call $600D+cNSOFFSET
+  call GetNameEntryFirstCharacterTileAddress
   ld a, [W_NamingScreenEnteredTextLength]
   ld b, 0
   ld c, a
@@ -263,7 +263,7 @@ NamingEntryInputCharacterState::
   ld [$C1E3], a
   ld a, 1
   ld [W_OAM_SpritesReady], a
-  call $601B+cNSOFFSET
+  call RenderNameEntryTextInputUnderlines
   jp .exit
 
 .dakuten
@@ -298,12 +298,12 @@ NamingEntryInputCharacterState::
   push af
   ld [hl], a
   ld [$C4EE], a
-  call $6244+cNSOFFSET
+  call NameEntryDiacriticCharacterIndexToDiacriticCharacterIndex
   ld a, [W_NamingScreenEnteredTextLength]
   dec a
   ld b, 0
   ld c, a
-  call $600D+cNSOFFSET
+  call GetNameEntryFirstCharacterTileAddress
   add hl, bc
   ld a, [$C4EE]
   di
@@ -357,12 +357,12 @@ NamingEntryInputCharacterState::
   push af
   ld [hl], a
   ld [$C4EE], a
-  call $6244+cNSOFFSET
+  call NameEntryDiacriticCharacterIndexToDiacriticCharacterIndex
   ld a, [W_NamingScreenEnteredTextLength]
   dec a
   ld b, 0
   ld c, a
-  call $600D+cNSOFFSET
+  call GetNameEntryFirstCharacterTileAddress
   add hl, bc
   ld a, [$C4EE]
   di
@@ -403,7 +403,7 @@ NamingEntryInputCharacterState::
   ld [W_OAM_SpritesReady], a
   ld a, 2
   ld [W_NamingEntryBottomRowSelection], a
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ld a, 0
@@ -414,7 +414,7 @@ NamingEntryBackspaceState::
   ld a, [W_NamingScreenEnteredTextLength]
   or a
   jp z, .exit
-  call $60C2+cNSOFFSET
+  call NameEntryDoBackspace
 
 .exit
   ld a, 1
@@ -440,7 +440,7 @@ NamingEntrySubmitNameState::
   ld a, d
   or a
   jp nz, .nameHasNonSpaceCharacters
-  call $61AA+cNSOFFSET ; AutofillImagineerAsEnteredName
+  call AutofillImagineerAsEnteredName
   jp .cannotAcceptName
 
 .nameHasNonSpaceCharacters
@@ -468,7 +468,7 @@ NamingEntrySubmitNameState::
 NamingEntryBottomRowInputHandlerState::
   ld de, $C1E0
   cbcallindex 9
-  ld a, [$C761]
+  ld a, [W_NamingScreenTypeIndex]
   or a
   jr nz, .noWalkingAnimation
   ld de, $C200
@@ -518,7 +518,7 @@ NamingEntryBottomRowInputHandlerState::
   and M_JPInputUp
   jr z, .upNotPressed
   xor a
-  call $60FE+cNSOFFSET ; NameEntryNavigateAwayFromBottomRow
+  call NameEntryNavigateAwayFromBottomRow
   ret
 
 .upNotPressed
@@ -526,7 +526,7 @@ NamingEntryBottomRowInputHandlerState::
   and M_JPInputDown
   jr z, .downNotPressed
   ld a, 1
-  call $60FE+cNSOFFSET ; NameEntryNavigateAwayFromBottomRow
+  call NameEntryNavigateAwayFromBottomRow
   ret
 
 .downNotPressed
@@ -542,7 +542,7 @@ NamingEntryBottomRowInputHandlerState::
 .dontLoopToEnd
   ld [W_NamingEntryBottomRowSelection], a
   call PositionNameEntryBottomRowCursor
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ret
   jr .exit
 
@@ -559,14 +559,14 @@ NamingEntryBottomRowInputHandlerState::
 .dontLoopToStart
   ld [W_NamingEntryBottomRowSelection], a
   call PositionNameEntryBottomRowCursor
-  call $69FB+cNSOFFSET
+  call NameEntryHighlightBottomRowOption
   ret
 
 .exit
   ret
 
 NamingEntrySwitchCaseFromBottomRowState::
-  call $6087+cNSOFFSET
+  call NameEntryAdvanceToNextPage
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -590,7 +590,7 @@ NamingEntryDirectSelectionFromBottomRowState::
   dw .submitName
 
 .switchCase
-  call $6087+cNSOFFSET
+  call NameEntryAdvanceToNextPage
   ld a, $10
   ld [W_NamingScreenSubSubSubStateIndex], a
   ret
@@ -601,7 +601,7 @@ NamingEntryDirectSelectionFromBottomRowState::
   ld a, [W_NamingScreenEnteredTextLength]
   or a
   jp z, .backspaceExit
-  call $60C2+cNSOFFSET
+  call NameEntryDoBackspace
 
 .backspaceExit
   ld a, $10
@@ -617,7 +617,7 @@ NamingEntryBackspaceFromBottomRowState::
   ld a, [W_NamingScreenEnteredTextLength]
   or a
   jp z, .exit
-  call $60C2+cNSOFFSET
+  call NameEntryDoBackspace
 
 .exit
   ld a, $10
@@ -643,7 +643,7 @@ NamingEntrySubmitNameFromBottomRowState::
   ld a, d
   or a
   jp nz, .nameHasNonSpaceCharacters
-  call $61AA+cNSOFFSET ; AutofillImagineerAsEnteredName
+  call AutofillImagineerAsEnteredName
   jp .cannotAcceptName
 
 .nameHasNonSpaceCharacters

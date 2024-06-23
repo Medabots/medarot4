@@ -1,0 +1,12 @@
+﻿(1, ['Personality'], [203], [(None, None)], [False], None, None, True, None)
+16
+kabuto#24966
+kuwagata#24966
+Index[#version],Personality
+0,スピ-ド
+1,パワ-
+2,テクニック
+3,プロテクト
+4,リデュ-ス
+5,チェンジ
+6,ランダム

@@ -127,41 +127,33 @@ BufferTextFromList_NewListHelper::
   ret
 
 NewListPointerTable::
-  dw ListTextDummyPointerTable ; 7F:5379
-  dw ListTextDummyPointerTable ; 49:51B5
-  dw ListTextDummyPointerTable ; 4E:46C0
-  dw ListTextDummyPointerTable ; 4E:597C
-  dw ListTextDummyPointerTable ; 49:6471
-  dw ListTextDummyPointerTable ; 27:7EC0
-  dw ListTextDummyPointerTable ; 27:7F4C
-  dw ListTextDummyPointerTable ; 27:7F9A
-  dw ListTextDummyPointerTable ; 26:5EDD
-  dw ListTextDummyPointerTable ; 26:6141
-  dw ListTextDummyPointerTable ; 26:5800
-  dw ListTextDummyPointerTable ; 49:4B89
-  dw ListTextDummyPointerTable ; 26:6186
-  dw ListTextDummyPointerTable ; 49:4939
-  dw ListTextDummyPointerTable ; 29:4000
-  dw ListTextDummyPointerTable ; 00:0000
-  dw ListTextDummyPointerTable ; 00:0000
-  dw ListTextDummyPointerTable ; 49:4DD7
-  dw ListTextDummyPointerTable ; 49:4E56
-  dw ListTextDummyPointerTable ; 2A:4000
-  dw ListTextDummyPointerTable ; 2A:4364
-  dw ListTextDummyPointerTable ; 49:4000
-  dw ListTextDummyPointerTable ; 29:44D0
-  dw ListTextDummyPointerTable ; 2B:4630
-  dw ListTextDummyPointerTable ; 29:4F42
-  dw ListTextDummyPointerTable ; 2B:5290
-  dw ListTextDummyPointerTable ; 49:4C78
-  dw ListTextDummyPointerTable ; 03:7383
+  dw PtrListUnknown00
+  dw PtrListPartsHead
+  dw PtrListPartsRArm
+  dw PtrListPartsLArm
+  dw PtrListPartsLegs
+  dw PtrListAttributes
+  dw PtrListSkills
+  dw PtrListMovement
+  dw PtrListUnknown08
+  dw PtrListPersonalities
+  dw PtrListMedaforce
+  dw PtrListMedals
+  dw PtrListUnknown0C
+  dw PtrListItems
+  dw PtrListUnknown0E
+  dw $0000
+  dw $0000
+  dw PtrListTerrain
+  dw PtrListAttacks
+  dw PtrListEncounterNames
+  dw PtrListUnknown12
+  dw PtrListMedarots
+  dw PtrListMedarotters
+  dw PtrListMedarotters2
+  dw PtrListUnknown16
+  dw PtrListUnknown17
+  dw PtrListUnknown18
+  dw PtrListMusicTitles
 
-SECTION "Placeholder List Text", ROMX[$4000], BANK[$D6]
-; Remove this section after creating ptrlist_data.asm and edit NewListPointerTable.
-ListTextDummy::
-  db "TEST1",$CB,"TEST2",$CB,"TEST3",$CB,"WORD"
-
-ListTextDummyPointerTable::
-REPT $100
-  dbw BANK(ListTextDummy), ListTextDummy
-ENDR
+; List includes are defined in version/ptrlist_data.asm

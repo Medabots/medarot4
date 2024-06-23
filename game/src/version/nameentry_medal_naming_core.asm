@@ -14,12 +14,12 @@ MedalNamingScreenStateMachine::
   dw PlayerNamingScreenTextEntryState
   dw PlayerNamingScreenPrepareFadeOutState
   dw PlayerNamingScreenFadeOutState
-  dw $67B3+cNSOFFSET
+  dw MedalNamingScreenCopyNameState
   dw PlayerNamingScreenExitState
   dw PlayerNamingScreenPlaceholderState
 
 MedalNamingScreenUnusedState::
-  ld a, [$C762]
+  ld a, [W_NamingEntryMedalIndex]
   cbcallindex $44
   or a
   jr z, .nextState
@@ -75,19 +75,19 @@ MedalNamingScreenInitState::
   cbcall ClearSprites
   cbcall ScreenResetThing
   cbcallindex $24
-  ld a, [$C762]
+  ld a, [W_NamingEntryMedalIndex]
   push af
   ld hl, $C720
   ld bc, $80
   call memclr
   pop af
-  ld [$C762], a
+  ld [W_NamingEntryMedalIndex], a
   ld a, 1
-  ld [$C761], a
-  call $699D+cNSOFFSET
-  call $697C+cNSOFFSET
-  call $699D+cNSOFFSET
-  call $69C8+cNSOFFSET
+  ld [W_NamingScreenTypeIndex], a
+  call GetDefaultMedalName
+  call BufferDefaultMedalName
+  call GetDefaultMedalName
+  call MedalNameEntryCountNameLength
   push af
   ld [W_NamingScreenEnteredTextLength], a
   pop af
@@ -103,7 +103,7 @@ MedalNamingScreenDrawScreenState::
   cbcall LoadMaliasGraphics
   ld bc, $50
   cbcall LoadMaliasGraphics
-  ld a, [$C762]
+  ld a, [W_NamingEntryMedalIndex]
   ld [W_ListItemIndexForBuffering], a
   ld a, 4
   ld [W_ListItemInitialOffsetForBuffering], a
@@ -132,8 +132,8 @@ MedalNamingScreenMapScreenAndPrepareSpritesState::
   ld e, $22
   ld a, 1
   cbcall DecompressTilemap0
-  call $601B+cNSOFFSET
-  ld a, [$C762]
+  call RenderNameEntryTextInputUnderlines
+  ld a, [W_NamingEntryMedalIndex]
   ld [W_ListItemIndexForBuffering], a
   ld b, $B
   ld c, 6
@@ -144,7 +144,7 @@ MedalNamingScreenMapScreenAndPrepareSpritesState::
   ld bc, W_ListItemBufferArea
   ld a, 5
   call PutStringFixedLength
-  call $600D+cNSOFFSET
+  call GetNameEntryFirstCharacterTileAddress
   push hl
   ld hl, W_NamingScreenEnteredTextBuffer
   pop de
@@ -201,4 +201,28 @@ MedalNamingScreenFadeInState::
   xor a
   ld [W_NamingScreenSubSubSubStateIndex], a
   ld [W_MainScriptExitMode], a
+  jp IncNamingScreenSubSubStateIndex
+
+MedalNamingScreenCopyNameState::
+  ld a, [W_NamingEntryMedalIndex]
+  cbcallindex $45
+  ld hl, $30
+  add hl, de
+  push hl
+  pop de
+  ld hl, W_NamingScreenEnteredTextBuffer
+  ld bc, 9
+  call memcpy
+  ld a, [W_NamingEntryMedalIndex]
+  cp 0
+  jr z, .copyToAdditionalBuffer
+  cp 1
+  jr z, .copyToAdditionalBuffer
+  jp IncNamingScreenSubSubStateIndex
+
+.copyToAdditionalBuffer
+  ld hl, W_NamingScreenEnteredTextBuffer
+  ld de, $C6E3
+  ld bc, 9
+  call memcpy
   jp IncNamingScreenSubSubStateIndex

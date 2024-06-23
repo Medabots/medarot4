@@ -1,0 +1,12 @@
+﻿(1, ['Movement'], [203], [(None, None)], [False], None, None, True, None)
+16
+kabuto#32732
+kuwagata#32732
+Index[#version],Movement
+0,ひこう
+1,ふゆう
+2,たきゃく
+3,にきゃく
+4,しゃリょう
+5,せんしゃ
+6,せんすい
