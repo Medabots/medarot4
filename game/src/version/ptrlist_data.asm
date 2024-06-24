@@ -80,3 +80,23 @@ PtrListUnknown18::
 PtrListMusicTitles::
   INCBIN cMusicTitles
 
+; Take over the old dialog text banks
+SECTION "PtrList0", ROMX[$7D00], BANK[$ad]
+PtrList0:
+  INCBIN cPtrList0
+
+SECTION "PtrList1", ROMX[$4000], BANK[$ae]
+PtrList1:
+  INCBIN cPtrList1
+
+SECTION "PtrList2", ROMX[$4000], BANK[$af]
+PtrList2:
+  INCBIN cPtrList2
+
+SECTION "PtrList3", ROMX[$4000], BANK[$e9]
+PtrList3:
+  INCBIN cPtrList3
+
+SECTION "PtrList4", ROMX[$4000], BANK[$ea]
+PtrList4:
+  INCBIN cPtrList4
