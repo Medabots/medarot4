@@ -81,7 +81,7 @@ PtrListMusicTitles::
   INCBIN cMusicTitles
 
 ; Take over the old dialog text banks
-SECTION "PtrList0", ROMX[$7D00], BANK[$ad]
+SECTION "PtrList0", ROMX[$4000], BANK[$ad]
 PtrList0:
   INCBIN cPtrList0
 
