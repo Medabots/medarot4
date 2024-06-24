@@ -352,7 +352,8 @@ with open(os.path.join(version_src_path, "text_tables.asm"), "w") as f:
         if i not in text_ptr_versions:
             f.write(f'SECTION "TextSection{i:02}", ROMX[${entry[1]:04x}], BANK[${entry[0]:02x}]\n')
             f.write(f'TextSection{i:02}:\n')
-            f.write(f'  INCBIN cTextSection{i:02}\n\n')
+            f.write(f'  INCBIN cTextSection{i:02}\n')
+            f.write(f'TextSection{i:02}End:\n\n')
 
         i += 1
 
