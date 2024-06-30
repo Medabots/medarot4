@@ -74,7 +74,7 @@ CrossBankFunctionTable::
 	dbw $15, $55DF ; 44
 	dbw $15, $560D ; 45
 	dbw $15, $5693 ; 46
-	dbw $15, $5834 ; 47
+	cbpointer IsItemInInventory ; 47
 	dbw $15, $5857 ; 48
 	dbw $15, $58A6 ; 49
 	dbw $15, $58FE ; 4A
