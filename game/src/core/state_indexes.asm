@@ -4,6 +4,9 @@ SECTION "State Machine Indexes", WRAM0[$C480]
 W_CoreStateIndex:: ds 1
 W_CoreSubStateIndex:: ds 1
 
+SECTION "Transport Option State Indexes", WRAM0[$C57A]
+W_TransportOptionSubSubSubStateIndex:: ds 1
+
 SECTION "Naming Screen State Indexes", WRAM0[$C580]
 W_NamingScreenSubSubStateIndex:: ds 1
 
