@@ -16,6 +16,11 @@ on:
         default: true
         description: 'Use latest translations from shared Google Docs sheet (default: true)'
 
+# https://github.com/actions/checkout/issues/1487
+# https://github.com/actions/checkout/issues/1809
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -31,12 +36,12 @@ jobs:
           rgbgfx --version
 
       - name: Checkout main repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           path: 'code'
 
       - name: Checkout baserom repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           repository: ${{ secrets.BASEROM_REPOSITORY }}
           ssh-key: ${{ secrets.BASEROM_KEY }}
