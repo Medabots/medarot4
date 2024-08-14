@@ -7,6 +7,10 @@ W_CoreSubStateIndex:: ds 1
 SECTION "Transport Option State Indexes", WRAM0[$C57A]
 W_TransportOptionSubSubSubStateIndex:: ds 1
 
+SECTION "Item Action State Indexes", WRAM0[$C57C]
+W_ItemActionSubSubStateIndex:: ds 1
+W_ItemActionSubSubSubStateIndex:: ds 1
+
 SECTION "Naming Screen State Indexes", WRAM0[$C580]
 W_NamingScreenSubSubStateIndex:: ds 1
 
