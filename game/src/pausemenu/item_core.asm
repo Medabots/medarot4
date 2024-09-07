@@ -190,7 +190,7 @@ ItemMenuMustBeInVehicleMessageState::
   ret
 
 ItemMenuTriggerSpecialItemActionState::
-  jp $5318
+  jp ItemActionStateMachine
 
 ItemMenuReturnState::
   ld a, 6

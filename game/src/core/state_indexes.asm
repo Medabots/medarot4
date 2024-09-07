@@ -35,3 +35,9 @@ IncSubStateIndex::
   inc a
   ld [W_CoreSubStateIndex], a
   ret
+
+SECTION "Increment Item Action SubSubSubState Index", ROMX[$544F], BANK[$06]
+IncItemActionSubSubSubStateIndex::
+  ld hl, W_ItemActionSubSubSubStateIndex
+  inc [hl]
+  ret

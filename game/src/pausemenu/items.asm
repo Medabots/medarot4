@@ -1,6 +1,9 @@
 INCLUDE "game/src/common/macros.asm"
 INCLUDE "game/src/common/constants.asm"
 
+SECTION "Item Action Message Index Variable", WRAM0[$C495]
+W_ItemActionMessageIndex:: ds 2
+
 SECTION "Item Page Row Index",  WRAM0[$C4FC]
 W_ItemPageRowIndex:: ds 1
 
@@ -238,6 +241,14 @@ ItemMenuShowPageArrows::
   ld [$C103], a
   ld a, 8
   ld [$C104], a
+  ret
+
+SECTION "Item Action Helper Functions", ROMX[$53F4], BANK[$06]
+ItemActionStoreMessageIndex::
+  ld a, b
+  ld [W_ItemActionMessageIndex], a
+  ld a, c
+  ld [W_ItemActionMessageIndex + 1], a
   ret
 
 SECTION "Item Helper Functions", ROMX[$5834], BANK[$15]

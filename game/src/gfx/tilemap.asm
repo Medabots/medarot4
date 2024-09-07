@@ -408,7 +408,33 @@ GetOverworldScrollTileOffset::
   ld c, a
   ret
 
-SECTION "Clear Tilemaps and Attribmaps", ROMX[$408E], BANK[$15]
+SECTION "Clear Tilemaps and Attribmaps 1", ROM0[$2936]
+ClearMapRect::
+  ld a, b
+  ld [$C4EE], a
+
+.rowLoop
+  push hl
+  ld a, [$C4EE]
+  ld b, a
+
+.tileLoop
+  di
+  rst $20
+  xor a
+  ld [hli], a
+  ei
+  dec b
+  jr nz, .tileLoop
+
+  pop hl
+  ld de, $20
+  add hl, de
+  dec c
+  jr nz, .rowLoop
+  ret
+
+SECTION "Clear Tilemaps and Attribmaps 2", ROMX[$408E], BANK[$15]
 ClearMappings0::
   ld hl, $9800
   jr ClearMappings1.extEntry
