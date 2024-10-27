@@ -1,6 +1,6 @@
 ﻿Index[#version],Pointer[#version|],Original,Translated
-000,0x118000,<SFF>ロ-テ-ションをきめる<CD>メダロットを 選んでください<*04>,<SFF>Please select the rotation<D3>order of your Medarots.<*04>
-001,0x118022,<SFF>メダロットが 自分で考えて行動します<*04>,<SFF>Your Medarots will act of<D3>their own accord.<*04>
+000,0x118000,<SFF>ロ-テ-ションをきめる<CD>メダロットを 選んでください<*04>,<SFF>Please select the positions of your Medarots.<*04>
+001,0x118022,<SFF>メダロットが 自分で考えて行動します<*04>,<SFF>Your Medarots will act of their own accord.<*04>
 002,0x118024,<SFF>頭パ-ツを使います<CD>変形の時は ドライブAを使います<*04>,"<SFF><f01>Uses Head part; When Medachanged,<D3>Drive A will be used.<f00> <*04>"
 003,0x118026,<SFF>右院パ-ツを使います<CD>変形の時は ドライブBを使います<*04>,"<SFF><f01>Uses Right Arm part; When<D3>Medachanged, Drive B will be used.<f00> <*04>"
 004,0x118028,<SFF>左院パ-ツを使います<CD>変形の時は ドライブCを使います<*04>,"<SFF><f01>Uses Left Arm part; When<D3>Medachanged, Drive C will be used.<f00> <*04>"
@@ -10,7 +10,7 @@
 008,0x118030,<SFF>メダフォ-ス3を使います<*04>,<SFF>Use Medaforce 3.<*04>
 009,0x118032,<SFF>変形します<CD>すでに 変形している時は ?と同じ<*04>,<SFF><f01>Medachange. Already Medachanged?<D3>The same action will happen.<f00><*04>
 010,0x118034,<SFF>変形をかいじょします<CD>変形していない時は ?と同じ<*04>,
-011,0x118036,<SFF>左右キ-で ロ-テ-ションポイントを<CD>選んでください<*04>,<SFF>Please select the left and<D3>right rotation point.<*04>
+011,0x118036,<SFF>左右キ-で ロ-テ-ションポイントを<CD>選んでください<*04>,<SFF>Please select the left and<D3>right loop point.<*04>
 012,0x118038,<SFF>スタ-トボタンで<CD>ロ-テ-ションのくみかえ<*04>,
 013,0x11803a,このアイテムは 使えません!<*03>,You can't use this item!<*03>
 014,0x118042,ここでは 使えません!<*03>,You can't use this here!<*03>
@@ -18,51 +18,51 @@
 016,0x118046,今は セ-ブできません!,You can't save right now!<*03>
 017,0x118048,ここでは 使えません!,You can't use this here!
 018,0x11804a,今は 使えません!,You can't use this right now!
-019,0x11804c,メダロット「ヴェイパ-レ-ル」が<CD>租まれてないよ!<CF>頭パ-ツ 「スチ-ムボ-ド」!<CD>右院パ-ツ 「スチ-ムド-リン」!<CF>左院パ-ツ 「スチ-ムパイプ」!<CD>脚部パ-ツ 「スチ-ムタ-ビン」!<CF>メダロット「ヴェイパ-レ-ル」が<CD>かんせいだよ!,"The Medarot, 'Vapor Rail'<D3>has been obtained!<CF>Head part, 'Steam Board'!<D3>Right arm part, 'Steam Dolin'!<CF>Left arm part, 'Steam Pipe'!<D3>Leg part, 'Steam Turbine'!<CF>The Medarot, 'Vapor Rail'<D3>has been completed!"
-020,0x11804e,メダロット「スカイカ-ゴ」が<CD>租まれてないよ!<CF>頭パ-ツ 「エアフライト」!<CD>右院パ-ツ 「エアウィング」!<CF>左院パ-ツ 「エアフィン」!<CD>脚部パ-ツ 「エアタ-ビン」!<CF>メダロット「スカイカ-ゴ」が<CD>かんせいだよ!,"The Medarot, 'Skycargo'<D3>has been obtained!<CF>Head part, 'Air Flight'!<D3>Right arm part, 'Air Wing'!<CF>Left arm part, 'Air Fin'!<D3>Leg part, 'Air Turbine'!<CF>The Medarot, 'Skycargo'<D3>has been completed!"
-021,0x118050,メダロット「オ-トクル-ズ」が<CD>租まれてないよ!<CF>頭パ-ツ 「ウォ-タフリ-ト」!<CD>右院パ-ツ 「ウォ-タホ-ル」!<CF>左院パ-ツ 「ウォ-タポ-ト」!<CD>脚部パ-ツ 「ウォ-タタ-ビン」!<CF>メダロット「オ-トクル-ズ」が<CD>かんせいだよ!,"The Medarot, 'Auto-Cruise'<D3>has been obtained!<CF>Head part, 'Water Fleet'!<D3>Right arm part, 'Water Hole'!<CF>Left arm part, 'Water Port'!<D3>Leg part, 'Water Turbine'!<CF>The Medarot, 'Auto-Cruise'<D3>has been completed!"
+019,0x11804c,メダロット「ヴェイパ-レ-ル」が<CD>租まれてないよ!<CF>頭パ-ツ 「スチ-ムボ-ド」!<CD>右院パ-ツ 「スチ-ムド-リン」!<CF>左院パ-ツ 「スチ-ムパイプ」!<CD>脚部パ-ツ 「スチ-ムタ-ビン」!<CF>メダロット「ヴェイパ-レ-ル」が<CD>かんせいだよ!,"The Medarot, Vapor Rail, is not assembled!<CF>Head: Steam Board!<D3>Right Arm: Steam Dolin!<CF>Left arm part, Steam Pipe!<D3>Leg part, Steam Turbine!<CF>Assemble these to make the Medarot, Vapor Rail!"
+020,0x11804e,メダロット「スカイカ-ゴ」が<CD>租まれてないよ!<CF>頭パ-ツ 「エアフライト」!<CD>右院パ-ツ 「エアウィング」!<CF>左院パ-ツ 「エアフィン」!<CD>脚部パ-ツ 「エアタ-ビン」!<CF>メダロット「スカイカ-ゴ」が<CD>かんせいだよ!,"The Medarot, Skycargo, is not assembled!<CF>Head part, Air Flight!<D3>Right arm part, Air Wing!<CF>Left arm part, Air Fin!<D3>Leg part, Air Turbine!<CF>Assemble these to make the Medarot, Skycargo!"
+021,0x118050,メダロット「オ-トクル-ズ」が<CD>租まれてないよ!<CF>頭パ-ツ 「ウォ-タフリ-ト」!<CD>右院パ-ツ 「ウォ-タホ-ル」!<CF>左院パ-ツ 「ウォ-タポ-ト」!<CD>脚部パ-ツ 「ウォ-タタ-ビン」!<CF>メダロット「オ-トクル-ズ」が<CD>かんせいだよ!,"The Medarot, Auto-Cruise, is not assembled!<CF>Head part, Water Fleet!<D3>Right arm part, Water Hole!<CF>Left arm part, Water Port!<D3>Leg part, Water Turbine!<CF>Assemble these to make the Medarot, Auto-Cruise!"
 022,0x118052,このバ-ジョンでは セ-ブできません,Cannot save with this version.
 023,0x118054,"<@RL,0A,01>ざんねん! このバ-ジョンでは<CD>つうしんできません!<*03>","<@RL,0A,01>Sorry!<D3>I can't link with this version!<*03>"
 024,0x118056,このアイテムは のリもので<CD>使ってください!<*03>,
-025,0x118058,"<@RL,0A,01>つうしん前に セ-ブします!<CD>よろしいですか?<*04>","<@RL,0A,01>Do you want to save<D3>beforehand?<*04>"
+025,0x118058,"<@RL,0A,01>つうしん前に セ-ブします!<CD>よろしいですか?<*04>","<@RL,0A,01>Do you want to save beforehand?<*04>"
 026,0x118062,"<@RL,0A,00>つうしんを あきらめた!","<@RL,0A,00>Link aborted!"
-027,0x118064,"<@RL,0A,02>つうしんネットに せつぞくします!<S46><*04>","<@RL,0A,02>Link will now connect!"
+027,0x118064,"<@RL,0A,02>つうしんネットに せつぞくします!<S46><*04>","<@RL,0A,02>Link will now connect!<S46><*04>"
 028,0x118066,"<@RL,0A,00>つうしんネットヘの せつぞくに<CD>しっぱいした!","<@RL,0A,00>Link connection failed!"
 029,0x118068,セ-ブ中!<*04>,Saving!<*04>
-030,0x11806a,<SFF>ともだちと きがるに ロボトル!<*04>,<SFF>A casual Robattle with<D3>a friend!<*04>
-031,0x11806c,<SFF>ともだちと パ-ツをかけた<CD>しんけんロボトル!<*04>,<SFF>A serious Robattle where your<D3>parts are at stake!<*04>
-032,0x11806e,<SFF>ともだちと パ-ツトレ-ド!<*04>,Trade parts with your friends!<*04>
-033,0x118070,<SFF>ともだちに メダルをあげます!<*04>,Give Medals to your friends!<*04>
-034,0x118072,<SFF>つうしんネットを おわる時は<CD>かならず 選択してください!<*04>,<SFF>Select this when you want<D3>to disconnect the link.<*04>
-035,0x118074,2体いじょう 租まれた<CD>メダロットがないと できません!<S46><*04>,You need at least two or<D3>more assembled Medarots!<S46><*04>
+030,0x11806a,<SFF>ともだちと きがるに ロボトル!<*04>,<SFF>A casual robattle with a friend!<*04>
+031,0x11806c,<SFF>ともだちと パ-ツをかけた<CD>しんけんロボトル!<*04>,<SFF>A serious robattle where your parts are at stake!<*04>
+032,0x11806e,<SFF>ともだちと パ-ツトレ-ド!<*04>,<SFF>Trade parts with your friends!<*04>
+033,0x118070,<SFF>ともだちに メダルをあげます!<*04>,<SFF>Give Medals to your friends!<*04>
+034,0x118072,<SFF>つうしんネットを おわる時は<CD>かならず 選択してください!<*04>,<SFF>Select this when you want to disconnect the link.<*04>
+035,0x118074,2体いじょう 租まれた<CD>メダロットがないと できません!<S46><*04>,You need at least two or more assembled Medarots!<S46><*04>
 036,0x118076,さあ しょうぶだ!<S5A><*04>,"Ok, fight!<S5A><*04>"
 037,0x118078,デ-タ転送エラ-!<S5A><*04>,Data transfer error!<S5A><*04>
 038,0x11807a,モ-ドを 選んでください!<*04>,Please select a mode!<*04>
 039,0x11807c,つうしんチェック中!<*04>,Checking link!<*04>
-040,0x11807e,ロボトルに 勝ちました!<CD>つうしんロボトル <&BUF02>勝<&BUF01>敗<*03>,"<f01>Robattle won! Link Robattle<D3><&BUF02> won, <&BUF01> lost<f00><*03>"
-041,0x118080,ロボトルに まけました!<CD>つうしんロボトル <&BUF02>勝<&BUF01>敗<*03>,"<f01>Robattle lost! Link Robattle<D3><&BUF02> won, <&BUF01> lost.<f00><*03>"
+040,0x11807e,ロボトルに 勝ちました!<CD>つうしんロボトル <&BUF02>勝<&BUF01>敗<*03>,"Link robattle won!<D3><&BUF02> wins, <&BUF01> losses<*03>"
+041,0x118080,ロボトルに まけました!<CD>つうしんロボトル <&BUF02>勝<&BUF01>敗<*03>,"Link robattle lost!<D3><&BUF02> wins, <&BUF01> losses.<*03>"
 042,0x118082,つうしんデ-タ てんそう中!<*04>,Communication data transfering!<*04>
-043,0x118084,あいてが 「ロボと-る」中です!<S5A><*04>,The other person is currently<D3>doing the 'Robotoll.'<S5A><*04>
-044,0x118086,タイミングよく Aボタンを おして<CD>パ-ツを ゲットしよう!<S5A><*04>,Press the A button with good<D3>timing to get the parts!<S5A><*04>
-045,0x118088,ざんねん! 「ハズレ」です!<CD>何も ゲットできなかった!<*03>,"Too bad! You got a ""Miss""!<D3>You get nothing!<*03>"
-046,0x11808a,ラッキ-! 「ハズレ」です!<CD>何も とられなかった!<*03>,"How lucky! You got a ""Miss""!<D3>You get nothing!<*03>"
-047,0x11808c,<&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を 手に入れた!<*03>,<&BUF03> <&BUF01> Part<D3><&BUF04> obtained!
-048,0x11808e,<&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を とられた!<*03>,<&BUF03> <&BUF01> Part<D3><&BUF04> recieved!
-049,0x118090,あっ!!<CD>つうしんロボトル 20回目です!<CF>メダロット社から きねんに<CD>はいごれい型メダロットいっしきを<CF>プレゼントいたします!<CF>あとで パ-ツデ-タを<CD>かくにんしてね!<*03>,"Ah!!<D3>This is your 20th link robottle!<CF>To celebrate, the Medarot<D3>Company is gifting you a<CF>complete Sun-type Medarot.<CF>Please look over the parts'<D3>data later!<*03>"
-050,0x118092,あっ!!<CD>つうしんロボトル 40回目です!<CF>メダロット社から きねんに<CD>かみ型メダロットいっしきを<CF>プレゼントいたします!<CF>あとで パ-ツデ-タを<CD>かくにんしてね!<*03>,"Ah!!<D3>This is your 40th link robottle!<CF>To celebrate, the Medarot<D3>Company is gifting you a<CF>complete Moon-type Medarot.<CF>Please look over the parts'<D3>data later!<*03>"
+043,0x118084,あいてが 「ロボと-る」中です!<S5A><*04>,The other person is currently doing the Robotoll<S5A><*04>
+044,0x118086,タイミングよく Aボタンを おして<CD>パ-ツを ゲットしよう!<S5A><*04>,Press the A button at the right time to win some parts!<S5A><*04>
+045,0x118088,ざんねん! 「ハズレ」です!<CD>何も ゲットできなかった!<*03>,Too bad! You got a Miss!<D3>You get nothing!<*03>
+046,0x11808a,ラッキ-! 「ハズレ」です!<CD>何も とられなかった!<*03>,How lucky! They got a Miss!<D3>They took nothing!<*03>
+047,0x11808c,<&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を 手に入れた!<*03>,<&BUF03> won the <&BUF01> part <&BUF04>!
+048,0x11808e,<&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を とられた!<*03>,<&BUF03> lost the <&BUF01> part <&BUF04>!
+049,0x118090,あっ!!<CD>つうしんロボトル 20回目です!<CF>メダロット社から きねんに<CD>はいごれい型メダロットいっしきを<CF>プレゼントいたします!<CF>あとで パ-ツデ-タを<CD>かくにんしてね!<*03>,"Ah! This is your 20th link robattle!<CF>To celebrate, the Medarot Company is gifting you a complete Sun-type Medarot.<CF>Please look over the parts' data later!<*03>"
+050,0x118092,あっ!!<CD>つうしんロボトル 40回目です!<CF>メダロット社から きねんに<CD>かみ型メダロットいっしきを<CF>プレゼントいたします!<CF>あとで パ-ツデ-タを<CD>かくにんしてね!<*03>,"Ah!! This is your 40th communication robattle!<CF>To celebrate, the Medarot Company is gifting you a complete Moon-type Medarot.<CF>Please look over the parts later!<*03>"
 051,0x118094,パ-ツ転送!<S5A><*04>,Part transfer!<S5A><*04>
-052,0x11809a,<&BUF03>は <&BUF00>パ-ツ<CD><&BUF01>を 手に入れた!<*03>,<&BUF03> <&BUF00> part<D3><&BUF01> was acquired!<*03>
-053,0x11809c,そうびされている メダルは<CD>あげることが できません!,You can not give away a Medal<D3>you currently have equipped!
-054,0x11809e,メダリアのついている メダルは<CD>あげることが できません!,You can not give away a Medal<D3>that has Medalia equipped!
-055,0x1180a0,あれ! このメダルは<CD>あいても 持っていますよ!,The opponent already owns<D3>this Medal!
-056,0x1180a2,あいてが メダルを選択しています!<CD>ちょっとまってね!<*04>,Your opponent is choosing a<D3>Medal. Please wait!<*04>
+052,0x11809a,<&BUF03>は <&BUF00>パ-ツ<CD><&BUF01>を 手に入れた!<*03>,<&BUF03> acquired the <&BUF00> part <f02><&BUF01><f00>!<*03>
+053,0x11809c,そうびされている メダルは<CD>あげることが できません!,You can not give away a Medal you currently have equipped!
+054,0x11809e,メダリアのついている メダルは<CD>あげることが できません!,You can not give away a Medal that has Medalia equipped!
+055,0x1180a0,あれ! このメダルは<CD>あいても 持っていますよ!,The other person already owns this Medal!
+056,0x1180a2,あいてが メダルを選択しています!<CD>ちょっとまってね!<*04>,The other person is choosing a Medal. Please wait!<*04>
 057,0x1180a4,メダル転送!<S5A><*04>,Medal transfer!<S5A><*04>
-058,0x1180a6,<&BUF03>は<CD><&BUF05>メダルを 手に入れた!<*03>,<&BUF03> <&BUF00> medal<D3><&BUF01> was acquired!<*03>
-059,0x1180a8,<&BUF03>の<CD><&BUF05>メダルが なくなった!<*03>,<&BUF03>'s <&BUF05> Medal<D3>was lost!<*03>
+058,0x1180a6,<&BUF03>は<CD><&BUF05>メダルを 手に入れた!<*03>,<&BUF03> acquired the <&BUF05> Medal!<*03>
+059,0x1180a8,<&BUF03>の<CD><&BUF05>メダルが なくなった!<*03>,<&BUF03>'s <&BUF05> Medal was lost!<*03>
 060,0x1180aa,パ-トナ-の<CD>メダロットを租んで下さい!<*03>,
 061,0x1180ac,何が 知リたいのかな?<*04>,What do you want to know?<*04>
 062,0x1180ae,今は コマンドを ひらけません!,Can't open command now!
-063,0x1180b0,OBJオ-バ- フリ-ズ!!<*04>,Object overfreeze!!<*04>
+063,0x1180b0,OBJオ-バ- フリ-ズ!!<*04>,Object overfreeze!<*04>
 064,0x1180b2,<SFF>かならず パ-トナ-を<CD>出場させてください!,
 065,0x1180b4,「<&BUF04>」メダルで<CD>パ-トナ-を租んで下さい!<*03>,
 066,0x1180b6,色を 変えたい メダロットを<CD>選んでや~!<*04>,

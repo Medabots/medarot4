@@ -2,7 +2,7 @@
 000,0x3fdd58,こ-んか-いの- らっき-<CD>メダロットは-<CF><*01>,
 001,0x3fdd5a,このおみくじは 時間切れで-す<CD>もういちど ひきなおしてくださいな<*04>,
 002,0x3fdd5c,このおみくじの ゆうこう<CD>時間は あと <&BUF0F>で-す<*04>,
-003,0x3fdd5e,まぁまあかな <*02>,
+003,0x3fdd5e,まぁまあかな <*02>,"It was so-so, I guess.<*02>"
 004,0x3fdd60,こんなもんかな<*02>,
 005,0x3fdd62,ふう あぶなかった<*02>,
 006,0x3fdd64,あとちょっとだったのに...<*02>,
@@ -56,9 +56,9 @@
 054,0x3fddfa,...フッ あまいな そんなことでは<CD>わたしの心は つかめないよ,
 055,0x3fddfc,ディテ-ルに こだわってね<CD>もっと こう...,
 056,0x3fddfe,ちがうっ! これは わたしの<CD>もとめる うつくしさでは ないっ!!,
-057,0x3fde00,メダロットは ほねぐみである<CD>ティンペットに 4つのパ-ツと<CF>1つのメダルを<CD>そうちゃくすれば かんせいする,
-058,0x3fde3a,メダロットどうしを たたかわせる<CD>ロボトルは メダロットを<CF>租み立てる だんかいから<CD>はじまっていると 言っていい,
-059,0x3fde3c,さまざまなしゅるいの パ-ツや<CD>メダルの せいしつを知リ<CF>それを せいす者こそが<CD>しんのメダロッタ-<CF>「メダマスタ-」なのだ!<*02>,
+057,0x3fde00,メダロットは ほねぐみである<CD>ティンペットに 4つのパ-ツと<CF>1つのメダルを<CD>そうちゃくすれば かんせいする,"A medarot is completed by combining four parts and a medal onto the frame, called a tinpet."
+058,0x3fde3a,メダロットどうしを たたかわせる<CD>ロボトルは メダロットを<CF>租み立てる だんかいから<CD>はじまっていると 言っていい,"It could be said that robattles, where medarots fight one another, begin from the moment they're assembled."
+059,0x3fde3c,さまざまなしゅるいの パ-ツや<CD>メダルの せいしつを知リ<CF>それを せいす者こそが<CD>しんのメダロッタ-<CF>「メダマスタ-」なのだ!<*02>,"The one who knows the different parts and natures of the medals and masters them is a true medarotter, the <f02>Medamaster<f00>!"
 060,0x3fde3e,ふぇ~~~!!<CD>まけちゃった~~<*02>,
 061,0x3fde5a,<SFF>おみくじ町<CD>ぼくと ゆかいな なかまたちの町<*02>,
 062,0x3fde5c,<SFF>しぜん公園1<CD>メダスピ-ドと メダロ-ドが できる<*02>,

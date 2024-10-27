@@ -47,7 +47,7 @@
 045,0x11d5ec,「なぐる」「がむしゃら」「まもる」<CD>「なおす」「おうえん」行動の時<CF>このあたいが 高いと<CD>行動が せいこうしやすくなる<*03>,"Increases the success rate<D3>of Strike, Berserk,<CF>Protect, Heal, and<D3>Support actions.<*03>"
 046,0x11d5ee,「うつ」「ねらいうち」「せっち」<CD>「とくしゅ」「ぼうがい」行動の時<CF>このあたいが 高いと<CD>行動が せいこうしやすくなる<*03>,"Increases the success rate<D3>of Shoot, Snipe, Set-Up,<CF>Special, and Disrupt<D3>actions.<*03>"
 047,0x11d5f0,パ-ツの中には そのまま 使っても<CD>こうかを はっきしないものがある<*03>,
-048,0x11d5f2,「デストロイ.サクリファイス」などの<CD>とくしゅな 攻撃は<CF>「トラップ」や「えんご.かまえ」に<CD>よって ぼうがいされない<*03>,"Destroy, Sacrifice,<D3>Countdown, and Homesick<CF>are special moves that are<D3>not related to Trap,<CF>Cover, and Ready.<*03>"
+048,0x11d5f2,「デストロイ.サクリファイス」などの<CD>とくしゅな 攻撃は<CF>「トラップ」や「えんご.かまえ」に<CD>よって ぼうがいされない<*03>,"<f02>Destroy, Sacrifice,<D3>Countdown, and Homesick<CF>are special moves that are<D3>not related to Trap,<CF>Cover, and Ready.<*03>"
 049,0x11d5f4,このパ-ツは そうびしているだけで<CD>こうかを はっきする<*03>,
 050,0x11d5f6,みかたに トラップを セットし<CD>かいじょされるまで ゆうこうになる<CF>ひつような じょうきょうになると<CD>じどうてきに こうかが はつどうする<*03>,
 051,0x11d5f8,行動すると つぎの 行動を行うまで<CD>ひつように おうじて はつどうする<CF>しかし たいせいを とったままなので<CD>「たいせいはかい」に よわくなる<*03>,

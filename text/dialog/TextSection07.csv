@@ -1,11 +1,11 @@
 ﻿Index[#version],Pointer[#version|],Original,Translated
-000#kabuto,0x118da3,わたしを こえられるかな?<CD><*02>,
-000#kuwagata,0x118da3,少年よ わたしを こえてゆけ!<CD><*02>,
-001#kabuto,0x118da5,きみの かがやかしい<CD>みらいに かんぱいだ!<*02>,
-001#kuwagata,0x118da5,おみごと!<CD>わたしの まけだな<*02>,
+000#kabuto,0x118da3,わたしを こえられるかな?<CD><*02>,Will you surpass me?<*02>
+000#kuwagata,0x118da3,少年よ わたしを こえてゆけ!<CD><*02>,"Surpass me, boy!<*02>"
+001#kabuto,0x118da5,きみの かがやかしい<CD>みらいに かんぱいだ!<*02>,Cheers to your glorious future!<*02>
+001#kuwagata,0x118da5,おみごと!<CD>わたしの まけだな<*02>,Excellent! I've been defeated.<*02>
 002#kabuto,0x118da7,今日は 本気で 行くわよ!<CD><*02>,
 002#kuwagata,0x118da7,勝たせて あげないわよ!<CD><*02>,
-003#kabuto,0x118da9,ちょっと- これって どういうこと?<CD><*02>,
+003#kabuto,0x118da9,ちょっと- これって どういうこと?<CD><*02>,"Hey, how did things end up this way?<*02>"
 003#kuwagata,0x118da9,ふ-んだ い-も-ん!<CD><*02>,
 004#kabuto,0x118dab,おてやわらかに おねがいしますわ♥<CD><*02>,
 004#kuwagata,0x118dab,わくわく しますわ♥<CD><*02>,

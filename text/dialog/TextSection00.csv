@@ -3,20 +3,20 @@
 001,0x51506,<SFF>ロボトル ファイト!<*04>,<SFF>Robattle fight!<*04>
 002,0x5151a,ゆうこうパワ-アップ!<CD>行動せいこうちが 上がった!<SFE><*04>,Ally Power Up!<D3>Success Rate has been raised!<S46><*04>
 003,0x5151c,メダフォ-スプラントはつどう!<CD>メダフォ-スが上がった!<SFE><*04>,Medaforce Plant Activate!<D3>Medaforce gauge was charged!<S46><*04>
-004,0x5151e,ファ-ストエイドはつどう!<CD><&BUF00>パ-ツが ふっかつした!<SFE><*04>,First Aid activate! <CF><&BUF00>'s parts were<D3>repaired!<S46><*04>
+004,0x5151e,ファ-ストエイドはつどう!<CD><&BUF00>パ-ツが ふっかつした!<SFE><*04>,First Aid activate!<D3>Repaired <&BUF00>'s parts!<S46><*04>
 005,0x51520,メダフォ-ス!<CD>「<&BUF01>」 はつどう!<SFE><*04>,"Medaforce!<D3>""<&BUF01>"" activate!<S46><*04>"
 006,0x51522,メダフォ-スの はつどうに<CD>しっぱいした!<SFE><*04>,Medaforce failed!<S46><*04>
-007,0x51524,「フォ-スせいぎょ」が かかっている<CD>メダフォ-スは 使えない!<SFE><*04>,"""Force seal"" is in effect!<D3>Medaforce can't be used!<S46><*04>"
+007,0x51524,「フォ-スせいぎょ」が かかっている<CD>メダフォ-スは 使えない!<SFE><*04>,Unable to use Medaforce due<D3>to Force Control! <S46><*04>
 008,0x51526,メダフォ-スが ふえた<CD>全しんに パワ-がみなぎってくる!<SFE><*04>,Charging up!<D3>Medaforce charge increased!<S46><*04>
 009,0x51528,パワ-ぜんかいだ!<CD>これいじょう メダフォ-スはふえない<SFE><*04>,The Medaforce charge cannot<D3>go any higher!<S46><*04>
-010,0x5152a,ねらった メダロットは<CD>すでに きのうていし していた!<SFE><*04>,The target Medarot has<D3>already been shutdown!<S46><*04>
-011,0x5152c,ねらった パ-ツは<CD>すでに こわれていた!<SFE><*04>,The targeted part has<D3>already been destroyed!<S46><*04>
-012,0x5152e,<&BUF01>は<CD>行動ないようを わすれた!<SFE><*04>,<&BUF01> has forgotten its<D3>actions!<S46><*04>
+010,0x5152a,ねらった メダロットは<CD>すでに きのうていし していた!<SFE><*04>,The target Medarot has already been shutdown!<S46><*04>
+011,0x5152c,ねらった パ-ツは<CD>すでに こわれていた!<SFE><*04>,The targeted part has already been destroyed!<S46><*04>
+012,0x5152e,<&BUF01>は<CD>行動ないようを わすれた!<SFE><*04>,<&BUF01> has forgotten its actions!<S46><*04>
 013,0x51530,行動パ-ツは こわれていた!<SFE><*04>,That part is broken! <S46><*04>
-014,0x51532,<&BUF00>パ-ツは<CD>「使用ふのう」で 使えなかった!<SFE><*04>,<&BUF00> could not be used <D3>due to Disable! <S46><*04>
-015,0x51534,頭パ-ツの 使用回数がなかった!<SFE><*04>,This Head part has no more<D3>uses left!<S46><*04>
-016,0x51536,そせいする メダロットがなかった!<SFE><*04>,There are no Medarots to <D3>revive! <S46><*04>
-017,0x51538,こわれたパ-ツが あるため<CD>変形できなかった!<SFE><*04>,You can not transform with broken parts!<S46><*04>
+014,0x51532,<&BUF00>パ-ツは<CD>「使用ふのう」で 使えなかった!<SFE><*04>,The <&BUF00> is <f02>disabled<f00>! <S46><*04>
+015,0x51534,頭パ-ツの 使用回数がなかった!<SFE><*04>,This head part has no more ammo left!<S46><*04>
+016,0x51536,そせいする メダロットがなかった!<SFE><*04>,There are no Medarots to revive! <S46><*04>
+017,0x51538,こわれたパ-ツが あるため<CD>変形できなかった!<SFE><*04>,You can not Medachange with broken parts!<S46><*04>
 018,0x5153a,<&BUF02>は<CD>かくとうトラップを かいじょした!<SFE><*04>,<&BUF02> cleared the Melee trap!<S46><*04>
 019,0x5153c,<&BUF02>は<CD>しゃげきトラップを かいじょした!<SFE><*04>,<&BUF02> cleared the Shooting trap!<S46><*04>
 020,0x5153e,<&BUF02>は<CD>攻撃トラップを かいじょした!<SFE><*04>,<&BUF02> cleared the Attack trap!<S46><*04>
@@ -26,171 +26,171 @@
 024,0x51546,<&BUF02>の<CD><&BUF01>パ-ツに <&BUF00>ダメ-ジ!<SFE><*04>,<&BUF02>'s <&BUF01> took <&BUF00> damage!<S46><*04>
 025,0x51548,<&BUF01>パ-ツは こわれた!<SFE><*04>,The attack destroyed the <&BUF01>!<S46><*04>
 026,0x5154a,本体の きのうが ていしした!<SFE><*04>,The Medarot has been shutdown!<S46><*04>
-027,0x5154c,たんぱつクリア トラップで<CD>攻撃が うちけされた!<SFE><*04>,Attack will be nullified by<D3>Single-engine Clear!<S46><*04>
-028,0x5154e,<&BUF02>に <&BUF00>ダメ-ジ!<SFE><*04>,<&BUF02> took <&BUF00><D3>damage!<S46><*04>
-029,0x51550,<&BUF02>は<CD>たんぱつクリアトラップに かかった!<SFE><*04>,<&BUF02> was caught in a<D3>Single-engine Clear!<S46><*04>
-030,0x51552,<&BUF02>が えんごに入った!<SFE><*04>,<&BUF02> came in to shield!<S46><*04>
+027,0x5154c,たんぱつクリア トラップで<CD>攻撃が うちけされた!<SFE><*04>,Attack was nullified by a Single Clear Trap!<S46><*04>
+028,0x5154e,<&BUF02>に <&BUF00>ダメ-ジ!<SFE><*04>,<&BUF02> took <&BUF00> damage!<S46><*04>
+029,0x51550,<&BUF02>は<CD>たんぱつクリアトラップに かかった!<SFE><*04>,<&BUF02> was caught in a<D3>Single Clear Trap!<S46><*04>
+030,0x51552,<&BUF02>が えんごに入った!<SFE><*04>,Protected by <&BUF02>!<S46><*04>
 031,0x51554,<&BUF02>の<CD><&BUF01>攻撃 <&BUF00>!<*04>,<&BUF02> used <&BUF01>!<D3><&BUF00>!<*04>
 032,0x51556,<&BUF02>の<CD><&BUF01>行動 <&BUF00>!<*04>,<&BUF02>'s <&BUF01>!<D3><&BUF00>!<*04>
 033,0x51558,かんぜんむこうに しっぱいした!<*04>,Nullification failed! <*04>
-034,0x5155a,ダメ-ジげんしょうに しっぱいした!<*04>,Damage Reduction failed!<*04>
+034,0x5155a,ダメ-ジげんしょうに しっぱいした!<*04>,Damage reduction failed!<*04>
 035,0x5155c,はんしゃに しっぱいした!<*04>,Reflect failed!<*04>
 036,0x5155e,はんげきに しっぱいした!<*04>,Counterattack failed!<*04>
-037,0x51560,<&BUF02>は<CD>あいての 攻撃を むこうにした!<SFE><*04>,All attacks will be nullified!<S46><*04>
-038,0x51562,<&BUF02>は<CD>弱い 攻撃を むこうにした!<SFE><*04>,Weak attacks will be nullified!<S46><*04>
-039,0x51564,<&BUF02>は こうがくか.<CD>レ-ザ-.ビ-ムを むこうにする!<SFE><*04>,"<&BUF02>'s optics, laser, and beam disabled!<S46><*04>"
-040,0x51566,<&BUF02>は かやくか.<CD>ミサイル.ナパ-ムを むこうにする!<SFE><*04>,"<&BUF02>'s explosive, missle, and napalm disabled!<S46><*04>"
-041,0x51568,<&BUF02>は じゅうリょくか.<CD>ブレイク.プレスを むこうにする!<SFE><*04>,"<&BUF02>'s gravity, break, and press disabled!<S46><*04>"
-042,0x5156a,クリティカル!!<*04>,Critical!!<*04>
-043,0x5156c,<&BUF01>パ-ツで ぼうぎょした!<*04>,The attack hit the <&BUF01>!<*04>
+037,0x51560,<&BUF02>は<CD>あいての 攻撃を むこうにした!<SFE><*04>,<&BUF02> nullified the opponent's attack!<S46><*04>
+038,0x51562,<&BUF02>は<CD>弱い 攻撃を むこうにした!<SFE><*04>,<&BUF02> nullified a weak attack!<S46><*04>
+039,0x51564,<&BUF02>は こうがくか.<CD>レ-ザ-.ビ-ムを むこうにする!<SFE><*04>,<f02>Beam <f00>and <f02>Laser <f00>will not affect <&BUF02>!<S46><*04>
+040,0x51566,<&BUF02>は かやくか.<CD>ミサイル.ナパ-ムを むこうにする!<SFE><*04>,<f02>Missile <f00>and <f02>Napalm <f00>will not affect <&BUF02>!<S46><*04>
+041,0x51568,<&BUF02>は じゅうリょくか.<CD>ブレイク.プレスを むこうにする!<SFE><*04>,<f02>Break <f00>and <f02>Press <f00>will not affect <&BUF02>!<S46><*04>
+042,0x5156a,クリティカル!!<*04>,<f02>Critical hit!!<*04>
+043,0x5156c,<&BUF01>パ-ツで ぼうぎょした!<*04>,The attack was taken by the <&BUF01>!<*04>
 044,0x5156e,ベつのパ-ツに かんつうした!<SFE><*04>,The attack affected other parts!<S46><*04>
 045,0x51570,攻撃は 当らなかった!<SFE><*04>,The attack missed!<S46><*04>
-046,0x51572,ヘんどうの マイナス症状!<CD>行動が せいこうしにくくなる!<SFE><*04>,Flux!<D3>Success rate has been lowered!<S46><*04>
-047,0x51574,そくばくの マイナス症状!<CD>じゅんび時間が 長くなる!<SFE><*04>,Bind!<D3>Preparation time has been slowed!<S46><*04>
-048,0x51576,けいぞくの マイナス症状!<CD>じゅんび時間にも ダメ-ジ!<SFE><*04>,Burn!<D3>Damage will be dealt over time!<S46><*04>
-049,0x51578,ていしの マイナス症状!<CD>何も 行動ができない!<SFE><*04>,Paralyzed!<D3>Movement is halted!<S46><*04>
-050,0x5157a,カウントダウンの マイナス症状!<CD>「0」になると きのうていし!<SFE><*04>,Counter status! Shutdown will occur once count reaches 0.<S46><*04>
-051,0x5157c,ホ-ムシックの マイナス症状!<CD>時々 家にかえリたくなる!<SFE><*04>,Homesick!<D3>Sometimes will turn back mid-prep!<S46><*04>
-052,0x5157e,カウントダウンが かんリょう!<CD>メダロットが きのうていしした!<SFE><*04>,Countdown finished!<D3>The Medarot has shutdown!<S46><*04>
-053,0x51580,カン!カン!カン! ロボトルエンド!<CD>さあ これで 時間切れです!<CF>はんていのけっかを 貝てみましょう!<CD>はんていのけっか!<CF><&BUF02>の 勝利です!<S5A><*04>,Ding! Ding! Ding! Time is up!<D3>The Robattle is over! <CF>Let's see who won the<D3>Robottle! The result is...!<CF><&BUF02> is the winner!<S46><*04>
-054,0x51582,ぼうぎょが できない時は<CD>えんごに 入ることが できない!<SFE><*04>,You can not shield allies<D3>if you unable to defend!<S46><*04>
+046,0x51572,ヘんどうの マイナス症状!<CD>行動が せいこうしにくくなる!<SFE><*04>,<#NOCHECK_TEXTSPEED>Status Ailment: <f02>Flux<f00>!<S46><CF><#NOCHECK_TEXTSPEED><S00>Success rate has been lowered!<S46><*04>
+047,0x51574,そくばくの マイナス症状!<CD>じゅんび時間が 長くなる!<SFE><*04>,<#NOCHECK_TEXTSPEED>Status Ailment: <f02>Bind<f00>!<S46><CF><D1><S00>Preparation time has been extended!<S46><*04>
+048,0x51576,けいぞくの マイナス症状!<CD>じゅんび時間にも ダメ-ジ!<SFE><*04>,<#NOCHECK_TEXTSPEED>Status Ailment: <f02>Flow<f00>!<S46><CF><D1><S00>Damage will be dealt during preparation time!<S46><*04>
+049,0x51578,ていしの マイナス症状!<CD>何も 行動ができない!<SFE><*04>,<#NOCHECK_TEXTSPEED>Status Ailment: <f02>Stop<f00>!<S46><CF><D1><S00>No actions can be taken!<S46><*04>
+050,0x5157a,カウントダウンの マイナス症状!<CD>「0」になると きのうていし!<SFE><*04>,<#NOCHECK_TEXTSPEED>Status Ailment: <f02>Countdown<f00>!<S46><CF><D1><S00>Shutdown will occur once count reaches 0.<S46><*04>
+051,0x5157c,ホ-ムシックの マイナス症状!<CD>時々 家にかえリたくなる!<SFE><*04>,<#NOCHECK_TEXTSPEED>Status Ailment: <f02>Homesick<f00>!<S46><CF><D1><S00>Sometimes will turn back mid-prep!<S46><*04>
+052,0x5157e,カウントダウンが かんリょう!<CD>メダロットが きのうていしした!<SFE><*04>,Countdown finished!<D3>The Medarots have shutdown!<S46><*04>
+053,0x51580,カン!カン!カン! ロボトルエンド!<CD>さあ これで 時間切れです!<CF>はんていのけっかを 貝てみましょう!<CD>はんていのけっか!<CF><&BUF02>の 勝利です!<S5A><*04>,Ding! Ding! Ding! Time is up!<D3>The robattle is over! <CF>Let's see who won the robattle!<D3>The result is...!<CF><&BUF02> is the winner!<S46><*04>
+054,0x51582,ぼうぎょが できない時は<CD>えんごに 入ることが できない!<SFE><*04>,You can not protect allies if you unable to defend!<S46><*04>
 055,0x51584,行動にしっぱいした!<SFE><*04>,Action failed!<S46><*04>
-056,0x51586,あいての攻撃から<CD>みかたを えんごします!<SFE><*04>,Shielding allies from being attacked!<S46><*04>
+056,0x51586,あいての攻撃から<CD>みかたを えんごします!<SFE><*04>,Protecting allies from being attacked!<S46><*04>
 057,0x51588,トラップクリアによって<CD>トラップを セットできなかった!<SFE><*04>,You can not set a trap due to Trap Clear!<S46><*04>
-058,0x5158a,かくとうトラップを セットした!<CD>「なぐる」「がむしゃら」にダメ-ジ!<SFE><*04>,Melee trap was set! <D3>Will trigger on melee attacks!<S46><*04>
-059,0x5158c,しゃげきトラップを セットした!<CD>「うつ」「ねらいうち」にダメ-ジ!<SFE><*04>,Shooting trap was set!<D3>Will trigger on shooting attacks!<S46><*04>
-060,0x5158e,メダフォ-スプラントを セットした!<CD>行動するたび メダフォ-スアップ!<SFE><*04>,Medaforce Plant was set!<S46><D3>Actions will charge Medaforce!<S46><*04>
+058,0x5158a,かくとうトラップを セットした!<CD>「なぐる」「がむしゃら」にダメ-ジ!<SFE><*04>,Melee trap set!<D3>Triggers on <f02>Strike<f00> and <f02>Berserk<f00> attacks!<S46><*04>
+059,0x5158c,しゃげきトラップを セットした!<CD>「うつ」「ねらいうち」にダメ-ジ!<SFE><*04>,Shooting trap set!<D3>Triggers on <f02>Shoot<f00> and <f02>Snipe <f00>attacks!<S46><*04>
+060,0x5158e,メダフォ-スプラントを セットした!<CD>行動するたび メダフォ-スアップ!<SFE><*04>,<#NOCHECK_TEXTSPEED>Medaforce Plant was activated!<S46><CF><D1><S00>Actions will charge Medaforce!<S46><*04>
 061,0x51590,あいての さくてきを 下げた!<SFE><*04>,Scan parameter was reduced!<S46><*04>
-062,0x51592,さくてきクリアを セットした!<CD>あいての さくてきを ぼうがいする!<SFE><*04>,Scan Clear has been set!<D3>Scan effect jammed!<S46><*04>
-063,0x51594,あいての いんペいを 下げた!<SFE><*04>,Conceal parameter was<D3>reduced!<S46><*04>
-064,0x51596,いんペいクリアを セットした!<CD>あいての いんペいを ぼうがいする!<SFE><*04>,Conceal Clear has been set!<D3>Conceal effects jammed!<S46><*04>
-065,0x51598,攻撃クリアを セットした!<CD>1回だけ 攻撃を むこうにする!<SFE><*04>,Attack Clear has been set!<D3>One attack will be nullified!<S46><*04>
-066,0x5159a,ファ-ストエイドを セットした!<CD>こわれた パ-ツを ふっかつさせる!<SFE><*04>,First Aid was set!<D3>Broken parts will be restored!<S46><*04>
-067,0x5159c,クロス攻撃を セットした!<CD>クロス攻撃ファイヤ-で アタック!<SFE><*04>,Cross Attack was set! Cross<D3>Attack Fire is ready for use!<S46><*04>
-068,0x5159e,かいじょする トラップが なかった!<SFE><*04>,No traps for clearing!<S46><*04>
-069,0x515a0,トラップに ダメ-ジをあたえた!<SFE><*04>,Did damage to the trap!<S46><*04>
-070,0x515a2,トラップをクリアした!<SFE><*04>,Trap was cleared!<S46><*04>
-071,0x515a4,トラップクリアを セットした!<CD>あいては トラップをせっちできない!<SFE><*04>,Trap Clear was set!<D3>Traps can not be set!<S46><*04>
-072,0x515a6,クロス攻撃を セットした!<CD>クロス攻撃ファイヤ-で アタック!<SFE><*04>,Cross Attack was set! Cross<D3>Attack Fire is ready for use!<S46><*04>
-073,0x515a8,さくてきクリアに ぼうがいされて<CD>さくてきに しっぱいした!<SFE><*04>,Scan Clear is jamming. <D3>Scan effect failed!<S46><*04>
-074,0x515aa,チ-ム全体の さくてきアップ!<CD>攻撃が 当リやすくなった!<SFE><*04>,Team's scan parameter up!<D3>Success rate is improved!<S46><*04>
-075,0x515ac,いんペいクリアに ぼうがいされて<CD>いんペいに しっぱいした!<SFE><*04>,Conceal Clear is jamming. <D3>Conceal effect failed!<S46><*04>
-076,0x515ae,<&BUF02>の いんペいアップ!<CD>攻撃を よけやすくなった!<SFE><*04>,<&BUF02>'s Conceal up!<D3>More likely to doddge!<S46><*04>
-077,0x515b0,マイナス症状に ダメ-ジ!<SFE><*04>,Does damage to Minus Status!<S46><*04>
-078,0x515b2,マイナス症状を クリアした!<SFE><*04>,Minus Status effect was<D3>removed!<S46><*04>
-079,0x515b4,マイナス症状クリアを かけた!<CD>マイナス症状に かからない!<SFE><*04>,Minus Status Clear is set!<D3>Prevent Minus Status from<S46><CF>being effected!<S46><*04>
-080,0x515b6,マイナス症状クリアに ダメ-ジ!<SFE><*04>,Does damage to Minus Status<D3>Clear!<S46><*04>
-081,0x515b8,マイナス症状クリアを クリアした!<SFE><*04>,Minus Status Clear was<D3>removed!<S46><*04>
-082,0x515ba,プラス症状に ダメ-ジ!<SFE><*04>,Does damage to Plus Status!<S46><*04>
-083,0x515bc,プラス症状を クリアした!<SFE><*04>,Plus Status effect was<D3>removed!<S46><*04>
-084,0x515be,プラス症状クリアを かけた!<CD>プラス症状に かからない!<SFE><*04>,Plus Status Clear is set!<D3>Prevent Plus Status from<S46><CF>being effected!<S46><*04>
-085,0x515c0,プラス症状クリアに ダメ-ジ!<SFE><*04>,Does damage to Plus Status<D3>Clear!<S46><*04>
-086,0x515c2,プラス症状クリアを クリアした!<SFE><*04>,Plus Status Clear was<D3>removed!<S46><*04>
+062,0x51592,さくてきクリアを セットした!<CD>あいての さくてきを ぼうがいする!<SFE><*04>,Scan Clear activated!<D3>Scans have been jammed!<S46><*04>
+063,0x51594,あいての いんペいを 下げた!<SFE><*04>,Conceal parameter was reduced!<S46><*04>
+064,0x51596,いんペいクリアを セットした!<CD>あいての いんペいを ぼうがいする!<SFE><*04>,Conceal Clear activated!<D3>Conceal effects are jammed!<S46><*04>
+065,0x51598,攻撃クリアを セットした!<CD>1回だけ 攻撃を むこうにする!<SFE><*04>,Attack Clear activated!<D3>One attack will be nullified!<S46><*04>
+066,0x5159a,ファ-ストエイドを セットした!<CD>こわれた パ-ツを ふっかつさせる!<SFE><*04>,First Aid activated!<D3>Broken parts will be restored!<S46><*04>
+067,0x5159c,クロス攻撃を セットした!<CD>クロス攻撃ファイヤ-で アタック!<SFE><*04>,Cross Attack activated!<D3>Use Cross Attack Fire!<S46><*04>
+068,0x5159e,かいじょする トラップが なかった!<SFE><*04>,No traps to clear!<S46><*04>
+069,0x515a0,トラップに ダメ-ジをあたえた!<SFE><*04>,Damaged by a trap!<S46><*04>
+070,0x515a2,トラップをクリアした!<SFE><*04>,Trap cleared!<S46><*04>
+071,0x515a4,トラップクリアを セットした!<CD>あいては トラップをせっちできない!<SFE><*04>,Trap Clear activated!<D3>Traps can not be set!<S46><*04>
+072,0x515a6,クロス攻撃を セットした!<CD>クロス攻撃ファイヤ-で アタック!<SFE><*04>,Cross Attack activated!<D3>Use Cross Attack Fire!<S46><*04>
+073,0x515a8,さくてきクリアに ぼうがいされて<CD>さくてきに しっぱいした!<SFE><*04>,Scan Clear is active! <D3>Scanning failed!<S46><*04>
+074,0x515aa,チ-ム全体の さくてきアップ!<CD>攻撃が 当リやすくなった!<SFE><*04>,Team's scan parameter up!<D3>Success rate is increased!<S46><*04>
+075,0x515ac,いんペいクリアに ぼうがいされて<CD>いんペいに しっぱいした!<SFE><*04>,Conceal was jammed by Conceal Clear!<S46><*04>
+076,0x515ae,<&BUF02>の いんペいアップ!<CD>攻撃を よけやすくなった!<SFE><*04>,<&BUF02>'s Conceal up!<D3>Dodge chance improved!<S46><*04>
+077,0x515b0,マイナス症状に ダメ-ジ!<SFE><*04>,Damaged by status ailment!<S46><*04>
+078,0x515b2,マイナス症状を クリアした!<SFE><*04>,Status ailment was removed!<S46><*04>
+079,0x515b4,マイナス症状クリアを かけた!<CD>マイナス症状に かからない!<SFE><*04>,<#NOCHECK_TEXTSPEED>Ailment Clear is set!<S46><CF><D1><S00>Ailments will not be inflicted!<S46><*04>
+080,0x515b6,マイナス症状クリアに ダメ-ジ!<SFE><*04>,Damaged by Ailment Clear!<S46><*04>
+081,0x515b8,マイナス症状クリアを クリアした!<SFE><*04>,Ailment Clear was removed!<S46><*04>
+082,0x515ba,プラス症状に ダメ-ジ!<SFE><*04>,Damaged by buff status!<S46><*04>
+083,0x515bc,プラス症状を クリアした!<SFE><*04>,Buff removed!<S46><*04>
+084,0x515be,プラス症状クリアを かけた!<CD>プラス症状に かからない!<SFE><*04>,Buff Clear activated!<D3>Buffs have been removed!<S46><*04>
+085,0x515c0,プラス症状クリアに ダメ-ジ!<SFE><*04>,Damaged by Buff Clear trap!<S46><*04>
+086,0x515c2,プラス症状クリアを クリアした!<SFE><*04>,Buff Clear was removed!<S46><*04>
 087,0x515c4,症状むこうによって ぼうがいされた!<SFE><*04>,Jammed by Negate Status!<S46><*04>
-088,0x515c6,フィ-ルド症状「フォ-スせいぎょ」<CD>メダフォ-スが 使えない!<SFE><*04>,Force Control! Unable to use<D3>Medaforce going forward!<S46><*04>
-089,0x515c8,フィ-ルド症状を 弱めた!<SFE><*04>,Force Control is weaken!<S46><*04>
-090,0x515ca,フィ-ルド症状「フォ-スせいぎょ」<CD>メダフォ-スが 使えるようになった!<SFE><*04>,Removed Force Control!<D3>Now able to use Medaforce!<S46><*04>
+088,0x515c6,フィ-ルド症状「フォ-スせいぎょ」<CD>メダフォ-スが 使えない!<SFE><*04>,<#NOCHECK_TEXTSPEED>Force Controlled!<S46><CF><D1><S00>Unable to use Medaforce going forward!<S46><*04>
+089,0x515c8,フィ-ルド症状を 弱めた!<SFE><*04>,The Field's Control is weakened!<S46><*04>
+090,0x515ca,フィ-ルド症状「フォ-スせいぎょ」<CD>メダフォ-スが 使えるようになった!<SFE><*04>,<#NOCHECK_TEXTSPEED>The Field's Control was removed!<CF><S00>Medaforce is now available!<S46><*04>
 091,0x515cc,<&BUF02>の メダフォ-スが<CD><&BUF00>ポイント アップした!<SFE><*04>,<&BUF02>'s Medaforce gauge is increased by <&BUF00>!<S46><*04>
-092,0x515ce,うばいとる メダフォ-スがない!<SFE><*04>,No Medaforce gauge to<D3>absorbed!<S46><*04>
-093,0x515d0,<&BUF02>の メダフォ-スを<CD><&BUF00>ポイント きゅうしゅうした!<SFE><*04>,<&BUF02>'s Medaforce gauge<D3>was absorbed by <&BUF00>!<S46><*04>
-094,0x515d2,ぼうぎょが できない時は<CD>かまえの たいせいが とれない!<SFE><*04>,Can't adopt Stance when<D3>unable to Defend.<S46><*04>
+092,0x515ce,うばいとる メダフォ-スがない!<SFE><*04>,No Medaforce gauge to absorb!<S46><*04>
+093,0x515d0,<&BUF02>の メダフォ-スを<CD><&BUF00>ポイント きゅうしゅうした!<SFE><*04>,<&BUF00> points of <&BUF02>'s Medaforce gauge was absorbed!<S46><*04>
+094,0x515d2,ぼうぎょが できない時は<CD>かまえの たいせいが とれない!<SFE><*04>,Can't adopt Stance when unable to Defend.<S46><*04>
 095,0x515d4,かまえの たいせいを とった!<CD>あいての 攻撃に そなえます!<SFE><*04>,Stance adopted!<D3>Ready for opponent's attack!<S46><*04>
-096,0x515d6,プラス症状クリアによって<CD>けいぞくリペアが ぼうがいされた!<SFE><*04>,Auto Heal was jammed by<D3>Plus Status Clear!<S46><*04>
-097,0x515d8,症状むこうパ-ツによって<CD>けいぞくリペアが ぼうがいされた!<SFE><*04>,Auto Heal was jammed by<D3>Negate Status part!<S46><*04>
-098,0x515da,けいぞくリペアの プラス症状!<CD>じゅんび時間にも リペア!<SFE><*04>,Auto Heal!<D3>Parts will be healed over time!<S46><*04>
-099,0x515dc,このパ-ツは そうびしているだけで<CD>こうかを はっきする!<SFE><*04>,This part takes effect just<D3>by being equipped.<S46><*04>
-100,0x515de,じゅんびと いどうが<CD>いっしゅんで おわった!<SFE><*04>,Preparation time decreased!<S46><*04>
-101,0x515e0,スピ-ドアップ!<CD>じゅんび時間が はやくなった!<SFE><*04>,Speed up!<D3>Preparation time decreased!<S46><*04>
-102,0x515e2,プラス症状クリアによって<CD>スピ-ドアップが ぼうがいされた!<SFE><*04>,Speed up was jammed by<D3>Plus Status Clear!<S46><*04>
-103,0x515e4,症状むこうパ-ツによって<CD>スピ-ドアップが ぼうがいされた!<SFE><*04>,Speed up was jammed by<D3>Negate Status part!<S46><*04>
-104,0x515e6,じゅんび時間を きゅうしゅうした!<CD>あいてをおそく! じぶんをはやく!<SFE><*04>,Preparation time absorbed!<D3>Speed up! Opponent slow down!<S46><*04>
-105,0x515e8,あいての マイナス症状クリアによって<CD>きゅうしゅうが ぼうがいされた!<SFE><*04>,Absorb jammed by opponent's<D3>Minus Status Clear!<S46><*04>
-106,0x515ea,あいての 症状むこうパ-ツによって<CD>きゅうしゅうが ぼうがいされた!<SFE><*04>,Absorb jammed by opponent's<D3>Negate Status part!<S46><*04>
-107,0x515ec,じぶんの プラス症状クリアによって<CD>きゅうしゅうが ぼうがいされた!<SFE><*04>,Absorb was jammed by own<D3>Plus Status Clear!<S46><*04>
-108,0x515ee,じぶんの 症状むこうパ-ツによって<CD>きゅうしゅうが ぼうがいされた!<SFE><*04>,Absorb was jammed by own<D3>Negate Status part!<S46><*04>
-109,0x515f0,てんとうは うしろをむいている<CD>あいてには こうかがない!<SFE><*04>,Falling does not effect<D3>returning opponents!<S46><*04>
+096,0x515d6,プラス症状クリアによって<CD>けいぞくリペアが ぼうがいされた!<SFE><*04>,Continuous Repair was jammed by Buff Clear!<S46><*04>
+097,0x515d8,症状むこうパ-ツによって<CD>けいぞくリペアが ぼうがいされた!<SFE><*04>,Continuous Repair was jammed by a part with Negate Status!<S46><*04>
+098,0x515da,けいぞくリペアの プラス症状!<CD>じゅんび時間にも リペア!<SFE><*04>,<#NOCHECK_TEXTSPEED>Status Buff: <f02>Continuous Repair<f00>!<CF><D1><S00>Parts will be repaired over time!<S46><*04>
+099,0x515dc,このパ-ツは そうびしているだけで<CD>こうかを はっきする!<SFE><*04>,This part takes effect just by being equipped.<S46><*04>
+100,0x515de,じゅんびと いどうが<CD>いっしゅんで おわった!<SFE><*04>,Preparation and Movement completed instantly!<S46><*04>
+101,0x515e0,スピ-ドアップ!<CD>じゅんび時間が はやくなった!<SFE><*04>,Status Buff: <f02>Speed-up<f00>!<D3>Preparation time decreased!<S46><*04>
+102,0x515e2,プラス症状クリアによって<CD>スピ-ドアップが ぼうがいされた!<SFE><*04>,Speed-Up was jammed by Buff Clear!<S46><*04>
+103,0x515e4,症状むこうパ-ツによって<CD>スピ-ドアップが ぼうがいされた!<SFE><*04>,Speed-Up was jammed by Negate Status part!<S46><*04>
+104,0x515e6,じゅんび時間を きゅうしゅうした!<CD>あいてをおそく! じぶんをはやく!<SFE><*04>,Preparation time absorbed!<D3>Opponent slowed! Own sped up!<S46><*04>
+105,0x515e8,あいての マイナス症状クリアによって<CD>きゅうしゅうが ぼうがいされた!<SFE><*04>,Absorb was jammed by opponent's Ailment Clear!<S46><*04>
+106,0x515ea,あいての 症状むこうパ-ツによって<CD>きゅうしゅうが ぼうがいされた!<SFE><*04>,Absorb was jammed by opponent's Negate Status part!<S46><*04>
+107,0x515ec,じぶんの プラス症状クリアによって<CD>きゅうしゅうが ぼうがいされた!<SFE><*04>,Absorb jammed by own Buff Clear!<S46><*04>
+108,0x515ee,じぶんの 症状むこうパ-ツによって<CD>きゅうしゅうが ぼうがいされた!<SFE><*04>,Absorb jammed by own Negate Status part!<S46><*04>
+109,0x515f0,てんとうは うしろをむいている<CD>あいてには こうかがない!<SFE><*04>,Falling does not effect returning opponents!<S46><*04>
 110,0x515f2,<&BUF02>は ころんだ!<CD>行動を わすれてしまった!<SFE><*04>,<&BUF02> has fallen!<D3>Action forgotten!<S46><*04>
-111,0x515f4,マイナス症状クリアによって<CD>使用ふのうが ぼうがいされた!<SFE><*04>,Disable was jammed by<D3>Minus Status Clear!<S46><*04>
-112,0x515f6,症状むこうパ-ツによって<CD>使用ふのうが ぼうがいされた!<SFE><*04>,Disable was jammed by<D3>Negate Status part!<S46><*04>
-113,0x515f8,使用ふのうの マイナス症状!<CD><&BUF01>パ-ツが 使えなくなった!<SFE><*04>,Disable is effected! <D3>Unable to use <&BUF01> part!<S46><*04>
-114,0x515fa,マイナス症状クリアによって<CD>こんらんが ぼうがいされた!<SFE><*04>,Confuse was jammed by<D3>Minus Status Clear!<S46><*04>
-115,0x515fc,症状むこうパ-ツによって<CD>こんらんが ぼうがいされた!<SFE><*04>,Confuse was jammed by<D3>Negate Status part!<S46><*04>
-116,0x515fe,<&BUF02>は こんらんした!<CD>攻撃のあいてが さだまらない!<SFE><*04>,<&BUF02> is confused!<D3>Actions and targets will be randomized!<S46><*04>
-117,0x51600,うばいとる のこリ回数がない!<SFE><*04>,No uses to take!<S46><*04>
-118,0x51602,頭パ-ツの回数を <&BUF00>うばいとった!<SFE><*04>,Taken <&BUF00> from head part!<S46><*04>
-119,0x51604,マイナス症状クリアによって<CD>かいひふのうが ぼうがいされた!<SFE><*04>,Minus Status Cleared!<D3>Unavoidable cancelled!<S46><*04>
-120,0x51606,症状むこうパ-ツによって<CD>かいひふのうが ぼうがいされた!<SFE><*04>,Unavoidable cancelled by<D3>status nullifying parts!<S46><*04>
-121,0x51608,かいひふのうの マイナス症状!<CD>攻撃を かいひできない!<SFE><*04>,"Minus Status, Unavoidable!<D3>Unable to dodge!<S46><*04>"
-122,0x5160a,マイナス症状クリアによって<CD>ぼうぎょふのうが ぼうがいされた!<SFE><*04>,Minus Status Cleared!<D3>Defenseless cancelled!<S46><*04>
-123,0x5160c,症状むこうパ-ツによって<CD>ぼうぎょふのうが ぼうがいされた!<SFE><*04>,Defenseless cancelled by<D3>status nullifying parts!<S46><*04>
-124,0x5160e,ぼうぎょふのうの マイナス症状!<CD>攻撃を ぼうぎょできない!<SFE><*04>,"Minus Status, Defenseless!<D3>Unable to defend!"
-125,0x51610,<&BUF01>パ-ツは<CD><&BUF02>に ヘんかした!<SFE><*04>,The <&BUF01> part transformed into <&BUF02>!<S46><*04>
-126,0x51612,<&BUF01>パ-ツに はかいこうか!<SFE><*04>,The <&BUF01> part's effect is disabled!<S46><*04>
-127,0x51614,変形しているメダロットには<CD>こうかがない!<SFE><*04>,Transformed Medarots are<D3>unaffected!<S46><*04>
-128,0x51616,デストロイは まえをむいている<CD>あいてには こうかがない!<SFE><*04>,Destroy does not effect<D3>advancing opponents!<S46><*04>
-129,0x51618,サクリファイスのはんどうで<CD><&BUF01>パ-ツが こわれた!<SFE><*04>,<&BUF01> part destroyed by Sacrifice's recoil!<S46><*04>
+111,0x515f4,マイナス症状クリアによって<CD>使用ふのうが ぼうがいされた!<SFE><*04>,Disable ailment jammed by Ailment Clear!<S46><*04>
+112,0x515f6,症状むこうパ-ツによって<CD>使用ふのうが ぼうがいされた!<SFE><*04>,Disable ailment jammed by Negate Status part!<S46><*04>
+113,0x515f8,使用ふのうの マイナス症状!<CD><&BUF01>パ-ツが 使えなくなった!<SFE><*04>,Status Ailment: <f02>Disable<f00>! <D3>Unable to use <&BUF01> part!<S46><*04>
+114,0x515fa,マイナス症状クリアによって<CD>こんらんが ぼうがいされた!<SFE><*04>,Confuse was jammed by Ailment Clear!<S46><*04>
+115,0x515fc,症状むこうパ-ツによって<CD>こんらんが ぼうがいされた!<SFE><*04>,Confuse was jammed by Negate Status part!<S46><*04>
+116,0x515fe,<&BUF02>は こんらんした!<CD>攻撃のあいてが さだまらない!<SFE><*04>,<#NOCHECK_TEXTSPEED>The opponent's attack confused <&BUF02>!<S46><CF><D1><S00>Actions and targets will be randomized!<S46><*04>
+117,0x51600,うばいとる のこリ回数がない!<SFE><*04>,No ammo left to absorb!<S46><*04>
+118,0x51602,頭パ-ツの回数を <&BUF00>うばいとった!<SFE><*04>,Took <&BUF00> ammo from the head part!<S46><*04>
+119,0x51604,マイナス症状クリアによって<CD>かいひふのうが ぼうがいされた!<SFE><*04>,No-Escape ailment jammed by Ailment Clear!<S46><*04>
+120,0x51606,症状むこうパ-ツによって<CD>かいひふのうが ぼうがいされた!<SFE><*04>,No-Escape ailment jammed by Negate Status part!<S46><*04>
+121,0x51608,かいひふのうの マイナス症状!<CD>攻撃を かいひできない!<SFE><*04>,Status Ailment: <f02>No-Escape<f00>!<D3>Unable to dodge!<S46><*04>
+122,0x5160a,マイナス症状クリアによって<CD>ぼうぎょふのうが ぼうがいされた!<SFE><*04>,No-Defense ailment jammed by Ailment Clear!<S46><*04>
+123,0x5160c,症状むこうパ-ツによって<CD>ぼうぎょふのうが ぼうがいされた!<SFE><*04>,No-Defense ailment jammed by Negate Status part!<S46><*04>
+124,0x5160e,ぼうぎょふのうの マイナス症状!<CD>攻撃を ぼうぎょできない!<SFE><*04>,Status ailment: <f02>No-Defense<f00>!<D3>Unable to defend!<S46><*04>
+125,0x51610,<&BUF01>パ-ツは<CD><&BUF02>に ヘんかした!<SFE><*04>,The <&BUF01> transformed into <&BUF02>!<S46><*04>
+126,0x51612,<&BUF01>パ-ツに はかいこうか!<SFE><*04>,The <&BUF01> has been inflicted with Destruction!<S46><*04>
+127,0x51614,変形しているメダロットには<CD>こうかがない!<SFE><*04>,Medachanged Medarots are unaffected!<S46><*04>
+128,0x51616,デストロイは まえをむいている<CD>あいてには こうかがない!<SFE><*04>,Destroy does not effect advancing opponents!<S46><*04>
+129,0x51618,サクリファイスのはんどうで<CD><&BUF01>パ-ツが こわれた!<SFE><*04>,The <&BUF01> was destroyed by Sacrifice's recoil!<S46><*04>
 130,0x5161a,ねらったパ-ツは<CD>ダメ-ジを うけていない!<SFE><*04>,Targeted part is not damaged!<S46><*04>
-131,0x5161c,<&BUF01>パ-ツが <&BUF00>かいふくした!<SFE><*04>,<&BUF01> part healed by <&BUF00>!<S46><*04>
-132,0x5161e,ねらった パ-ツは こわれていない!<SFE><*04>,Targeted part is not destroyed!<S46><*04>
+131,0x5161c,<&BUF01>パ-ツが <&BUF00>かいふくした!<SFE><*04>,The <&BUF01> was restored by <&BUF00>!<S46><*04>
+132,0x5161e,ねらった パ-ツは こわれていない!<SFE><*04>,Targeted part was not destroyed!<S46><*04>
 133,0x51620,<&BUF01>パ-ツは ふっかつした!<SFE><*04>,Repaired the <&BUF01>!<S46><*04>
 134,0x51622,<&BUF02>は そせいした!<SFE><*04>,<&BUF02> revived!<S46><*04>
-135,0x51624,ねらったメダロットは<CD>ダメ-ジを うけていない!<SFE><*04>,Targeted Medarot was not<D3>damaged!<S46><*04>
+135,0x51624,ねらったメダロットは<CD>ダメ-ジを うけていない!<SFE><*04>,Targeted Medarot was not damaged!<S46><*04>
 136,0x51626,<&BUF02>の そうこうが<CD><&BUF00>かいふくした!<SFE><*04>,<&BUF02> armor was restored by <&BUF00>!<S46><*04>
 137,0x51628,クロス攻撃が セットされていない!<SFE><*04>,Cross Attack has not been set!<S46><*04>
-138,0x5162a,ねらった メダロットは<CD>「えんご」「かまえ」を していない!<SFE><*04>,Targeted part is not Defend<D3>or  Ready!<S46><*04>
-139,0x5162c,「えんご」「かまえ」パ-ツを<CD>かんぜん はかい!<SFE><*04>,Defend or Ready part<D3>completely destroyed!<S46><*04>
+138,0x5162a,ねらった メダロットは<CD>「えんご」「かまえ」を していない!<SFE><*04>,Targeted part is not a <f02>Protect<f00> or <f02>Stance<f00> part!<S46><*04>
+139,0x5162c,「えんご」「かまえ」パ-ツを<CD>かんぜん はかい!<SFE><*04>,<f02>Defend<f00> and <f02>Stance<f00> parts completely destroyed!<S46><*04>
 140,0x5162e,メダチェ------ンジ!<SFE><*04>,Medachaaaaaange!<S46><*04>
 141,0x51630,てきの リ-ダ-の<CD>きのうが ていしした!<CF>そこまでっ!<CD>勝者 <&BUF02>!,Function ceased!<D3>The enemy leader is out!<CF>That's it!<D3><&BUF02> wins!
-142,0x51632,みかたの リ-ダ-の<CD>きのうが ていしした!<CF>そこまでっ!<CD>勝者 <&BUF02>!,Function ceased!<CF><D3>That's it!<D3><&BUF02> wins!
-143,0x51634,<&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を 手に入れた!<*02>,<&BUF03> got the <&BUF01> part<D3><&BUF04>!<*02>
+142,0x51632,みかたの リ-ダ-の<CD>きのうが ていしした!<CF>そこまでっ!<CD>勝者 <&BUF02>!,Function ceased!<D3>Our leader is out!<CF>That's it!<D3><&BUF02> wins!
+143,0x51634,<&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を 手に入れた!<*02>,<&BUF03> got the <&BUF01> part <&BUF04>!<*02>
 144,0x51636,<&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を とられた!<*02>,<&BUF03>'s <&BUF01> part <&BUF04> was taken!<*02>
-145,0x51638,ロボロボメダルを 手に入れた!<*02>,Rubberobo medal acquired!<*02>
-146,0x5163a,<&BUF03>の メダルは<CD><&BUF00>の けいけんちを手に入れた!<*02>,<&BUF03>'s medals received<D3><&BUF00> experience!<*02>
-147,0x5163c,あっ......!<CD>「<&BUF05>」メダルが...!<*03>,Ah...!<D3>The <&BUF05> Medal...! <*03>
-148,0x5163e,新たな すがたに ヘんかした!<*03>,It transformed!<*03>
+145,0x51638,ロボロボメダルを 手に入れた!<*02>,<f02>RoboRobo Medal<f00> acquired!<*02>
+146,0x5163a,<&BUF03>の メダルは<CD><&BUF00>の けいけんちを手に入れた!<*02>,<&BUF03>'s Medals received <&BUF00> experience!<*02>
+147,0x5163c,あっ......!<CD>「<&BUF05>」メダルが...!<*03>,Something's happening to the <&BUF05> Medal...! <*03>
+148,0x5163e,新たな すがたに ヘんかした!<*03>,It evolved!<*03>
 149,0x51640,<&BUF03>は<CD>ロボトルにまけてしまった!<*02>,<&BUF03> has lost the robattle!<*02>
 150,0x51642,あっ.........!<CD>1体も 租まれたメダロットがない!<*02>,Ah...!<D3>I have no Medarots assembled!<*02>
-151,0x51644,「フォ-スせいぎょ」が かかっている<CD>メダフォ-スは 使えない!<SFE><*04>,The field is sealed!<D3>Medaforce can't be used!<S46><*04>
-152,0x51646,選んだ メダフォ-スは<CD>おぼえていない!<SFE><*04>,Can't remember choosen Medaforce!<S46><*04>
-153,0x51648,メダフォ-スリょうが 足リなかった!<SFE><*04>,Not enough Medaforce!<S46><*04>
+151,0x51644,「フォ-スせいぎょ」が かかっている<CD>メダフォ-スは 使えない!<SFE><*04>,
+152,0x51646,選んだ メダフォ-スは<CD>おぼえていない!<SFE><*04>,The chosen Medaforce hasn't been learned!<S46><*04>
+153,0x51648,メダフォ-スリょうが 足リなかった!<SFE><*04>,Not enough Medaforce gauge!<S46><*04>
 154,0x5164a,メダフォ-ス!<CD>「<&BUF02>」 はつどう!<*04>,Medaforce!<D3><&BUF02> activated!<*04>
 155,0x5164c,メダフォ-スの はつどうに<CD>しっぱいした!<SFE><*04>,Medaforce operation failed! <S46><*04>
 156,0x5164e,全パ-ツに <&BUF00>ダメ-ジ!<SFE><*04>,All parts take <&BUF00> damage!<S46><*04>
-157,0x51650,全メダロットに <&BUF00>ダメ-ジ!<SFE><*04>,All medarots take <&BUF00> damage!<S46><*04>
-158,0x51652,攻撃力アップ!<CD>あたえるダメ-ジを ふやす!<SFE><*04>,Attack power up!<D3>Damage dealt increased!<S46><*04>
-159,0x51654,ぼうぎょリょくアップ!<CD>うけるダメ-ジを ヘらす!<SFE><*04>,Defense power up!<D3>Damage taken decreased!<S46><*04>
-160,0x51656,攻撃トラップをセットした!<CD>全ての攻撃に ダメ-ジ!<SFE><*04>,Attack Trap set!<D3>Damage to all Attacks!<S46><*04>
+157,0x51650,全メダロットに <&BUF00>ダメ-ジ!<SFE><*04>,All Medarots take <&BUF00> damage!<S46><*04>
+158,0x51652,攻撃力アップ!<CD>あたえるダメ-ジを ふやす!<SFE><*04>,Attack up!<D3>Damage dealt increased!<S46><*04>
+159,0x51654,ぼうぎょリょくアップ!<CD>うけるダメ-ジを ヘらす!<SFE><*04>,Defense up!<D3>Damage taken reduced!<S46><*04>
+160,0x51656,攻撃トラップをセットした!<CD>全ての攻撃に ダメ-ジ!<SFE><*04>,Attack Trap set!<D3>It will trigger on all attacks!<S46><*04>
 161,0x51658,トラップクリアによって<CD>攻撃トラップが ぼうがいされた!<SFE><*04>,Trap Clear has jammed Attack Trap!<S46><*04>
-162,0x5165a,マイナス症状クリアによって<CD>こうかが なかった!<SFE><*04>,Minus Status Clear had no effect!<S46><*04>
-163,0x5165c,かいふくする パ-ツが なかった!<SFE><*04>,No part to repair!<S46><*04>
+162,0x5165a,マイナス症状クリアによって<CD>こうかが なかった!<SFE><*04>,Ailment Clear had no effect!<S46><*04>
+163,0x5165c,かいふくする パ-ツが なかった!<SFE><*04>,No part to restore!<S46><*04>
 164,0x5165e,ひこうメダロットが いなかった!<SFE><*04>,There is no Flying Medarot!<S46><*04>
 165,0x51660,せんすいメダロットが いなかった!<SFE><*04>,There is no Aquatic Medarot!<S46><*04>
-166,0x51662,ひこうメダロット全体に<CD>きょうリょくな マイナス症状!<SFE><*04>,Strong Minus Status on all Flying Medarots!<S46><*04>
-167,0x51664,せんすいメダロット全体に<CD>きょうリょくな マイナス症状!<SFE><*04>,Strong Minus Status on all Aquatic Medarots!<S46><*04>
+166,0x51662,ひこうメダロット全体に<CD>きょうリょくな マイナス症状!<SFE><*04>,A powerful status ailment was applied to all Flying Medarots!<S46><*04>
+167,0x51664,せんすいメダロット全体に<CD>きょうリょくな マイナス症状!<SFE><*04>,A powerful status ailment was applied to all Aquatic Medarots!<S46><*04>
 168,0x51666,デ-タないようを そうさした!<CD>さくてきと いんペいが 上がった!<SFE><*04>,Data content manipulated!<D3>Scan and Conceal increased!<S46><*04>
 169,0x51668,チ-ム全体の 頭パ-ツの<CD>回数が <&BUF00>アップした!<SFE><*04>,Team's head parts'  ammo increased by <&BUF00>!<S46><*04>
-170,0x5166a,<SFF><&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を 手に入れた!<*02>,Field control is lifted!<S46><*04>
-171,0x5166c,フィ-ルド症状「<&BUF00>ランド」<CD>ちけいが 「<&BUF00>」になった<SFE><*04>,Field controlled!<D3>Field's terrain is changed!<S46><*04>
+170,0x5166a,<SFF><&BUF03>は <&BUF01>パ-ツ<CD><&BUF04>を 手に入れた!<*02>,
+171,0x5166c,フィ-ルド症状「<&BUF00>ランド」<CD>ちけいが 「<&BUF00>」になった<SFE><*04>,
 172,0x5166e,どういつライン上に<CD>あいてが いなかった!<SFE><*04>,No opponents in same row!<S46><*04>
 173,0x51670,チ-ム全体の 「すいしん」の<CD>のうリょくちが <&BUF00>アップした!<SFE><*04>,Team's Propulsion increased by <&BUF00>!<S46><*04>
 174,0x51672,チ-ム全体の 「きどう」の<CD>のうリょくちが <&BUF00>アップした!<SFE><*04>,Team's Evasion increased by <&BUF00>!<S46><*04>
 175,0x51674,チ-ム全体の 「ぼうぎょ」の<CD>のうリょくちが <&BUF00>アップした!<SFE><*04>,Team's Defense increased by <&BUF00>!<S46><*04>
 176,0x51676,チ-ム全体の 「きんせつ」の<CD>のうリょくちが <&BUF00>アップした!<SFE><*04>,Team's Melee Affinity increased by <&BUF00>!<S46><*04>
 177,0x51678,チ-ム全体の 「えんかく」の<CD>のうリょくちが <&BUF00>アップした!<SFE><*04>,Team's Ranged Affinity increased by <&BUF00>!<S46><*04>
-178,0x5167a,ロボトルの はんてい時間を<CD>みじかくした!<SFE><*04>,Judgement Time shortened!<S46><*04>
-179,0x5167c,ロボトルの はんてい時間を長くした!<SFE><*04>,Judgement Time extended!<S46><*04>
-180,0x5167e,全体に こんらんの マイナス症状!<CD>攻撃のあいてが さだまらない!<SFE><*04>,Minus Status Confusion on all!<S46><CF>Actions and targets will be randomized!<S46><*04>
+178,0x5167a,ロボトルの はんてい時間を<CD>みじかくした!<SFE><*04>,Robattle's Judgement Time shortened!<S46><*04>
+179,0x5167c,ロボトルの はんてい時間を長くした!<SFE><*04>,Robattle's Judgement Time extended!<S46><*04>
+180,0x5167e,全体に こんらんの マイナス症状!<CD>攻撃のあいてが さだまらない!<SFE><*04>,<#NOCHECK_TEXTSPEED>Status Ailment: <f02>Confusion<f00> inflicted on all units!<S46><CF><D1><S00>Actions and targets will be randomized!<S46><*04>
 181,0x51680,フィ-ルド症状「みんなこんらん」<CD>すベてのメダロットが こんらんした!<SFE><*04>,Field status is Confuse-All. <D3>All Medarots are confused!<S46><*04>
-182,0x51682,こうがくの とくせいを えた!<CD>攻撃の いリょくが <&BUF00>ばいになる!<SFE><*04>,Optics trait gained!<S46><CF>Attack damage increased <&BUF00> times!<S46><*04>
-183,0x51684,かやくの とくせいを えた!<CD>攻撃ぜったいめいちゅうと かんつう!<SFE><*04>,Explosive trait gained!<S46><CF>Attacks always hit and pierce!<S46><*04>
-184,0x51686,じゅうリょくの とくせいを えた!<CD>攻撃の せいこうが <&BUF00>ばいになる!<SFE><*04>,Gravity trait gained!<S46><CF>Attack success increased by <&BUF00> times!<S46><*04>
-185,0x51688,チ-ム全体の <&BUF00>パ-ツを かいふく!<SFE><*04>,Repair all team parts!<S46><*04>
-186,0x5168a,チ-ム全体の <&BUF00>パ-ツを ふっかつ!<SFE><*04>,Recover all team parts!<S46><*04>
-187,0x5168c,メダフォ-ス「<&BUF02>」に<CD>チェンジした!<SFE><*04>,Medaforce changed!<S46><*04>
-188,0x51690,うばいとる メダルレベルがない!<SFE><*04>,No Medal levels were lost!<S46><*04>
-189,0x51692,メダルのレベルを <&BUF00>うばいとった!<SFE><*04>,<&BUF00> Medal lost levels!<S46><*04>
-190,0x51694,メダフォ-スリょうが なかった!<CD>パワ-ヘんけい できない!<SFE><*04>,No Medaforce gauge!<D3>Power Transform failed!<S46><*04>
-191,0x51696,メダフォ-スリょうが なくなった!<CD>パワ-ヘんけいが とけた!<SFE><*04>,Medaforce gauge depleted!<D3>Returned to original form!<S46><*04>
+182,0x51682,こうがくの とくせいを えた!<CD>攻撃の いリょくが <&BUF00>ばいになる!<SFE><*04>,<#NOCHECK_TEXTSPEED>Optics trait gained!<S46><CF><D1><S00>Attack damage increased by <&BUF00> times!<S46><*04>
+183,0x51684,かやくの とくせいを えた!<CD>攻撃ぜったいめいちゅうと かんつう!<SFE><*04>,<#NOCHECK_TEXTSPEED>Explosive trait gained!<S46><CF><D1><S00>Attacks always hit and pierce!<S46><*04>
+184,0x51686,じゅうリょくの とくせいを えた!<CD>攻撃の せいこうが <&BUF00>ばいになる!<SFE><*04>,<#NOCHECK_TEXTSPEED>Gravity trait gained!<S46><CF><D1><S00>Attack success increased by <&BUF00> times!<S46><*04>
+185,0x51688,チ-ム全体の <&BUF00>パ-ツを かいふく!<SFE><*04>,Team's <&BUF00> parts all restored!<S46><*04>
+186,0x5168a,チ-ム全体の <&BUF00>パ-ツを ふっかつ!<SFE><*04>,Team's <&BUF00> parts all repaired!<S46><*04>
+187,0x5168c,メダフォ-ス「<&BUF02>」に<CD>チェンジした!<SFE><*04>,Medaforce <f02><&BUF02><f00> exchanged!<S46><*04>
+188,0x51690,うばいとる メダルレベルがない!<SFE><*04>,Not enough Medal levels to absorb!<S46><*04>
+189,0x51692,メダルのレベルを <&BUF00>うばいとった!<SFE><*04>,Absorbed <&BUF00> levels from Medal!<S46><*04>
+190,0x51694,メダフォ-スリょうが なかった!<CD>パワ-ヘんけい できない!<SFE><*04>,No Medaforce gauge!<D3>Power Transformation failed!<S46><*04>
+191,0x51696,メダフォ-スリょうが なくなった!<CD>パワ-ヘんけいが とけた!<SFE><*04>,Medaforce gauge depleted!<D3>Power Transformation undone!<S46><*04>
 192,0x51698,ねらったパ-ツは<CD>ヘらす そうこうがない!<SFE><*04>,
 193,0x5169a,ふういんを かいじょした!<SFE><*04>,The seal has been cleared!<S46><*04>
 194,0x5169c,ふういんが かいじょされていない!<SFE><*04>,The seal has not been cleared!<S46><*04>
