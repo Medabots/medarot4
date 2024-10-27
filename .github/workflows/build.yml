@@ -21,15 +21,10 @@ on:
 env:
   ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
-# https://github.com/actions/checkout/issues/1487
-# https://github.com/actions/checkout/issues/1809
-env:
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/medabots/medarot4:master
+    container: ghcr.io/medabots/medarot4:tr_EN
 
     steps:
       - name: List versions
@@ -70,17 +65,17 @@ jobs:
         run: |
           make -j all
 
-      - name: Generate IPS files
+      - name: Generate BPS files
         working-directory: 'code'
         run: |
-          ips_util create baserom_kabuto.gbc medarot4_kabuto.gbc -o m4kabuto-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
-          ips_util create baserom_kuwagata.gbc medarot4_kuwagata.gbc -o m4kuwagata-$GITHUB_RUN_NUMBER-$GITHUB_SHA.ips
+          flips --create baserom_kabuto.gbc medarot4_kabuto.gbc medarot4kabuto-$GITHUB_RUN_NUMBER-$GITHUB_SHA.bps
+          flips --create baserom_kuwagata.gbc medarot4_kuwagata.gbc medarot4kuwagata-$GITHUB_RUN_NUMBER-$GITHUB_SHA.bps
 
-      - name: 'Archive IPS files'
-        uses: actions/upload-artifact@v2
+      - name: 'Archive BPS files'
+        uses: actions/upload-artifact@v4
         with:
-          name: ips_files
-          path: code/*.ips
+          name: patch_files
+          path: code/*.bps
           retention-days: 1
 
       - name: Verify there are no uncommitted changes
