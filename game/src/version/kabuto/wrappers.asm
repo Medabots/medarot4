@@ -63,8 +63,8 @@ CrossBankFunctionTable::
 	dbw $00, $2CB5 ; 39
 	dbw $00, $2AF0 ; 3A
 	dbw $15, $4582 ; 3B
-	dbw $00, $11F6 ; 3C
-	dbw $00, $1238 ; 3D
+	cbpointer RestageDestinationBGPalettesForFade ; 3C
+	cbpointer RestageDestinationOBPalettesForFade ; 3D
 	dbw $15, $45F9 ; 3E
 	dbw $00, $2CDF ; 3F
 	dbw $00, $2D71 ; 40
