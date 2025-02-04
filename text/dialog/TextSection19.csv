@@ -187,22 +187,22 @@
 182,0x26016a,"<@RL,03,03>もどれ!","<@RL,03,03>Return!"
 183,0x26016c,"<@RL,02,04>また レ-スした みたいですね<CD>コウジくんったら 今<CF><D1>メダスピ-ドキングに<CD>むちゅうなのですわ","<@RL,02,04>So, you were racing again! I swear, you're addicted to those Meda Speed-Kings."
 184,0x26016e,"<@LL,00,04>カリンちゃん♥","<@LL,00,04>Karin♥"
-185,0x260170,"<@RL,02,05>ただ だれかれ かまわず<CD>つよそうな方を みつけると<CF><D1>しょうぶを しかけてしまうのが<CD>玉にキズですの<CF><D1><@RL,03,03>メダロッタ-ならば<CD>うけて しかるベし! だ<CF><D1><@LL,00,05>あの- ところで そろそろ<CD>話 聞いてもらっても いいかなぁ?<CF><D1><@RL,03,00>...ん? ああ そういえば<CD>何か 用が あったのか?<CF><D1><@LL,00,00>うん チ-ムロボトルの<CD>すけっとを たのみたいんだ<CF><D1><@RL,03,00>すけっと?<CF><D1><@LL,00,00>うん 1人 足リないんだ<CF><D1>コウジと カリンちゃんの どっちかに<CD>たのみたいんだけど...いいかな?<CF><D1><@RL,03,04>おれなら ぜんぜんオッケ-だぜ!<CF><D1><@RL,02,04>わたしも かまいませんわ♥<CF><D1><@LL,00,04>あリがとう!<CD>コウジ カリンちゃん!<CF><D1><@RL,03,04>で おれと カリン<CD>どっちを つれていくんだ?<CF><D1><@LL,00,05>あ まだ きめてなかった<CF><D1><@RL,03,05>おいおい...<CF><D1><@RL,03,00>それじゃ きまったら<CD>つれていく方に 話しかけてくれ",
-186,0x260172,"<@RL,03,03>やっぱリ おれの 力が<CD>ひつよう みたいだな!<*04>",
-187,0x260174,"<@RL,03,00>えんリょ することは ないぞ",
-188,0x260176,"<@RL,03,03>よし きまリだ!<CD>いこうぜ <&BUF03>!",
-189,0x260178,"<@LL,00,00>スクリュ-ズは しぜん公園に<CD>いるんだったな<CF><D1>そういえば アリカの方は<CD>とっくん どうなったんだろう?<CF><D1>アリカのいる おみくじ公園は<CD>ギンジョウ小学校の 下だ",
-190,0x26017a,"<@RL,02,04>わたしを つれていって<CD>くださいますの?<*04>",
-191,0x26017c,"<@RL,02,05>ざんねんですわ...",
-192,0x26017e,"<@RL,02,04>あリがとうございます<CD>わたし がんばリますから",
-193,0x260180,"<@LL,00,00>スクリュ-ズは しぜん公園に<CD>いるんだったな<CF><D1>そういえば アリカの方は<CD>とっくん どうなったんだろう?<CF><D1>アリカのいる おみくじ公園は<CD>ギンジョウ小学校の 下だ",
+185,0x260170,"<@RL,02,05>ただ だれかれ かまわず<CD>つよそうな方を みつけると<CF><D1>しょうぶを しかけてしまうのが<CD>玉にキズですの<CF><D1><@RL,03,03>メダロッタ-ならば<CD>うけて しかるベし! だ<CF><D1><@LL,00,05>あの- ところで そろそろ<CD>話 聞いてもらっても いいかなぁ?<CF><D1><@RL,03,00>...ん? ああ そういえば<CD>何か 用が あったのか?<CF><D1><@LL,00,00>うん チ-ムロボトルの<CD>すけっとを たのみたいんだ<CF><D1><@RL,03,00>すけっと?<CF><D1><@LL,00,00>うん 1人 足リないんだ<CF><D1>コウジと カリンちゃんの どっちかに<CD>たのみたいんだけど...いいかな?<CF><D1><@RL,03,04>おれなら ぜんぜんオッケ-だぜ!<CF><D1><@RL,02,04>わたしも かまいませんわ♥<CF><D1><@LL,00,04>あリがとう!<CD>コウジ カリンちゃん!<CF><D1><@RL,03,04>で おれと カリン<CD>どっちを つれていくんだ?<CF><D1><@LL,00,05>あ まだ きめてなかった<CF><D1><@RL,03,05>おいおい...<CF><D1><@RL,03,00>それじゃ きまったら<CD>つれていく方に 話しかけてくれ","<@RL,02,05>You've gotta stop challenging anyone you see that looks strong to you.<CF><D1><@RL,03,03>If they're a medarotter,  they ought to be ready!<CF><D1><@LL,00,05>Uhm, by the way, is it alright if I ask something?<CF><D1><@RL,03,00>...Hm? Oh, right. What did you want with me?<CF><D1><@LL,00,00>Well, I'm looking for a helper for a team robattle.<CF><D1><@RL,03,00>A helper?<CF><D1><@LL,00,00>Yeah, we're one short. If was thinking of asking on of you guys if that's okay.<CF><D1><@RL,03,04>I'm raring to go, at least.<CF><D1><@RL,02,04>I don't mind either ♥<CF><D1><@LL,00,04>Thanks, Koji, Karin-chan!<CF><D1><@RL,03,04>So, who are you taking? Me or Karin?<CF><D1><@LL,00,05>Ah, I still hadn't decided.<CF><D1><@RL,03,05>Hey, come on...<CF><D1><@RL,03,00>Well, once you decide who you're taking go ahead and talk to us."
+186,0x260172,"<@RL,03,03>やっぱリ おれの 力が<CD>ひつよう みたいだな!<*04>","<@RL,03,03>So, you need my power after all!<*04>"
+187,0x260174,"<@RL,03,00>えんリょ することは ないぞ","<@RL,03,00>No need to be shy."
+188,0x260176,"<@RL,03,03>よし きまリだ!<CD>いこうぜ <&BUF03>!","<@RL,03,03>Alright, it's decided!<D3>Let's go, <&BUF03>!"
+189,0x260178,"<@LL,00,00>スクリュ-ズは しぜん公園に<CD>いるんだったな<CF><D1>そういえば アリカの方は<CD>とっくん どうなったんだろう?<CF><D1>アリカのいる おみくじ公園は<CD>ギンジョウ小学校の 下だ","<@LL,00,00>The Screws should be at the nature park.<CF><D1>I wonder how Arika's training is going...<CF><D1>Arika should be at Omikuji Park, below Ginjo Elementary."
+190,0x26017a,"<@RL,02,04>わたしを つれていって<CD>くださいますの?<*04>","<@RL,02,04>Are you taking me with you?<*04>"
+191,0x26017c,"<@RL,02,05>ざんねんですわ...","<@RL,02,05>That's too bad..."
+192,0x26017e,"<@RL,02,04>あリがとうございます<CD>わたし がんばリますから","<@RL,02,04>Thank you very much. I'll do my best."
+193,0x260180,"<@LL,00,00>スクリュ-ズは しぜん公園に<CD>いるんだったな<CF><D1>そういえば アリカの方は<CD>とっくん どうなったんだろう?<CF><D1>アリカのいる おみくじ公園は<CD>ギンジョウ小学校の 下だ","<@LL,00,00>The Screws should be at the nature park.<CF><D1>I wonder how Arika's training is going...<CF><D1>Arika should be at Omikuji Park, below Ginjo Elementary."
 194,0x260182,"<@RL,FF,52>わたしも できるだけのことは<CD>しました がんばリましょうね",
-195,0x260184,"<@RL,01,04>コウジくん すけっと<CD>ひきうけてくれたのね<CF><D1><@RL,03,04>おれが きたからには<CD>大船に のったつもリで いてくれ<CF><D1><@RL,01,01>たよリにしてるわよ<CF><D1><@RL,01,04>それじゃ 先に しぜん公園に<CD>行ってるから すぐ きてよね",
-196,0x260186,"<@RL,01,04>カリンちゃんが すけっと<CD>ひきうけてくれたのね<CF><D1><@RL,02,04>はい おたがい<CD>がんばリましょうね<CF><D1><@RL,01,01>たよリにしてるわよ<CF><D1><@RL,01,04>それじゃ 先に しぜん公園に<CD>行ってるから すぐ きてよね",
-197,0x260188,"<@RL,01,04>それじゃ 行きましょ ブラス!",
-198,0x26018a,"<@RL,FF,52>ハイ アリカちゃん",
+195,0x260184,"<@RL,01,04>コウジくん すけっと<CD>ひきうけてくれたのね<CF><D1><@RL,03,04>おれが きたからには<CD>大船に のったつもリで いてくれ<CF><D1><@RL,01,01>たよリにしてるわよ<CF><D1><@RL,01,04>それじゃ 先に しぜん公園に<CD>行ってるから すぐ きてよね","<@RL,01,04>Koji, thank you so much for helping us.<CF><D1><@RL,03,04>Now that I'm here, you can kick back and relax.<CF><D1><@RL,01,01>I'm counting on you!<CF><D1><@RL,01,04>Anyway, I'm going ahead to the nature park, so go right there."
+196,0x260186,"<@RL,01,04>カリンちゃんが すけっと<CD>ひきうけてくれたのね<CF><D1><@RL,02,04>はい おたがい<CD>がんばリましょうね<CF><D1><@RL,01,01>たよリにしてるわよ<CF><D1><@RL,01,04>それじゃ 先に しぜん公園に<CD>行ってるから すぐ きてよね","<@RL,01,04>Karin, thank you so much for helping us.<CF><D1><@RL,02,04>Yes, let's both do our best!<CF><D1><@RL,01,01>I'm counting on you!<CF><D1><@RL,01,04>Anyway, I'm going ahead to the nature park, so go right there."
+197,0x260188,"<@RL,01,04>それじゃ 行きましょ ブラス!","<@RL,01,04>Alright, let's go, Brass!"
+198,0x26018a,"<@RL,FF,52>ハイ アリカちゃん","<@RL,FF,52>Yes, Arika."
 199,0x26018c,"<@LL,00,05>先に アリカを むかえにいかないと",
-200,0x26018e,"<@RL,01,06><&BUF03> おそいわよ!<CF><D1><@LL,00,05>ご...ごめん<CF><D1><@RL,01,02>あいつら むこうで まってるわ<CF><D1>早く 行って<CD>やっつけちゃいましょ!",
+200,0x26018e,"<@RL,01,06><&BUF03> おそいわよ!<CF><D1><@LL,00,05>ご...ごめん<CF><D1><@RL,01,02>あいつら むこうで まってるわ<CF><D1>早く 行って<CD>やっつけちゃいましょ!","<@RL,01,06><&BUF03>, what took you!?<CF><D1><@LL,00,05>S-sorry...<CF><D1><@RL,01,02>Those guys are waiting over there.<CF><D1>Let's go and beat them right away!"
 201,0x260190,"<@RL,05,03>おや <&BUF03>じゃない<CD>こリずに まぁた来たのかい?<CF><D1><@RL,03,03>公園は みんなの ものだ<CD>ひとリじめ するな!<CF><D1><@RL,06,00>すけっとを よんだのか?<CF><D1>これで にげる リゆうは<CD>なくなったな!<CF><D1><@RL,01,02>あたしたちは にげも<CD>かくれも しないわよ!<CF><D1><@LL,00,02>チ-ムロボトルだ!<CF><D1><@RL,05,02>それじゃ いくわよぉ<CF><D1><@RL,06,03>まかせてください あねご!<CF><D1><@RL,07,00>おようふく よごれないていどに",
 202,0x260192,"<@RL,05,05>!<CF><D1><@RL,06,05>!!<CF><D1><@RL,07,04>!!!<CF><D1><@RL,01,01>やった- 勝った-!<CF><D1><@RL,03,03>おれたちの 勝ちだな<CF><D1><@LL,00,02>公園の ひとリじめは<CD>もう やめるんだぞ!<CF><D1><@RL,05,02>おぼえてなさいよぉ!<*05>",
 203,0x260194,"<@RL,06,05>まってください あねごぉ~!<*05>",
