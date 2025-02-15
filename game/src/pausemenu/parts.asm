@@ -10,3 +10,6 @@ SECTION "Part Variables 2",  WRAM0[$C56A]
 W_MaxCursorPositionForPartsList:: ds 1
 W_PartsMenuEntrypoint:: ds 1
 W_CurrentPartIndexForPartStatus:: ds 1
+
+SECTION "Part Variables 4",  WRAM0[$C58B]
+W_NumPartsForPartStatus:: ds 1
