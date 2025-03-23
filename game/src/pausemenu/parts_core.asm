@@ -31,18 +31,18 @@ PartsStateMachine::
   dw PartsStatusPrepareFadeInPartImageState ; 14
   dw PartsFadeState ; 15
   dw PartsStatusRestoreArrowsState ; 16
-  dw $6698 ; 17
-  dw $6698 ; 18
-  dw $6698 ; 19
+  dw PartsPlaceholderState ; 17
+  dw PartsPlaceholderState ; 18
+  dw PartsPlaceholderState ; 19
 
 ; Status exit states.
 
   dw PartsStatusPrepareFadeOutState ; 1A
   dw PartsFadeState ; 1B
   dw PartsStatusExitState ; 1C
-  dw $6698 ; 1D
-  dw $6698 ; 1E
-  dw $6698 ; 1F
+  dw PartsPlaceholderState ; 1D
+  dw PartsPlaceholderState ; 1E
+  dw PartsPlaceholderState ; 1F
 
 ; List exit states.
 
@@ -53,43 +53,47 @@ PartsStateMachine::
   dw PartsListMedawatchRestoreOddsAndEndsState ; 24
   dw PartsListPrepareMedawatchMenuFadeInState ; 25
   dw PartsListExitToMedawatchMenuState ; 26
-  dw $6698 ; 27
-  dw $6698 ; 28
-  dw $6698 ; 29
-  dw $6698 ; 2A
-  dw $6698 ; 2B
-  dw $6698 ; 2C
-  dw $6698 ; 2D
-  dw $6698 ; 2E
-  dw $6698 ; 2F
+  dw PartsPlaceholderState ; 27
+  dw PartsPlaceholderState ; 28
+  dw PartsPlaceholderState ; 29
+  dw PartsPlaceholderState ; 2A
+  dw PartsPlaceholderState ; 2B
+  dw PartsPlaceholderState ; 2C
+  dw PartsPlaceholderState ; 2D
+  dw PartsPlaceholderState ; 2E
+  dw PartsPlaceholderState ; 2F
 
-  dw $6442 ; 30
-  dw $6489 ; 31
-  dw $64C0 ; 32
+; Link-related states.
+
+  dw PartsListLinkOverlayMappingState ; 30
+  dw PartsListLinkOverlayInputHandlerState ; 31
+  dw PartsListLinkOverlayActionState ; 32
   dw PartsListWaitThenPrepareFadeOutToWhiteState ; 33
   dw PartsFadeState ; 34
-  dw $650A ; 35
-  dw $6698 ; 36
-  dw $6698 ; 37
-  dw $6698 ; 38
-  dw $6698 ; 39
-  dw $6698 ; 3A
-  dw $6698 ; 3B
-  dw $6698 ; 3C
-  dw $6698 ; 3D
-  dw $6698 ; 3E
-  dw $6698 ; 3F
+  dw PartsListLinkOverlayJumpToPartExchangeState ; 35
+  dw PartsPlaceholderState ; 36
+  dw PartsPlaceholderState ; 37
+  dw PartsPlaceholderState ; 38
+  dw PartsPlaceholderState ; 39
+  dw PartsPlaceholderState ; 3A
+  dw PartsPlaceholderState ; 3B
+  dw PartsPlaceholderState ; 3C
+  dw PartsPlaceholderState ; 3D
+  dw PartsPlaceholderState ; 3E
+  dw PartsPlaceholderState ; 3F
 
-  dw $6520 ; 40
-  dw $6566 ; 41
-  dw $6698 ; 42
-  dw $6698 ; 43
+; Sorting-related states.
 
-  dw $65F8 ; 44
-  dw $6634 ; 45
+  dw PartsListSortOverlayMappingState ; 40
+  dw PartsListSortOverlayInputHandlerState ; 41
+  dw PartsPlaceholderState ; 42
+  dw PartsPlaceholderState ; 43
+
+  dw PartsStatusSortOverlayMappingState ; 44
+  dw PartsStatusSortOverlayInputHandlerState ; 45
   dw PartsStatusInitiateMainScriptState ; 46
   dw PartsStatusDisplayDescriptionTextState ; 47
-  dw $6692 ; 48
+  dw PartsStatusSortOverlayReturnToPartsStatusInputHanderState ; 48
 
 PartsListPrepareFadeOutState::
   ld hl, 1
@@ -182,9 +186,9 @@ PartsListMappingState::
   ld [$C124], a
   ld a, 1
   ld [W_OAM_SpritesReady], a
-  call $6699 ; MapTypeNameForPartList
-  call $66AC ; PartsListCalculatePageNumberAndCursorPosition
-  call $66CE ; MapPageNumbersForPartsList
+  call MapTypeNameForPartList
+  call PartsListCalculatePageNumberAndCursorPosition
+  call MapPageNumbersForPartsList
   call $66EE
   call $750E
   call $688A
@@ -632,4 +636,275 @@ PartsListExitToMedawatchMenuState::
   ld [W_CoreStateIndex], a
   ld a, 3
   ld [W_CoreSubStateIndex], a
+  ret
+
+PartsListLinkOverlayMappingState::
+  ld a, $D
+  ld [$C4EE], a
+  ld a, 7
+  ld [$C4EF], a
+  ld a, 7
+  ld [$C4F0], a
+  ld a, 7
+  ld [$C4F1], a
+  ld a, 2
+  cbcallindex $B2
+  ld bc, $D07
+  ld e, $68
+  ld a, 2
+  cbcall DecompressTilemap0
+  ld bc, $D07
+  ld e, $68
+  ld a, 2
+  cbcall DecompressAttribmap0
+  xor a
+  ld [W_MedalMenuSelectedMedaliaCursorPosition], a
+  xor a
+  call $742C ; MapLinkOverlayArrowForPartsList?
+  jp IncSubStateIndex
+
+PartsListLinkOverlayInputHandlerState::
+  call $7456 ; LinkOverlayDirectionalInputHandlerForPartsList?
+  ldh a, [H_JPInputChanged]
+  and M_JPInputA
+  jr z, .aNotPressed
+  ld a, 1
+  call $742C ; MapLinkOverlayArrowForPartsList?
+  ld a, $20
+  ld [$C48A], a
+  ld a, 5
+  call ScheduleSoundEffect
+  jp IncSubStateIndex
+
+.aNotPressed
+  ldh a, [H_JPInputChanged]
+  and M_JPInputB
+  ret z
+  ld a, 2
+  ld [W_MedalMenuSelectedMedaliaCursorPosition], a
+  ld a, 1
+  call $742C
+  ld a, $20
+  ld [$C48A], a
+  ld a, 6
+  call ScheduleSoundEffect
+  jp IncSubStateIndex
+
+PartsListLinkOverlayActionState::
+  ld a, [$C48A]
+  dec a
+  ld [$C48A], a
+  ret nz
+  ld a, [W_MedalMenuSelectedMedaliaCursorPosition]
+  cp 0
+  jr z, .openPartStatus
+  cp 1
+  jr z, .tradePart
+  ld a, $D
+  ld [$C4EE], a
+  ld a, 7
+  ld [$C4EF], a
+  ld a, 7
+  ld [$C4F0], a
+  ld a, 7
+  ld [$C4F1], a
+  ld a, 2
+  cbcallindex $B3
+  ld a, 4
+  ld [W_CoreSubStateIndex], a
+  ret
+
+.openPartStatus
+  ld a, 6
+  ld [W_CoreSubStateIndex], a
+  ret
+
+.tradePart
+  ld a, 4
+  ld [$CF3B], a
+  ld a, $20
+  ld [$C48A], a
+  jp IncSubStateIndex
+
+PartsListLinkOverlayJumpToPartExchangeState::
+  ld a, [W_CurrentPartTypeForListView]
+  ld [$C613], a
+  ld a, [W_CurrentPartIndexForPartStatus]
+  ld [$C615], a
+  ld a, $1E
+  ld [W_CoreStateIndex], a
+  xor a
+  ld [W_CoreSubStateIndex], a
+  ret
+
+PartsListSortOverlayMappingState::
+  ld a, [W_PartSortMethodIndex]
+  ld [W_PartSortSelectorIndex], a
+  call $74A2
+  ld a, 0
+  ld [$C0E0], a
+  ld [$C100], a
+  ld a, [W_CurrentPartTypeForListView]
+  cp 3
+  jr z, .isLegPart
+  ld bc, 0
+  ld e, $1A
+  ld a, 4
+  cbcall DecompressTilemap1
+  ld a, 1
+  call LCDCTileOverlaySetVisibility
+  jp IncSubStateIndex
+
+.isLegPart
+  ld bc, 0
+  ld e, $1B
+  ld a, 4
+  cbcall DecompressTilemap1
+  ld a, 1
+  call LCDCTileOverlaySetVisibility
+  jp IncSubStateIndex
+
+PartsListSortOverlayInputHandlerState::
+  ld de, $C0C0
+  cbcallindex 9
+  ld a, [W_JPInput_TypematicBtns]
+  and M_JPInputUp
+  jr z, .upNotPressed
+  ld a, 4
+  call ScheduleSoundEffect
+  jp $74EB
+
+.upNotPressed
+  ld a, [W_JPInput_TypematicBtns]
+  and M_JPInputDown
+  jr z, .downNotPressed
+  ld a, 4
+  call ScheduleSoundEffect
+  jp $74FD
+
+.downNotPressed
+  ldh a, [H_JPInputChanged]
+  and M_JPInputB
+  jr z, .bNotPressed
+  ld a, 6
+  call ScheduleSoundEffect
+  call $6ADE
+  xor a
+  call LCDCTileOverlaySetVisibility
+  ld a, 4
+  ld [W_CoreSubStateIndex], a
+  ret
+
+.bNotPressed
+  ldh a, [H_JPInputChanged]
+  and M_JPInputA | M_JPInputStart
+  ret z
+  ld a, 5
+  call ScheduleSoundEffect
+  ld a, [W_PartSortMethodIndex]
+  ld b, a
+  ld a, [W_PartSortSelectorIndex]
+  cp b
+  jr z, .reselectedCurrentSortOrder
+  push af
+  xor a
+  call LCDCTileOverlaySetVisibility
+  call $6C3B
+  pop af
+  ld [W_PartSortMethodIndex], a
+  call PartsListCalculatePageNumberAndCursorPosition
+  call MapPageNumbersForPartsList
+  call $66EE
+  call $750E
+  call $688A
+  call $695A
+  call $6ACB
+  call $6ADE
+  call $6CB2
+  call $73E0
+  ld a, 4
+  ld [W_CoreSubStateIndex], a
+  ret
+
+.reselectedCurrentSortOrder
+  call $6ADE
+  xor a
+  call LCDCTileOverlaySetVisibility
+  ld a, 4
+  ld [W_CoreSubStateIndex], a
+  ret
+
+PartsStatusSortOverlayMappingState::
+  ld a, [W_PartSortMethodIndex]
+  ld [W_PartSortSelectorIndex], a
+  call $74A2
+  ld a, 0
+  ld [$C0E0], a
+  ld [$C100], a
+  ld a, [W_CurrentPartTypeForListView]
+  cp 3
+  jr z, .isLegPart
+  ld bc, 0
+  ld e, $1A
+  ld a, 4
+  cbcall DecompressTilemap1
+  jp IncSubStateIndex
+
+.isLegPart
+  ld bc, 0
+  ld e, $1B
+  ld a, 4
+  cbcall DecompressTilemap1
+  jp IncSubStateIndex
+
+PartsStatusSortOverlayInputHandlerState::
+  ld de, $C0C0
+  cbcallindex 9
+  ld a, [W_JPInput_TypematicBtns]
+  and M_JPInputUp
+  jr z, .upNotPressed
+  ld a, 4
+  call ScheduleSoundEffect
+  jp $74EB
+
+.upNotPressed
+  ld a, [W_JPInput_TypematicBtns]
+  and M_JPInputDown
+  jr z, .downNotPressed
+  ld a, 4
+  call ScheduleSoundEffect
+  jp $74FD
+
+.downNotPressed
+  ldh a, [H_JPInputChanged]
+  and M_JPInputB
+  jr z, .bNotPressed
+  ld a, 6
+  call ScheduleSoundEffect
+  ld a, 0
+  ld [$C0C0], a
+  ld a, 1
+  ld [W_OAM_SpritesReady], a
+  jp IncSubStateIndex
+
+.bNotPressed
+  ldh a, [H_JPInputChanged]
+  and M_JPInputA | M_JPInputStart
+  ret z
+  ld a, 5
+  call ScheduleSoundEffect
+  ld a, 0
+  ld [$C0C0], a
+  ld a, 1
+  ld [W_OAM_SpritesReady], a
+  ld a, [W_PartSortSelectorIndex]
+  ld [W_PartSortMethodIndex], a
+  jp IncSubStateIndex
+
+PartsStatusSortOverlayReturnToPartsStatusInputHanderState::
+  ld a, $E
+  ld [W_CoreSubStateIndex], a
+  ret
+
+PartsPlaceholderState::
   ret
