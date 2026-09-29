@@ -250,13 +250,18 @@ dump_ptrlists: | $(PTRLISTS_TEXT)
 	$(PYTHON) $(SCRIPT)/dump_ptrlists.py "$(VERSION_SRC)" "$(PTRLISTS_TEXT)" "$(PTRLISTS_OUT)"
 
 # Tests
-.PHONY: test_tilemaps test_attribmaps
+.PHONY: test_tilemaps test_attribmaps test_tilesets
+
 
 test_tilemaps:
 	$(PYTHON) $(SCRIPT)/test_maps.py "$(TILEMAP_PREBUILT)"
 
 test_attribmaps:
 	$(PYTHON) $(SCRIPT)/test_maps.py "$(ATTRIBMAP_PREBUILT)"
+
+test_tilesets:
+	$(PYTHON) $(SCRIPT)/test_tilesets.py "$(TILESET_PREBUILT)"
+
 
 #Make directories if necessary
 $(BUILD):
